@@ -1,0 +1,6 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="52" height="30" viewBox="0 0 52 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Switch">
+<path d="M0 15C0 6.71573 6.71573 0 15 0H37C45.2843 0 52 6.71573 52 15V15C52 23.2843 45.2843 30 37 30H15C6.71573 30 0 23.2843 0 15V15Z" fill="#787878"/>
+<circle id="Handle" cx="15" cy="15" r="13" fill="white"/>
+</g>
+</svg>

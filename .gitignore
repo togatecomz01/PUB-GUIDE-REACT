@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.vite/
+*.local
+*.log
+.DS_Store
+Thumbs.db
+/src/guide/setup/component-review.md
+/src/pages/README.md

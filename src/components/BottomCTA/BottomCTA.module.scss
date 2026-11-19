@@ -1,0 +1,19 @@
+.root {
+  position: relative;
+  width: 100%;
+  padding: 36px 24px calc(20px + env(safe-area-inset-bottom, 0px));
+  background: linear-gradient(to bottom, transparent 0, var(--bg-surface) 36px);
+}
+.actions {
+  background: var(--bg-surface);
+}
+.sticky {
+  position: sticky;
+  z-index: 10;
+}
+.fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}

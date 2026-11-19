@@ -1,0 +1,21 @@
+@use '../../styles/mixins/selection';
+@include selection.base;
+
+.root {
+  font-weight: 500;
+}
+.s .visual {
+  width: 24px;
+  height: 24px;
+}
+.m {
+  font-size: 16px;
+  line-height: 24px;
+}
+.m .visual {
+  width: 28px;
+  height: 28px;
+}
+.visual {
+  border-radius: 50%;
+}

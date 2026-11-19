@@ -1,0 +1,357 @@
+const prop = (name: string, type: string, defaultValue: string, description: string) => ({
+  name,
+  type,
+  defaultValue,
+  description,
+});
+export const expansionPages = [
+  {
+    id: 'icon',
+    title: 'Icon',
+    node: '296:9689',
+    index: '15',
+    description:
+      'Asset 원본 66개와 Header 전용 5개를 로컬 SVG로 사용합니다. 이름·크기·색상을 확인하고 복사하세요.',
+    example: 'Icon',
+    notes: [
+      '파일명은 ico_ 접두사와 소문자·밑줄을 사용합니다. name=search는 ico_search.svg, name=header-back은 ico_header_back.svg에 연결됩니다.',
+      '기본 도형은 Asset의 20px 원본입니다. 16·20·24·32px로 표시합니다. Header 전용 아이콘은 별도 원본을 보존합니다.',
+      '기본 #222222만 currentColor로 연결합니다. del의 회색 배경·흰색 X처럼 다른 색은 원본 그대로 유지됩니다.',
+      '텍스트와 함께 쓰는 장식 아이콘은 label을 생략합니다. 단독 의미가 있으면 label 또는 부모 버튼의 aria-label을 제공합니다.',
+    ],
+    props: [
+      prop('name', 'IconName', '필수', '접두사 없는 아이콘 이름. check → ico_check.svg'),
+      prop('size', '16 | 20 | 24 | 32', '20', '표시 크기'),
+      prop('label', 'string', '생략', '단독 아이콘의 화면 읽기 프로그램이 읽을 이름'),
+    ],
+  },
+  {
+    id: 'badge',
+    title: 'Badge',
+    node: '464:637',
+    index: '16',
+    description: '짧은 상태·속성 표시입니다. 보조 정보는 Line, 강조가 필요하면 Fill을 사용합니다.',
+    example: 'Badge',
+    notes: [
+      'Brand · Error · Success · Warning · Gray를 의미에 맞게 사용합니다. Brand Weak는 Fill에서만 사용합니다.',
+      'Badge는 상태 표시입니다. 클릭 동작이나 버튼 역할을 자동으로 추가하지 않습니다.',
+    ],
+    props: [
+      prop('variant', 'line | fill', 'line', '테두리 / 채움'),
+      prop(
+        'tone',
+        'brand | error | success | warning | gray | brand-weak',
+        'brand',
+        'brand-weak는 fill 전용',
+      ),
+      prop('size', 'l | s', 'l', '24px / 20px 높이'),
+    ],
+  },
+  {
+    id: 'formbutton',
+    title: 'FormButton',
+    node: '479:5897',
+    index: '17',
+    description: '입력 폼 안이나 옆에서 인증 요청·시간 연장·금액 추가 등의 보조 동작을 실행합니다.',
+    example: 'FormButton',
+    notes: [
+      'TextField의 phone·code는 내부에서 FormButton을 재사용합니다. actionLabel·onAction으로 연결합니다.',
+      '다른 입력 내부에는 endAdornment, 입력 옆에는 페이지 레이아웃으로 배치합니다. label·helperText 유무와 독립적으로 조합합니다.',
+      '추가한 endAdornment 안의 버튼 disabled는 화면에서 직접 전달합니다. 인증 서버 연동·타이머·오류 판정은 자동 실행하지 않습니다.',
+    ],
+    props: [
+      prop('children', 'ReactNode', '필수', '버튼 문구'),
+      prop('onClick', '기본 button의 클릭 함수', '생략', '보조 동작'),
+      prop(
+        'disabled / type / ref',
+        '기본 button 속성',
+        'false / button',
+        '실제 button 사용. 폼 전송은 type="submit"일 때만',
+      ),
+      prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
+    ],
+  },
+  {
+    id: 'textbutton',
+    title: 'TextButton',
+    node: '29:8',
+    index: '18',
+    description:
+      '텍스트 단독 또는 아이콘 조합으로 사용합니다. 모달 Alert 확인 동작도 이 컴포넌트를 사용합니다.',
+    example: 'TextButton',
+    notes: [
+      'Arrow는 기본 오른쪽 화살표를 포함합니다. Clear·Underline에서도 icon을 전달하면 조합할 수 있습니다.',
+      '이 컴포넌트는 동작용 button입니다. URL 이동은 실제 a 링크를 사용하세요.',
+      'Pressed 배경은 버튼 주변으로 2px·4px 확장됩니다. 디자인처럼 주변 여유를 확보합니다.',
+    ],
+    props: [
+      prop('appearance', 'arrow | clear | underline', 'clear', '표현 방식'),
+      prop('tone', 'brand | neutral', 'brand', '의미별 글자색'),
+      prop('size', 'l | m | s', 'm', '16/24 · 14/22 · 12/18px'),
+      prop('icon / iconPosition', 'ReactNode / start | end', '생략 / end', '아이콘 교체와 위치'),
+      prop('disabled / onClick', '기본 button 속성', 'false', '버튼 동작'),
+      prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
+    ],
+  },
+  {
+    id: 'bottomcta',
+    title: 'BottomCTA',
+    node: '288:2135',
+    index: '19',
+    description:
+      '화면 하단의 주요 행동 영역입니다. 기존 Button으로 1개 또는 서로 다른 스타일의 2개 버튼을 구성합니다.',
+    example: 'BottomCTA',
+    notes: [
+      '2개일 때 보조 버튼은 secondary 또는 tertiary만 선택합니다. 같은 스타일의 두 버튼을 만들지 않습니다.',
+      '문구가 긴 2개 버튼만 vertical로 변경합니다. 가로는 보조 → 주요, 세로는 주요 → 보조 순서입니다.',
+      'static은 본문 순서대로 배치하고, sticky는 스크롤 영역 안에서 가장자리에 붙으며, fixed는 브라우저 표시 영역에 고정합니다. fixed를 쓰면 본문이 버튼에 가려지지 않게 하단에 버튼 영역 높이만큼 공간을 두세요.',
+    ],
+    props: [
+      prop(
+        'primary / secondary',
+        '{label, ...ButtonProps}',
+        '필수 / 생략',
+        '1개 또는 2개의 실제 버튼',
+      ),
+      prop('weakVariant', 'secondary | tertiary', 'secondary', '보조 버튼 표현'),
+      prop('layout', 'horizontal | vertical', 'horizontal', '문구가 긴 경우만 세로 사용'),
+      prop(
+        'position / bottom',
+        'static | sticky | fixed / number',
+        'static / 0',
+        '배치 방식과 하단 위치',
+      ),
+    ],
+  },
+  {
+    id: 'bottomsheet',
+    title: 'BottomSheet',
+    node: '305:1150',
+    index: '20',
+    description:
+      '현재 화면에서 안내·선택을 제공하는 하단 시트입니다. 기본 본문, 계좌 목록, 은행 그리드를 조합합니다.',
+    example: 'BottomSheet',
+    notes: [
+      'HTML dialog로 창을 엽니다. Modal과 같은 방식으로 Esc로 닫기, 키보드 이동 범위 제한, 배경 스크롤 잠금을 처리합니다. onClose에서 open을 false로 바꿔 닫습니다. dim=false는 어두운 배경만 없애며 뒤 화면의 조작은 계속 제한합니다.',
+      'SheetOptions는 account(42px 로고·설명·체크) / bank(3열·24px 로고)입니다. 이미지·문구·선택값은 화면에서 전달합니다. 선택은 즉시 화면 이동이나 서버 요청을 하지 않습니다.',
+      'SheetCard는 가이드의 정적 모양 비교용이며 직접 열림·닫힘을 처리하지 않습니다. 손잡이는 현재 표현 요소이고, 스와이프 닫힘은 구현하지 않았습니다.',
+    ],
+    props: [
+      prop('open / onClose', 'boolean / () => void', '필수', '열림 상태는 부모에서 관리'),
+      prop(
+        'title / description / children',
+        'string / ReactNode / ReactNode',
+        '필수 / 생략 / 생략',
+        '제목·보조 설명·본문',
+      ),
+      prop('actions', 'ActionButtonsProps', '생략', '기존 Button과 같은 버튼 영역'),
+      prop('dim / closeOnBackdrop', 'boolean / boolean', 'true / false', '배경 / 바깥 클릭 닫힘'),
+      prop(
+        'SheetOptions',
+        'items, value, onValueChange, kind, aria-label',
+        '필수',
+        '선택값과 화면 읽기 프로그램이 읽을 이름. image·description·disabled 선택',
+      ),
+    ],
+  },
+  {
+    id: 'toast',
+    title: 'Toast',
+    node: '450:3485',
+    index: '21',
+    description: '작업 결과를 짧게 전달합니다. 사용자 확인 버튼 없이 하단에 표시합니다.',
+    example: 'Toast',
+    notes: [
+      '가이드 구현의 기본 노출 시간은 3000ms이며 디자인에서 확정한 시간이 아닙니다. 서비스 요구에 따라 duration을 지정하세요. 0이면 자동 종료하지 않습니다.',
+      '업무 처리 성공 여부는 화면에서 결정합니다. role=status로 메시지를 읽고, 화면 포커스를 이동하거나 인증·저장을 수행하지 않습니다.',
+      '모달 위에도 메시지가 보여야 하면 열린 Modal·BottomSheet 내부에 Toast를 넣습니다. HTML dialog는 일반 본문보다 위에 표시되므로 창 밖의 Toast는 그 위에 보이지 않을 수 있습니다.',
+    ],
+    props: [
+      prop(
+        'open / message / onClose',
+        'boolean / string / () => void',
+        '필수',
+        '부모 상태와 메시지',
+      ),
+      prop('duration', 'number', '3000', '자동 종료 ms. 0은 자동 종료 없음'),
+      prop('icon', 'ReactNode | false', '원형 체크', 'false로 생략'),
+      prop('position', 'fixed | inline', 'fixed', '화면 하단 / 문서 흐름'),
+    ],
+  },
+  {
+    id: 'tooltip',
+    title: 'Tooltip',
+    node: '450:3576',
+    index: '22',
+    description: '안내 아이콘을 눌러 용어나 기능에 관한 보충 설명을 펼칩니다.',
+    example: 'Tooltip',
+    notes: [
+      '버튼을 누르면 설명이 열리고 닫힙니다. 마우스를 올리는 동작만으로 열리는 방식은 아닙니다. aria-expanded로 열림 여부를 화면 읽기 프로그램에도 알립니다.',
+      '아이콘·문구 클릭, 닫기, Escape, 바깥 클릭을 지원합니다. 닫기 버튼·Escape로 닫으면 안내를 열었던 버튼으로 키보드 선택 위치(포커스)를 돌립니다.',
+      '내용은 children으로 전달합니다. 디자인의 목록은 ul/li로 구성하며, 열렸을 때 문서 흐름에서 아래 내용을 밀어냅니다.',
+    ],
+    props: [
+      prop(
+        'label / title / children',
+        'string / string / ReactNode',
+        '필수',
+        '안내를 여는 버튼 문구·제목·설명',
+      ),
+      prop(
+        'open / onOpenChange',
+        'boolean / (open)=>void',
+        '생략',
+        '페이지에서 열림 상태를 관리할 때 함께 전달',
+      ),
+      prop('defaultOpen', 'boolean', 'false', 'open을 생략했을 때 처음 열어 둘지 여부'),
+    ],
+  },
+  {
+    id: 'header',
+    title: 'Header',
+    node: '479:3394',
+    index: '23',
+    description:
+      '모바일 상단 헤드라인 5종입니다. 관리자 프로젝트의 PC Header와 역할·디자인이 다릅니다.',
+    example: 'Header',
+    notes: [
+      'main은 사용자명·알림·홈·메뉴, main-sub는 홈 생략, sub는 뒤로·닫기, sub-page는 중앙 제목, popup은 왼쪽 제목·닫기입니다.',
+      '서비스에 따라 onBack·onClose·onHome·onMenu·onAlarm을 전달합니다. 연결하지 않은 아이콘 버튼은 disabled이며 임의 이동을 하지 않습니다.',
+      '상단 고정·페이지 폭은 포함하지 않습니다. 실제 화면 레이아웃에서 지정하고, 시스템 상태바는 구현 대상에서 제외합니다.',
+    ],
+    props: [
+      prop('type', 'main | main-sub | sub | sub-page | popup', 'main', '헤더 구성'),
+      prop('name / title', 'string', '생략', '사용자명 / 페이지 제목'),
+      prop('gradient', 'boolean', 'true', '하단 28px 그라데이션'),
+      prop(
+        'onBack / onClose / onHome / onMenu / onAlarm',
+        '() => void',
+        '생략',
+        '화면 이동·닫기 연결',
+      ),
+      prop('actions', 'ReactNode', '생략', '기본 오른쪽 동작 영역 대체'),
+    ],
+  },
+  {
+    id: 'segmented',
+    title: 'SegmentedControl',
+    node: '404:1712',
+    index: '24',
+    description:
+      '상세 분류를 선택하는 탭입니다. 각 메뉴를 같은 너비로 나누거나 문구 너비에 맞춰 표시합니다.',
+    example: 'SegmentedControl',
+    notes: [
+      'Tab·TabClip과 같은 TabList 및 드래그·키보드 이동 코드를 공유합니다. 패널이 있으면 items.content를 넣습니다.',
+      'Full Width는 균등 분할, Fluid는 문구 폭을 유지합니다. 실제 넘침이 있을 때만 드래그 커서·가장자리 그라데이션을 표시합니다.',
+      '스크롤바는 숨기고 터치는 기본 가로 스와이프를 사용합니다. showScrollButton은 왼쪽으로 스크롤된 경우에만 표시됩니다.',
+    ],
+    props: [
+      prop(
+        'items / aria-label',
+        'TabItem[] / string',
+        '필수',
+        '선택 항목과 화면 읽기 프로그램이 읽을 이름',
+      ),
+      prop(
+        'value / defaultValue / onValueChange',
+        'string / string / (value)=>void',
+        '첫 활성 항목',
+        'Tab처럼 현재 값·처음 값·선택 시 실행할 함수를 전달',
+      ),
+      prop('alignment', 'full | fluid', 'full', '균등 분할 / 문구 폭'),
+      prop(
+        'fadeEdges / showScrollButton',
+        'boolean / boolean',
+        'true / false',
+        '넘침 안내 그라데이션과 앞쪽 이동 버튼',
+      ),
+    ],
+  },
+  {
+    id: 'accordion',
+    title: 'Accordion',
+    node: '450:1448',
+    index: '25',
+    description:
+      '안내 내용을 접고 펼칩니다. full은 전체 너비형, box는 테두리형이며 상세 내용은 children으로 넣습니다.',
+    example: 'Accordion',
+    notes: [
+      'full은 페이지 하단 안내용이며 상단 8px 구분·선택 아이콘·목록을 표현합니다. box는 테두리·12px 곡률과 본문 여백을 유지합니다.',
+      '복수 항목은 기본적으로 각각 독립적으로 열립니다. 하나만 열리는 동작이 필요하면 부모에서 open/onOpenChange를 제어합니다.',
+      '중첩 버튼·링크를 title 안에 넣지 않습니다. 숨겨진 본문은 포커스와 읽기 순서에서 제외됩니다.',
+    ],
+    props: [
+      prop('title / children', 'string / ReactNode', '필수', '항목 제목 / 상세 내용'),
+      prop(
+        'variant / icon',
+        'full | box / boolean',
+        'full / true',
+        '박스 여부 / full 제목의 안내 아이콘',
+      ),
+      prop('open / onOpenChange', 'boolean / (open)=>void', '생략', '페이지에서 열림 상태 관리'),
+      prop('defaultOpen', 'boolean', 'false', '초기 펼침 상태'),
+    ],
+  },
+  {
+    id: 'keypad',
+    title: 'Keypad',
+    node: '479:5555',
+    index: '26',
+    description: '숫자·금액 입력용 키패드입니다. 금액 보조 버튼은 FormButton을 재사용합니다.',
+    example: 'Keypad',
+    notes: [
+      '숫자 클릭은 onKey, 지우기는 onBackspace, 금액 추가는 onAmount로 알립니다. 값 계산·자리수 제한·입력 대상은 사용하는 화면에서 정합니다.',
+      'amountButtons=false로 금액 버튼과 영역을 함께 제거합니다. 기본 금액 버튼은 +10만·+50만·+100만·+1000만입니다.',
+      '현재 구현은 퍼블리싱용 키패드이며 보안 키패드·난수 배열·암호화·주민번호 입력용 보안 기능을 제공하지 않습니다.',
+    ],
+    props: [
+      prop(
+        'onKey / onBackspace',
+        '(key:string)=>void / ()=>void',
+        '필수',
+        '숫자 문자열 / 한 자리 지우기',
+      ),
+      prop('onAmount', '(amount:number)=>void', '생략', '없으면 금액 버튼 비활성'),
+      prop('amountButtons', 'false | AmountAction[]', '기본 4개', '숨김 또는 금액·문구 변경'),
+      prop('disabled', 'boolean', 'false', '모든 키 비활성'),
+    ],
+  },
+  {
+    id: 'selectfield',
+    title: 'SelectField',
+    node: '408:4450',
+    index: '27',
+    description:
+      'Text Field의 Select 표현입니다. Box·Line 및 레이블·안내문구 생략을 기존 FieldFrame과 공유합니다.',
+    example: 'SelectField',
+    notes: [
+      '실제 select를 사용하므로 키보드·name·required·disabled·폼 제출을 유지합니다. 옵션 목록의 팝업 형태는 브라우저·OS 기본 UI입니다.',
+      'TextField의 입력 종류 6개는 그대로입니다. 목록 선택에는 HTML select를 사용하는 SelectField를 씁니다. ref도 input이 아닌 select 요소를 가리킵니다.',
+      'label과 helperText는 독립적으로 생략하며 영역을 남기지 않습니다. label을 생략하면 aria-label 또는 aria-labelledby가 필수입니다.',
+    ],
+    props: [
+      prop('options', 'SelectOption[]', '필수', 'value·label·disabled'),
+      prop('variant', 'box | line', 'box', 'TextField와 같은 높이 54px의 입력 영역'),
+      prop(
+        'label / helperText',
+        'string / ReactNode',
+        '생략',
+        '생략하면 해당 태그와 여백을 만들지 않음',
+      ),
+      prop(
+        'value / defaultValue / onValueChange',
+        'string / string / (value)=>void',
+        '빈 값',
+        '선택 상태',
+      ),
+      prop(
+        'status / disabled',
+        'default | error | success / boolean',
+        'default / false',
+        '상태·비활성',
+      ),
+      prop('name / required / ref', '기본 select 속성', '생략', '폼 연동과 HTMLSelectElement ref'),
+    ],
+  },
+] as const;
+export type ExpansionId = (typeof expansionPages)[number]['id'];

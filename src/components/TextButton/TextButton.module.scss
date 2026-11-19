@@ -1,0 +1,65 @@
+.button {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: max-content;
+  max-width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-brand);
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+}
+.button::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -2px -4px;
+  border-radius: 4px;
+}
+.button:is(:active, [data-preview-state='pressed']):not(:disabled)::before {
+  background: var(--fill-brand-weak);
+}
+.neutral {
+  color: var(--text-secondary);
+}
+.neutral:is(:active, [data-preview-state='pressed']):not(:disabled)::before {
+  background: var(--fill-secondary);
+}
+.l {
+  font-size: 16px;
+  line-height: 24px;
+}
+.m {
+  font-size: 14px;
+  line-height: 22px;
+}
+.s {
+  font-size: 12px;
+  line-height: 18px;
+}
+.underline {
+  text-decoration: underline;
+  text-underline-position: from-font;
+}
+.button:disabled {
+  color: var(--text-disabled);
+  cursor: default;
+}
+.button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+}
+
+.brand svg {
+  color: var(--icon-brand);
+}
+.button:disabled svg {
+  color: var(--icon-disabled);
+}

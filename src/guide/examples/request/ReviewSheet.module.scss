@@ -1,0 +1,16 @@
+.summary {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 12px;
+  margin: 8px 0 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+.summary dt {
+  color: var(--text-secondary);
+}
+.summary dd {
+  margin: 0;
+  color: var(--text-strong);
+  overflow-wrap: anywhere;
+}

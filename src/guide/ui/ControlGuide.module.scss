@@ -1,0 +1,78 @@
+// 가이드 문서 전용입니다. 제품 컴포넌트의 표현값과 분리합니다.
+.preview {
+  width: 375px;
+  max-width: 100%;
+  padding: 0 24px;
+}
+.choices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.radioChoices {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.panel {
+  margin: 0;
+  padding: 20px 24px;
+  background: #fff;
+  color: #536783;
+  font-size: 16px;
+  line-height: 26px;
+}
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 375px), 1fr));
+  gap: 20px;
+  padding: 16px 0 24px;
+}
+.gallery figure {
+  min-width: 0;
+  margin: 0;
+  padding: 20px 0;
+  border: 1px solid #dce5f0;
+  border-radius: 8px;
+  background: #fff;
+}
+.gallery figcaption {
+  margin: 0 20px 16px;
+  color: #70839e;
+  font-size: 16px;
+  line-height: 24px;
+}
+.gallery .preview {
+  margin: 0 auto;
+}
+.choiceGallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  padding: 16px 0;
+}
+.choiceGallery figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #dce5f0;
+  border-radius: 8px;
+  background: #fff;
+}
+.choiceGallery figcaption {
+  color: #70839e;
+  font-size: 16px;
+  line-height: 24px;
+}
+.status {
+  min-height: 22px;
+  margin: 12px 0 0;
+  color: #6a7f9e;
+  font-size: 16px;
+  line-height: 26px;
+}

@@ -1,0 +1,146 @@
+.dialog {
+  position: fixed;
+  inset: auto 0 0;
+  width: min(100%, 375px);
+  max-width: 100%;
+  max-height: 100dvh;
+  margin: 0 auto;
+  padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+  border: 0;
+  background: transparent;
+  color: var(--text-strong);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.dialog::backdrop {
+  background: var(--fill-overlay);
+}
+.dialog[data-dim='false']::backdrop {
+  background: transparent;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  padding: 12px 0 20px;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  font:
+    400 16px/24px 'Pretendard',
+    sans-serif;
+  letter-spacing: -0.2px;
+}
+.handle {
+  display: block;
+  align-self: center;
+  width: 48px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--bg-subtle);
+}
+.title {
+  margin: 20px 24px 0;
+  color: var(--text-strong);
+  font:
+    700 18px/28px 'Pretendard',
+    sans-serif;
+}
+.description {
+  margin: 8px 24px 0;
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 22px;
+}
+.body {
+  min-height: 50px;
+  padding: 12px 24px 0;
+  color: var(--text-secondary);
+}
+.body p {
+  margin: 0;
+}
+.card .actions {
+  width: auto;
+  margin: 32px 24px 0;
+}
+.options {
+  display: flex;
+  flex-direction: column;
+  margin: 4px -24px 0;
+}
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 16px 24px;
+  border: 0;
+  background: var(--bg-surface);
+  color: var(--text-strong);
+  text-align: left;
+  font:
+    500 16px/24px 'Pretendard',
+    sans-serif;
+  cursor: pointer;
+}
+.option:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+}
+.option:disabled {
+  color: var(--text-disabled);
+  cursor: default;
+}
+.option[aria-pressed='true'] {
+  color: var(--text-brand);
+}
+.option:disabled {
+  color: var(--text-disabled);
+}
+.optionText {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-width: 0;
+  color: var(--text-strong);
+}
+.optionText small {
+  color: var(--text-secondary);
+  font:
+    400 12px/18px 'Pretendard',
+    sans-serif;
+}
+.logo {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 999px;
+}
+.bankGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 4px 0 8px;
+}
+.bankGrid .option {
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 8px;
+  border-radius: 8px;
+  background: var(--fill-secondary);
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+.bankGrid .logo {
+  width: 24px;
+  height: 24px;
+  border-radius: 8px;
+}
+.bankGrid .optionText {
+  flex: auto;
+}
+.bankGrid .option[aria-pressed='true'] {
+  outline: 1px solid var(--border-selected);
+}

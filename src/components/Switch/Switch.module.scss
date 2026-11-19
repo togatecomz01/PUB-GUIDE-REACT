@@ -1,0 +1,14 @@
+@use '../../styles/mixins/selection';
+@include selection.base;
+
+.s .visual {
+  width: 42px;
+  height: 28px;
+}
+.m .visual {
+  width: 52px;
+  height: 30px;
+}
+.visual {
+  border-radius: 999px;
+}

@@ -1,0 +1,65 @@
+.root {
+  width: 100%;
+  font-family: 'Pretendard', sans-serif;
+  letter-spacing: -0.2px;
+}
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  height: 50px;
+  padding: 0 20px;
+  background: var(--bg-surface);
+  color: var(--text-strong);
+}
+.profile {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 26px;
+}
+.profile strong {
+  font-weight: 700;
+  line-height: 28px;
+}
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.bar button {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--icon-strong);
+  cursor: pointer;
+}
+.bar button:disabled {
+  cursor: default;
+}
+.bar button:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+.title {
+  flex: 1;
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 24px;
+}
+.sub-page,
+.popup {
+  padding: 0 24px;
+}
+.sub-page .title {
+  text-align: center;
+}
+.gradient::after {
+  content: '';
+  display: block;
+  height: 28px;
+  background: linear-gradient(var(--bg-surface), transparent);
+}

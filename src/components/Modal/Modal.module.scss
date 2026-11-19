@@ -1,0 +1,95 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 327px;
+  max-width: 350px;
+  padding: 32px 0 20px;
+  border-radius: 20px;
+  background: var(--bg-surface);
+  font-family: 'Pretendard', sans-serif;
+  letter-spacing: -0.2px;
+  text-align: left;
+  overflow-wrap: break-word;
+}
+
+.confirmCard {
+  gap: 32px;
+}
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 24px;
+}
+.title {
+  margin: 0;
+  color: var(--text-strong);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 28px;
+}
+.description {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  white-space: pre-line;
+}
+.description a {
+  color: var(--text-brand);
+}
+.actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  padding: 0 24px;
+}
+.alert {
+  justify-content: flex-end;
+}
+.confirm .actionButton {
+  flex: 1 1 0;
+  min-width: 0;
+}
+.vertical {
+  flex-direction: column;
+}
+.vertical .actionButton {
+  flex: 0 0 auto;
+  width: 100%;
+}
+.textButton {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-brand);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 22px;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+}
+.textButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+}
+.modal {
+  width: max-content;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100dvh - 32px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: auto;
+  overscroll-behavior: contain;
+}
+.modal::backdrop {
+  background: var(--fill-overlay);
+}
+.modal .card {
+  max-width: 100%;
+}

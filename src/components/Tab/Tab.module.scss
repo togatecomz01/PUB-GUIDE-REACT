@@ -1,0 +1,62 @@
+.root {
+  width: 100%;
+  min-width: 0;
+  font-family: 'Pretendard', sans-serif;
+}
+.list {
+  display: flex;
+  width: 100%;
+  overflow-x: auto;
+  background: var(--bg-surface);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+  cursor: default;
+}
+.list[data-scrollable='true'] {
+  cursor: grab;
+  user-select: none;
+}
+.list[data-scrollable='true'] .item:not(:disabled) {
+  cursor: inherit;
+}
+.list::-webkit-scrollbar {
+  display: none;
+}
+.list[data-dragging='true'] {
+  cursor: grabbing;
+}
+.item {
+  flex: 1 0 0;
+  min-width: 0;
+  height: 50px;
+  padding: 12px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--border-subtle);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  font:
+    400 16px/24px 'Pretendard',
+    sans-serif;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.item[aria-selected='true'] {
+  border-bottom: 2px solid var(--gray-900);
+  color: var(--text-strong);
+  font-weight: 500;
+}
+.item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -3px;
+}
+.item:disabled {
+  color: var(--text-disabled);
+  cursor: not-allowed;
+}
+.fixed .item {
+  flex: 0 0 94px;
+}
+.panel {
+  outline-offset: 2px;
+}

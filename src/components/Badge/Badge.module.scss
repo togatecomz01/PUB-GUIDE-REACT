@@ -1,0 +1,67 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: max-content;
+  padding: 0 8px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-family: 'Pretendard', sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.2px;
+}
+.l {
+  height: 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+.s {
+  height: 20px;
+  font-size: 10px;
+  line-height: 14px;
+}
+.brand {
+  --badge-fill: var(--fill-brand);
+  --badge-ink: var(--text-brand);
+  --badge-border: var(--border-selected);
+}
+.error {
+  --badge-fill: var(--fill-error);
+  --badge-ink: var(--text-error);
+  --badge-border: var(--border-error);
+}
+.success {
+  --badge-fill: var(--fill-success);
+  --badge-ink: var(--text-success);
+  --badge-border: var(--text-success);
+}
+.warning {
+  --badge-fill: var(--fill-warning);
+  --badge-ink: var(--text-secondary);
+  --badge-border: var(--text-warning);
+}
+.gray {
+  --badge-fill: var(--fill-secondary);
+  --badge-ink: var(--text-secondary);
+  --badge-border: var(--border-default);
+}
+.brand-weak {
+  --badge-fill: var(--fill-brand-weak);
+}
+.line {
+  border: 1px solid var(--badge-border);
+  background: var(--bg-surface);
+  color: var(--badge-ink);
+}
+.fill {
+  background: var(--badge-fill);
+  color: var(--text-inverse);
+}
+.fill.warning,
+.fill.gray {
+  color: var(--text-default);
+}
+.fill.brand-weak {
+  color: var(--text-brand);
+}

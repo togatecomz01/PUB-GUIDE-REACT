@@ -1,0 +1,13 @@
+.actions {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+.vertical {
+  flex-direction: column;
+}
+.actions .button {
+  flex: 1 1 0;
+  min-width: 0;
+  width: 100%;
+}

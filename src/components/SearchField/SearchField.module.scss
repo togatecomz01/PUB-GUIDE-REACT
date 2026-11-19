@@ -1,0 +1,98 @@
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  padding: 0 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: var(--bg-surface);
+  color: var(--text-strong);
+}
+.control:focus-within,
+.control[data-preview-state='focus'] {
+  border-color: var(--border-focus);
+}
+.control[data-status='error'] {
+  border-color: var(--border-error);
+}
+.control[data-disabled] {
+  border-color: var(--border-disabled);
+  background: var(--bg-disabled);
+  color: var(--text-disabled);
+}
+.input {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  font:
+    500 18px/26px 'Pretendard',
+    sans-serif;
+  letter-spacing: -0.2px;
+}
+.input::placeholder {
+  opacity: 1;
+  color: var(--text-placeholder);
+}
+.control .input:focus-visible {
+  outline: none;
+}
+.input::-webkit-search-cancel-button {
+  display: none;
+}
+.searchIcon {
+  position: relative;
+  display: block;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+}
+.searchIcon img {
+  position: absolute;
+  top: 3.6px;
+  left: 3.6px;
+  display: block;
+  max-width: none;
+}
+.clear,
+.searchButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.clear {
+  display: none;
+}
+.clear img {
+  display: block;
+  max-width: none;
+}
+.control:focus-within .clear,
+.control[data-preview-state='focus'] .clear {
+  display: flex;
+}
+.clear:focus-visible,
+.searchButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 3px;
+}
+.searchButton:disabled {
+  cursor: not-allowed;
+}

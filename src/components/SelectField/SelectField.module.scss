@@ -1,0 +1,39 @@
+.control {
+  position: relative;
+}
+.select {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  padding: 0 32px 0 0;
+  border: 0;
+  outline: 0;
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: pointer;
+}
+.select[data-empty] {
+  color: var(--text-placeholder);
+}
+.select:disabled {
+  color: var(--text-disabled);
+  cursor: default;
+}
+.select option {
+  color: var(--text-strong);
+}
+.arrow {
+  position: absolute;
+  right: 20px;
+  color: var(--icon-strong);
+}
+.control:has(select:disabled) .arrow {
+  color: var(--icon-disabled);
+}
+
+.line .arrow {
+  right: 0;
+}

@@ -1,0 +1,186 @@
+.control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-width: 0;
+  height: 54px;
+  color: var(--text-strong);
+  font:
+    500 18px/26px 'Pretendard',
+    sans-serif;
+  letter-spacing: -0.2px;
+}
+.box {
+  padding: 0 20px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  background: var(--bg-surface);
+}
+.line {
+  padding: 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.control:focus-within,
+.control[data-preview-state='focus'] {
+  border-color: var(--border-focus);
+}
+.control[data-status='error'] {
+  border-color: var(--border-error);
+}
+.control[data-disabled] {
+  color: var(--text-disabled);
+  border-color: var(--border-disabled);
+}
+.box[data-disabled] {
+  background: var(--bg-disabled);
+}
+.input,
+.emailUser,
+.firstDigit,
+.secret {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
+  height: 36px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.input::placeholder,
+.emailUser::placeholder {
+  opacity: 1;
+  color: var(--text-placeholder);
+}
+.control .input:focus-visible,
+.control .emailUser:focus-visible,
+.control .firstDigit:focus-visible,
+.control .secret:focus-visible {
+  outline: none;
+}
+.input[data-align='right'] {
+  text-align: right;
+}
+.emailUser {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 45%;
+}
+.separator,
+.unit {
+  flex-shrink: 0;
+  color: var(--text-placeholder);
+}
+.control[data-filled] .separator,
+.control[data-filled] .unit {
+  color: inherit;
+}
+.domain {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 0;
+  padding-right: 28px;
+}
+.arrow {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -12px;
+  pointer-events: none;
+}
+.domain input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+.rrnBack {
+  position: relative;
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  min-width: 0;
+}
+.firstDigit {
+  flex: 0 0 12px;
+  width: 12px;
+}
+.secret {
+  flex: 1 1 0;
+}
+.backPlaceholder {
+  position: absolute;
+  left: 0;
+  color: var(--text-placeholder);
+  pointer-events: none;
+}
+.prefix {
+  position: relative;
+  flex-shrink: 0;
+  width: 64px;
+}
+.prefix select {
+  width: 100%;
+  padding: 0 28px 0 0;
+  border: 0;
+  appearance: none;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+.prefix select:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+.action {
+  flex: 0 0 auto;
+}
+.codeActions {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 8px;
+  order: 2;
+}
+.timer {
+  color: var(--text-error);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px;
+}
+.clear {
+  display: none;
+  flex: 0 0 24px;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+}
+.clear img,
+.success {
+  display: block;
+  flex-shrink: 0;
+  max-width: none;
+}
+.control:focus-within .clear,
+.control[data-preview-state='focus'] .clear {
+  display: inline-flex;
+}
+.clear:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.success {
+  color: var(--icon-brand);
+}

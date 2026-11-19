@@ -1,0 +1,114 @@
+.root {
+  min-width: 0;
+  width: 100%;
+  padding: 0 24px;
+}
+.list {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  height: 52px;
+  padding: 4px;
+  border-radius: 12px;
+  background: var(--fill-secondary);
+  overflow-x: auto;
+  scrollbar-width: none;
+  touch-action: pan-x pan-y;
+}
+.list::-webkit-scrollbar {
+  display: none;
+}
+.item {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text-secondary);
+  font:
+    400 14px/22px 'Pretendard',
+    sans-serif;
+  letter-spacing: -0.2px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.fixed .item {
+  flex: 0 0 auto;
+  padding: 8px 16px;
+}
+.item[aria-selected='true'] {
+  background: var(--bg-surface);
+  color: var(--text-strong);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+  font-weight: 500;
+}
+.item:disabled {
+  color: var(--text-disabled);
+  cursor: default;
+}
+.item:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+}
+.list[data-scrollable='true'],
+.list[data-scrollable='true'] .item:not(:disabled) {
+  cursor: grab;
+}
+.list[data-dragging='true'],
+.list[data-dragging='true'] .item:not(:disabled) {
+  cursor: grabbing;
+  user-select: none;
+}
+.panel {
+  padding: 24px 0;
+}
+.panel[hidden] {
+  display: none;
+}
+.frame {
+  position: relative;
+  min-width: 0;
+  width: 100%;
+}
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  width: 28px;
+  height: 52px;
+  pointer-events: none;
+  border-radius: 12px;
+}
+.fadeLeft {
+  left: 24px;
+  background: linear-gradient(to right, var(--fill-secondary), transparent);
+}
+.fadeRight {
+  right: 24px;
+  background: linear-gradient(to left, var(--fill-secondary), transparent);
+}
+.scrollBack {
+  position: absolute;
+  top: 14px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border: 0;
+  padding: 0;
+  border-radius: 999px;
+  background: var(--bg-surface);
+  color: var(--icon-strong);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+.scrollBack:focus-visible {
+  outline: 2px solid var(--border-focus);
+}
