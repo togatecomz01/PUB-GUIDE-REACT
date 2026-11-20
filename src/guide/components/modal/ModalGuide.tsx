@@ -213,7 +213,8 @@ export function ModalGuide() {
               name: 'description',
               type: 'ReactNode',
               defaultValue: '생략',
-              description: '선택 본문. 최대 3줄 권장',
+              description:
+                '본문은 description으로 전달합니다. 짧은 문구를 권장하며 최대 3줄을 기준으로 사용하세요.',
             },
             {
               name: 'confirmLabel / cancelLabel',

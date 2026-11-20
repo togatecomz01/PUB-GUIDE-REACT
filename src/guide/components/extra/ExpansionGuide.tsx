@@ -5,8 +5,9 @@ import BottomSheetSource from '../../../components/BottomSheet/BottomSheet.tsx?r
 import HeaderSource from '../../../components/Header/Header.tsx?raw';
 import TextButtonSource from '../../../components/TextButton/TextButton.tsx?raw';
 import { FieldStructureGuide } from '../fields/FieldUsageGuide.tsx';
+import { figmaLink } from '../../colors/foundations.ts';
 import bankLogo from '../../assets/bank-example.png';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import type { ComponentType } from 'react';
 import Icon, { iconNames } from '../../../components/Icon/Icon.tsx';
 import Badge from '../../../components/Badge/Badge.tsx';
@@ -26,15 +27,16 @@ import { expansionPages } from './expansionData.ts';
 import type { ExpansionId } from './expansionData.ts';
 import ui from '../../ui/GuideUi.module.scss';
 import styles from './ExpansionGuide.module.scss';
-const exampleCode = import.meta.glob('./examples/*Example.tsx', {
+import sheetExample from './examples/BottomSheetExample.module.scss';
+const exampleCode = import.meta.glob<string | undefined>('./examples/*Example.tsx', {
   query: '?raw',
   import: 'default',
   eager: true,
-}) as Record<string, string>;
-const examples = import.meta.glob('./examples/*Example.tsx', {
+});
+const examples = import.meta.glob<ComponentType | undefined>('./examples/*Example.tsx', {
   import: 'default',
   eager: true,
-}) as Record<string, ComponentType>;
+});
 const readingGuides: Partial<Record<ExpansionId, { name: string; code: string; note: string }>> = {
   textbutton: {
     name: 'TextButton.tsx',
@@ -188,11 +190,21 @@ function Gallery({ id }: { id: ExpansionId }) {
 }
 function SheetGallery() {
   const [value, setValue] = useState('a');
-  const items = [
-    { value: 'a', label: '은행명', description: '계좌번호', image: bankLogo },
-    { value: 'b', label: '은행명', description: '계좌번호' },
-    { value: 'c', label: '은행명', description: '계좌번호', disabled: true },
-  ];
+  const [bank, setBank] = useState<string>();
+  const bankGroups = [9, 6].map((count, section) =>
+    Array.from({ length: count }, (_, index) => ({
+      value: section + '-' + index,
+      label: '은행명',
+      image: bankLogo,
+    })),
+  );
+  const items = ['a', 'b', 'c'].map((value, index) => ({
+    value,
+    label: '은행명',
+    description: '계좌번호',
+    image: bankLogo,
+    disabled: index > 0,
+  }));
   return (
     <div className={styles.sheetGrid}>
       <SheetCard title="타이틀 내용" actions={{ primary: { label: '버튼명' } }}>
@@ -208,26 +220,32 @@ function SheetGallery() {
         <SheetOptions aria-label="계좌 예시" items={items} value={value} onValueChange={setValue} />
       </SheetCard>
       <SheetCard title="타이틀 내용">
-        <SheetOptions
-          kind="bank"
-          aria-label="은행 예시"
-          items={items.map((item) => ({
-            ...item,
-            description: undefined,
-            disabled: false,
-          }))}
-          value={value}
-          onValueChange={setValue}
-        />
+        {bankGroups.map((items, index) => (
+          <Fragment key={items.length}>
+            {index > 0 && <h3 className={sheetExample.bankHeading}>타이틀 내용</h3>}
+            <SheetOptions
+              kind="bank"
+              aria-label={'은행 예시 ' + (index + 1)}
+              items={items}
+              value={bank}
+              onValueChange={setBank}
+            />
+          </Fragment>
+        ))}
       </SheetCard>
     </div>
   );
 }
 export default function ExpansionGuide({ id }: { id: ExpansionId }) {
   const page = expansionPages.find((page) => page.id === id)!;
-  const key = './examples/' + page.example + 'Example.tsx';
+  const fileName = page.example + 'Example.tsx';
+  const key = './examples/' + fileName;
   const Example = examples[key];
-  const code = exampleCode[key].replaceAll('../../../../components/', '../components/');
+  const code = exampleCode[key]
+    ?.replaceAll('../../../../components/', '../components/')
+    .replace('../../../assets/bank-example.png', './bank-example.png')
+    .trim();
+  const showGallery = ['icon', 'badge', 'formbutton', 'textbutton', 'header'].includes(id);
   const reading = readingGuides[id];
   return (
     <>
@@ -237,17 +255,34 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
         description={page.description}
         node={page.node}
       />
-      <section className={ui.section}>
-        <h2>모양과 동작 확인</h2>
-        <div className={styles.preview}>
-          {['icon', 'badge', 'formbutton', 'textbutton', 'header'].includes(id) ? (
-            <Gallery id={id} />
-          ) : (
-            <Example />
+      {(!Example || code === undefined) && (
+        <aside className={ui.callout}>
+          <strong>예제 파일을 찾을 수 없습니다</strong>
+          <p>
+            <code>{fileName}</code> 파일이 예제 폴더에 있는지 확인해 주세요. 파일명을 바꿨다면
+            <code> expansionData.ts</code>의 <code>example</code> 값도 함께 수정해 주세요.
+          </p>
+        </aside>
+      )}
+      {(showGallery || Example) && (
+        <section className={ui.section}>
+          <h2>모양과 동작 확인</h2>
+          <div className={styles.preview}>
+            {showGallery && <Gallery id={id} />}
+            {!showGallery && Example && <Example />}
+          </div>
+          {id === 'bottomsheet' && (
+            <p className={ui.muted}>은행 선택 시트는 바깥 배경을 누르거나 Esc로 닫을 수 있어요.</p>
           )}
-        </div>
-      </section>
-      <CodeBlock label={page.title + ' · 사용 예제 복사'} code={code.trim()} />
+        </section>
+      )}
+      {code !== undefined && <CodeBlock label={page.title + ' · 사용 예제 복사'} code={code} />}
+      {id === 'bottomsheet' && code !== undefined && (
+        <p className={ui.muted}>
+          예제를 복사할 때는 예제 파일 옆에 <code>BottomSheetExample.module.scss</code>와
+          <code> bank-example.png</code>를 함께 두세요.
+        </p>
+      )}
       {id === 'selectfield' && <FieldStructureGuide name="SelectField" />}
       {reading && <CodeReadingGuide note={reading.note} sources={[reading]} />}
       {id === 'icon' && (
@@ -294,9 +329,8 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
             폴더 위치가 달라지면 import 상대 경로도 맞춥니다.
           </p>
           <p className={ui.muted}>
-            선택 상태용 SVG는 icons/selection/에 넣고 utils/assets.ts의 import·상태 목록에
-            연결합니다. icons/fields/의 기본 SVG는 필요한 곳에서 직접 import합니다. 이 두 하위
-            폴더는 Icon의 자동 로딩 대상에 포함되지 않습니다.
+            체크박스·라디오·스위치의 SVG는 아이콘 폴더의 selection/에 두고 utils/assets.ts에
+            연결합니다. 계좌형 체크와 입력용 SVG는 쓰는 컴포넌트에서 직접 불러옵니다.
           </p>
         </details>
       )}
@@ -311,8 +345,15 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
             <li key={note}>{note}</li>
           ))}
         </ul>
+        {id === 'accordion' && (
+          <p className={ui.muted}>
+            <a href={figmaLink('450:2985')} target="_blank" rel="noreferrer">
+              Box형 디자인 원본 ↗
+            </a>
+          </p>
+        )}
       </details>
-      {['icon', 'badge', 'formbutton', 'textbutton', 'header'].includes(id) && (
+      {showGallery && Example && (
         <details className={ui.disclosure}>
           <summary>실제 화면에서 함께 사용하는 예제</summary>
           <div className={styles.preview}>
@@ -356,7 +397,15 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
       <SourceFiles
         files={[
           'src/components/' + page.title + '/',
-          'src/guide/components/extra/examples/' + page.example + 'Example.tsx',
+          ...(Example || code !== undefined
+            ? ['src/guide/components/extra/examples/' + fileName]
+            : []),
+          ...(id === 'bottomsheet'
+            ? [
+                'src/guide/components/extra/examples/BottomSheetExample.module.scss',
+                'src/guide/assets/bank-example.png',
+              ]
+            : []),
         ]}
       />
     </>

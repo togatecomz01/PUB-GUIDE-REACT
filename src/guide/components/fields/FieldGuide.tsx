@@ -34,6 +34,10 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
   const [message, setMessage] = useState('');
   const name = search ? 'SearchField' : 'TextField';
   const accessibleName = label.trim() || (search ? '검색어' : '입력값');
+  const previewHint =
+    !search && kind === 'price'
+      ? '금액을 입력하면 값이 오른쪽에 정렬되고 단위가 표시돼요.'
+      : '값을 입력해 동작을 확인해 주세요.';
   const props = {
     label: showLabel && label ? label : undefined,
     'aria-label': accessibleName,
@@ -96,7 +100,7 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
             )}
           </div>
           <p className={styles.status} role="status">
-            {message || '값을 입력하고 지우기·키보드 동작을 확인해 주세요.'}
+            {message || previewHint}
           </p>
         </div>
         <form className={ui.controls} onSubmit={(event) => event.preventDefault()}>
@@ -345,10 +349,10 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
               description: '생략하거나 빈 문자열이면 해당 태그와 여백을 만들지 않음',
             },
             {
-              name: 'aria-label',
+              name: 'aria-label / aria-labelledby',
               type: 'string',
-              defaultValue: '레이블 없을 때 필수',
-              description: '보이는 레이블을 생략해도 입력 목적을 전달',
+              defaultValue: '레이블 없을 때 둘 중 하나 필수',
+              description: '입력 목적을 직접 적거나 화면에 있는 문구의 ID를 연결',
             },
             {
               name: 'value / defaultValue / onValueChange',
@@ -360,8 +364,9 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
               name: 'status / disabled / readOnly',
               type: 'default | error | success / boolean / boolean',
               defaultValue: 'default / false / false',
-              description:
-                '오류·완료 판정은 사용 화면에서 전달. 입력 값만 보고 성공을 추정하지 않음',
+              description: search
+                ? 'error는 오류를 표시합니다. success에 별도 성공 아이콘이나 스타일은 없습니다.'
+                : '화면에서 판정한 상태를 전달합니다. success 아이콘은 박스형에서만 보입니다.',
             },
             ...(search
               ? [
@@ -370,7 +375,7 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
                     type: '(value: string) => void / boolean',
                     defaultValue: '생략 / false',
                     description:
-                      'Enter나 오른쪽 버튼으로 검색합니다. onSearch를 전달하면 Enter의 기본 폼 제출을 막습니다. 한글 등 글자 조합을 확정하는 Enter는 검색하지 않습니다.',
+                      'onSearch가 있으면 Enter로 검색하고 기본 폼 제출을 막습니다. 오른쪽 버튼으로도 검색하려면 searchButton을 켜세요. 글자 조합을 확정하는 Enter는 검색하지 않습니다.',
                   },
                 ]
               : [
@@ -413,13 +418,14 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
         )}
         <p className={ui.muted}>
           {search
-            ? 'SearchField는 검색 아이콘과 입력값 지우기 버튼을 제공합니다. searchButton을 넣으면 오른쪽 검색 버튼이 생깁니다. 검색 실행과 결과 화면 이동은 onSearch에 연결합니다.'
-            : 'price는 우측 정렬과 단위를 제공하며 금액 표시 형식·계산은 화면에서 처리합니다. email·rrn·phone은 구분자를 포함한 문자열로 값을 주고받습니다. RRN은 앞 6자리와 뒤 7자리로 구성하며 뒤 첫 숫자 다음은 기본 password 입력칸으로 가려서 표시합니다. 첫 숫자 입력 후 나머지 입력으로 이동합니다. 숫자 제한·표현 외에 유효성 판정이나 인증을 임의로 추가하지 않습니다.'}
+            ? '20px 검색 아이콘은 기본적으로 왼쪽에 표시됩니다. searchButton을 켜면 오른쪽 검색 버튼으로 바뀝니다. 회색 지우기 버튼은 수정할 수 있는 값이 있고 입력 영역에 포커스가 있을 때 보입니다. 검색 실행은 onSearch에 연결하세요.'
+            : 'price는 입력값을 오른쪽에 정렬하고 단위를 표시합니다. 모바일에서 소수 입력용 키보드를 요청합니다. 지우기 버튼은 basic·code에서 수정할 수 있는 값이 있고 초점을 뒀을 때 표시됩니다. 금액 형식이나 이메일 주소의 유효성은 화면에서 검사하세요. email·rrn·phone은 구분자를 포함한 문자열로 값을 주고받습니다. RRN은 앞 6자리와 뒤 7자리로 구성하며 뒤 첫 숫자 다음은 기본 password 입력칸으로 가려서 표시합니다. 첫 숫자 입력 후 나머지 입력으로 이동합니다. 숫자 제한·표현 외에 유효성 판정이나 인증을 임의로 추가하지 않습니다.'}
         </p>
         <p className={ui.muted}>
-          컴포넌트 외곽에는 페이지 좌우 여백을 넣지 않습니다. Figma 375px 중 좌우 24px 여백은 가이드
-          미리보기 영역에만 두며 실제 필드는 327px입니다. 레이블·안내문구 조합 높이는 122 / 88 / 88
-          / 54px입니다. Pretendard·글자 크기·행간·자간·치수는 이 컴포넌트의 표현값이며 보류 중인
+          컴포넌트 외곽에는 페이지 좌우 여백을 넣지 않습니다. 375px 디자인에서는 좌우 여백이
+          24px씩이라 입력 영역이 327px입니다. 실제 너비는 배치한 영역을 따르며 입력칸 높이는
+          54px입니다. 레이블과 안내문구가 한 줄씩 있으면 전체 높이는 122px이고, 문구가 길면 줄 수에
+          맞춰 늘어납니다. Pretendard·글자 크기·행간·자간·치수는 이 컴포넌트의 표현값이며 보류 중인
           전역 Typography·치수 토큰을 채택한 것은 아닙니다.
         </p>
         <SourceFiles

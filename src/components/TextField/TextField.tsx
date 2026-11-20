@@ -6,6 +6,7 @@ import Icon from '../Icon/Icon.tsx';
 import { cx } from '../../utils/cx.ts';
 import { useValue } from '../../hooks/useValue.ts';
 import InputBody from '../internal/InputBody/InputBody.tsx';
+import clearIcon from '../../assets/icons/fields/ico_input_clear_focus.svg';
 import styles from './TextField.module.scss';
 
 export type InputKind = 'basic' | 'price' | 'email' | 'rrn' | 'phone' | 'code';
@@ -72,7 +73,7 @@ export default function TextField(props: TextFieldProps) {
   const isComposite = ['email', 'rrn', 'phone'].includes(kind);
   const isFilled = Boolean(current);
   const isClearVisible =
-    ['basic', 'price', 'code'].includes(kind) &&
+    (kind === 'basic' || kind === 'code') &&
     isFilled &&
     !disabled &&
     !input.readOnly &&
@@ -130,7 +131,7 @@ export default function TextField(props: TextFieldProps) {
             onMouseDown={(event) => event.preventDefault()}
             onClick={clearValue}
           >
-            <Icon name="del" size={24} />
+            <img src={clearIcon} alt="" />
           </button>
         )}
         {isSuccessVisible && (

@@ -214,7 +214,7 @@ export default function ChoiceGuide({ kind }: { kind: ChoiceKind }) {
         />
         <p className={ui.muted}>
           {kind === 'checkbox'
-            ? '문구는 선택 요소이며 최대 2줄을 권장합니다. Square와 Line을 함께 사용하면 Square를 상위 계층에 둡니다.'
+            ? '문구는 선택 요소이며 최대 2줄을 권장합니다. Square와 Line을 함께 사용하면 Square를 상위에 둡니다. 비활성 Box의 문구는 미선택이면 기본 글자색, 선택되어 있으면 비활성 글자색입니다.'
             : kind === 'radio'
               ? '같은 선택 그룹 안에서는 S·M 크기를 섞지 않습니다. 그룹의 설명은 사용하는 화면에서 fieldset·legend 등으로 제공합니다.'
               : '실제 설정 저장은 onChange에서 연결합니다. 켜짐/꺼짐에 따라 별도 업무 동작을 자동으로 추가하지 않습니다.'}

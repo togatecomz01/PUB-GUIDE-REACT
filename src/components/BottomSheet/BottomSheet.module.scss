@@ -47,7 +47,7 @@
     sans-serif;
 }
 .description {
-  margin: 8px 24px 0;
+  margin: 8px 24px 12px;
   color: var(--text-secondary);
   font-size: 14px;
   line-height: 22px;
@@ -89,14 +89,12 @@
   outline-offset: -2px;
 }
 .option:disabled {
-  color: var(--text-disabled);
   cursor: default;
 }
-.option[aria-pressed='true'] {
-  color: var(--text-brand);
-}
-.option:disabled {
-  color: var(--text-disabled);
+.check {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
 }
 .optionText {
   display: flex;
@@ -112,6 +110,7 @@
     sans-serif;
 }
 .logo {
+  flex-shrink: 0;
   width: 42px;
   height: 42px;
   object-fit: contain;
@@ -122,6 +121,12 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 8px;
   margin: 4px 0 8px;
+}
+.bankGrid[data-columns='1'] {
+  grid-template-columns: minmax(0, 1fr);
+}
+.bankGrid[data-columns='2'] {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 .bankGrid .option {
   flex-direction: column;
@@ -140,6 +145,7 @@
 }
 .bankGrid .optionText {
   flex: auto;
+  color: var(--text-default);
 }
 .bankGrid .option[aria-pressed='true'] {
   outline: 1px solid var(--border-selected);

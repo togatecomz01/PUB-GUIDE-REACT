@@ -1,0 +1,18 @@
+.settings summary {
+  cursor: pointer;
+}
+.settings label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.bankHeading {
+  margin: 0;
+  padding: 20px 0 12px;
+  color: var(--text-strong);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 28px;
+}

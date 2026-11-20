@@ -65,6 +65,9 @@
 .box .input:checked:disabled + .visual {
   border-color: var(--border-disabled);
 }
-.box .input:disabled ~ .label {
+.box .input:disabled:not(:checked) ~ .label {
+  color: var(--text-default);
+}
+.box .input:checked:disabled ~ .label {
   color: var(--text-disabled);
 }

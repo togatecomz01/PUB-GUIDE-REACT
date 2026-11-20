@@ -84,6 +84,14 @@ export function choiceOptions(kind: ChoiceKind) {
       title: '선택된 상태로 비활성화',
       code: `<${name}\n  label="선택 항목"${group}\n  defaultChecked\n  disabled\n/>`,
     },
+    ...(kind === 'checkbox'
+      ? [
+          {
+            title: '박스형 미선택·비활성',
+            code: '<Checkbox variant="box" label="선택 항목" disabled />',
+          },
+        ]
+      : []),
   ];
 }
 

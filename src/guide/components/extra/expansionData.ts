@@ -56,16 +56,21 @@ export const expansionPages = [
     example: 'FormButton',
     notes: [
       'TextField의 phone·code는 내부에서 FormButton을 재사용합니다. actionLabel·onAction으로 연결합니다.',
-      '다른 입력 내부에는 endAdornment, 입력 옆에는 페이지 레이아웃으로 배치합니다. label·helperText 유무와 독립적으로 조합합니다.',
+      'TextField 안에 직접 넣을 때는 endAdornment를 씁니다. 입력 옆에 둘 때는 사용하는 화면에서 배치합니다. 레이블과 안내문구는 필요한 경우에만 전달하세요.',
       '추가한 endAdornment 안의 버튼 disabled는 화면에서 직접 전달합니다. 인증 서버 연동·타이머·오류 판정은 자동 실행하지 않습니다.',
     ],
     props: [
-      prop('children', 'ReactNode', '필수', '버튼 문구'),
+      prop(
+        'children',
+        'ReactNode',
+        '생략',
+        '버튼에 표시할 문구. 문구가 없으면 aria-label로 용도 전달',
+      ),
       prop('onClick', '기본 button의 클릭 함수', '생략', '보조 동작'),
       prop(
         'disabled / type / ref',
         '기본 button 속성',
-        'false / button',
+        'false / button / 생략',
         '실제 button 사용. 폼 전송은 type="submit"일 때만',
       ),
       prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
@@ -89,7 +94,12 @@ export const expansionPages = [
       prop('tone', 'brand | neutral', 'brand', '의미별 글자색'),
       prop('size', 'l | m | s', 'm', '16/24 · 14/22 · 12/18px'),
       prop('icon / iconPosition', 'ReactNode / start | end', '생략 / end', '아이콘 교체와 위치'),
-      prop('disabled / onClick', '기본 button 속성', 'false', '버튼 동작'),
+      prop(
+        'disabled / onClick',
+        '기본 button 속성',
+        'false / 생략',
+        '비활성화 / 클릭할 때 실행할 함수',
+      ),
       prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
     ],
   },
@@ -103,13 +113,13 @@ export const expansionPages = [
     example: 'BottomCTA',
     notes: [
       '2개일 때 보조 버튼은 secondary 또는 tertiary만 선택합니다. 같은 스타일의 두 버튼을 만들지 않습니다.',
-      '문구가 긴 2개 버튼만 vertical로 변경합니다. 가로는 보조 → 주요, 세로는 주요 → 보조 순서입니다.',
+      '두 버튼의 문구가 길면 layout을 vertical로 지정합니다. 가로는 보조 → 주요, 세로는 주요 → 보조 순서입니다. 두 배치 모두 버튼 높이는 각각 52px입니다.',
       'static은 본문 순서대로 배치하고, sticky는 스크롤 영역 안에서 가장자리에 붙으며, fixed는 브라우저 표시 영역에 고정합니다. fixed를 쓰면 본문이 버튼에 가려지지 않게 하단에 버튼 영역 높이만큼 공간을 두세요.',
     ],
     props: [
       prop(
         'primary / secondary',
-        '{label, ...ButtonProps}',
+        'label과 버튼 속성(예: onClick, disabled)',
         '필수 / 생략',
         '1개 또는 2개의 실제 버튼',
       ),
@@ -126,14 +136,14 @@ export const expansionPages = [
   {
     id: 'bottomsheet',
     title: 'BottomSheet',
-    node: '305:1150',
+    node: '305:2404',
     index: '20',
     description:
       '현재 화면에서 안내·선택을 제공하는 하단 시트입니다. 기본 본문, 계좌 목록, 은행 그리드를 조합합니다.',
     example: 'BottomSheet',
     notes: [
-      'HTML dialog로 창을 엽니다. Modal과 같은 방식으로 Esc로 닫기, 키보드 이동 범위 제한, 배경 스크롤 잠금을 처리합니다. onClose에서 open을 false로 바꿔 닫습니다. dim=false는 어두운 배경만 없애며 뒤 화면의 조작은 계속 제한합니다.',
-      'SheetOptions는 account(42px 로고·설명·체크) / bank(3열·24px 로고)입니다. 이미지·문구·선택값은 화면에서 전달합니다. 선택은 즉시 화면 이동이나 서버 요청을 하지 않습니다.',
+      'Esc와 closeOnBackdrop이 켜진 상태의 배경 클릭은 onClose를 호출합니다. 이 함수에서 open을 false로 바꾸세요. 기본형은 확인, 계좌형은 취소·확인 버튼으로 닫습니다. 은행형은 actions를 생략하고 배경을 눌러 닫도록 연결합니다.',
+      '계좌형은 42px 로고와 계좌번호를 표시합니다. 선택한 계좌에는 파란 체크, disabled 계좌에는 회색 체크가 표시됩니다. 은행형은 24px 로고를 사용합니다. columns로 1·2·3열을 지정할 수 있고, 생략하면 3열로 표시됩니다. 그룹을 나누려면 그룹마다 SheetOptions를 배치하세요.',
       'SheetCard는 가이드의 정적 모양 비교용이며 직접 열림·닫힘을 처리하지 않습니다. 손잡이는 현재 표현 요소이고, 스와이프 닫힘은 구현하지 않았습니다.',
     ],
     props: [
@@ -142,16 +152,27 @@ export const expansionPages = [
         'title / description / children',
         'string / ReactNode / ReactNode',
         '필수 / 생략 / 생략',
-        '제목·보조 설명·본문',
+        '제목·보조 설명·본문. 보조 설명 아래에는 12px 여백을 둡니다.',
       ),
-      prop('actions', 'ActionButtonsProps', '생략', '기존 Button과 같은 버튼 영역'),
-      prop('dim / closeOnBackdrop', 'boolean / boolean', 'true / false', '배경 / 바깥 클릭 닫힘'),
+      prop(
+        'actions',
+        'ActionButtonsProps',
+        '생략',
+        '버튼 문구와 동작, layout으로 가로·세로 배치 지정',
+      ),
+      prop(
+        'dim / closeOnBackdrop',
+        'boolean / boolean',
+        'true / false',
+        '배경 어둡기 / 배경 클릭으로 닫기',
+      ),
       prop(
         'SheetOptions',
         'items, value, onValueChange, kind, aria-label',
-        '필수',
-        '선택값과 화면 읽기 프로그램이 읽을 이름. image·description·disabled 선택',
+        'kind: account',
+        'items·onValueChange·aria-label은 필수. value는 선택된 값, kind는 목록 모양입니다. 각 항목의 image·description·disabled는 생략할 수 있습니다.',
       ),
+      prop('SheetOptions.columns', '1 | 2 | 3', '3', '은행형에서 한 줄에 배치할 항목 수'),
     ],
   },
   {
@@ -162,9 +183,9 @@ export const expansionPages = [
     description: '작업 결과를 짧게 전달합니다. 사용자 확인 버튼 없이 하단에 표시합니다.',
     example: 'Toast',
     notes: [
-      '가이드 구현의 기본 노출 시간은 3000ms이며 디자인에서 확정한 시간이 아닙니다. 서비스 요구에 따라 duration을 지정하세요. 0이면 자동 종료하지 않습니다.',
+      '기본 3000ms(3초) 뒤에 onClose를 호출합니다. 화면에서 open을 false로 바꿔 메시지를 닫으세요. duration이 0 이하이면 시간이 지나도 onClose를 호출하지 않습니다.',
       '업무 처리 성공 여부는 화면에서 결정합니다. role=status로 메시지를 읽고, 화면 포커스를 이동하거나 인증·저장을 수행하지 않습니다.',
-      '모달 위에도 메시지가 보여야 하면 열린 Modal·BottomSheet 내부에 Toast를 넣습니다. HTML dialog는 일반 본문보다 위에 표시되므로 창 밖의 Toast는 그 위에 보이지 않을 수 있습니다.',
+      'Modal에서 확인한 결과는 창을 닫은 뒤 페이지에 Toast를 띄우세요. BottomSheet가 열린 상태에서 본문에 메시지를 보여주려면 BottomSheet 태그 사이에 position="inline"인 Toast를 넣으세요.',
     ],
     props: [
       prop(
@@ -173,7 +194,12 @@ export const expansionPages = [
         '필수',
         '부모 상태와 메시지',
       ),
-      prop('duration', 'number', '3000', '자동 종료 ms. 0은 자동 종료 없음'),
+      prop(
+        'duration',
+        'number',
+        '3000',
+        'onClose를 호출하기까지의 시간(ms). 0 이하는 호출하지 않음',
+      ),
       prop('icon', 'ReactNode | false', '원형 체크', 'false로 생략'),
       prop('position', 'fixed | inline', 'fixed', '화면 하단 / 문서 흐름'),
     ],
@@ -215,13 +241,18 @@ export const expansionPages = [
       '모바일 상단 헤드라인 5종입니다. 관리자 프로젝트의 PC Header와 역할·디자인이 다릅니다.',
     example: 'Header',
     notes: [
-      'main은 사용자명·알림·홈·메뉴, main-sub는 홈 생략, sub는 뒤로·닫기, sub-page는 중앙 제목, popup은 왼쪽 제목·닫기입니다.',
+      'main은 사용자명·알림·홈·메뉴, main-sub는 홈 생략, sub는 뒤로·닫기, sub-page는 중앙 제목, popup은 왼쪽 제목·닫기입니다. 사용자명은 굵고 진하게, ‘님’은 기본 글자색으로 표시합니다.',
       '서비스에 따라 onBack·onClose·onHome·onMenu·onAlarm을 전달합니다. 연결하지 않은 아이콘 버튼은 disabled이며 임의 이동을 하지 않습니다.',
       '상단 고정·페이지 폭은 포함하지 않습니다. 실제 화면 레이아웃에서 지정하고, 시스템 상태바는 구현 대상에서 제외합니다.',
     ],
     props: [
       prop('type', 'main | main-sub | sub | sub-page | popup', 'main', '헤더 구성'),
-      prop('name / title', 'string', '생략', '사용자명 / 페이지 제목'),
+      prop(
+        'name / title',
+        'string',
+        '생략',
+        'main·main-sub에 사용자명, sub-page·popup에 페이지 제목을 전달',
+      ),
       prop('gradient', 'boolean', 'true', '하단 28px 그라데이션'),
       prop(
         'onBack / onClose / onHome / onMenu / onAlarm',
@@ -229,7 +260,12 @@ export const expansionPages = [
         '생략',
         '화면 이동·닫기 연결',
       ),
-      prop('actions', 'ReactNode', '생략', '기본 오른쪽 동작 영역 대체'),
+      prop(
+        'actions',
+        'ReactNode',
+        '생략',
+        'main·main-sub의 오른쪽 버튼 묶음 또는 sub·popup의 닫기 버튼을 대체',
+      ),
     ],
   },
   {
@@ -242,8 +278,8 @@ export const expansionPages = [
     example: 'SegmentedControl',
     notes: [
       'Tab·TabClip과 같은 TabList 및 드래그·키보드 이동 코드를 공유합니다. 패널이 있으면 items.content를 넣습니다.',
-      'Full Width는 균등 분할, Fluid는 문구 폭을 유지합니다. 실제 넘침이 있을 때만 드래그 커서·가장자리 그라데이션을 표시합니다.',
-      '스크롤바는 숨기고 터치는 기본 가로 스와이프를 사용합니다. showScrollButton은 왼쪽으로 스크롤된 경우에만 표시됩니다.',
+      'full은 균등 분할, fluid는 문구 폭을 유지합니다. 목록이 실제로 넘칠 때 마우스로 드래그할 수 있습니다. 가장자리 그라데이션은 fluid에서 fadeEdges를 켰을 때 표시합니다.',
+      '터치로 가로 스크롤할 수 있습니다. showScrollButton을 켜면 fluid 목록을 오른쪽으로 넘겨 왼쪽에 숨은 항목이 있을 때 앞쪽 이동 버튼을 표시합니다.',
     ],
     props: [
       prop(
@@ -276,7 +312,7 @@ export const expansionPages = [
       '안내 내용을 접고 펼칩니다. full은 전체 너비형, box는 테두리형이며 상세 내용은 children으로 넣습니다.',
     example: 'Accordion',
     notes: [
-      'full은 페이지 하단 안내용이며 상단 8px 구분·선택 아이콘·목록을 표현합니다. box는 테두리·12px 곡률과 본문 여백을 유지합니다.',
+      'full은 페이지 하단 안내용입니다. 위쪽에 8px 구분선과 제목 안내 아이콘을 표시합니다. box는 모서리가 둥근 테두리로 감쌉니다. 목록이 필요하면 children에 ul과 li를 넣으세요.',
       '복수 항목은 기본적으로 각각 독립적으로 열립니다. 하나만 열리는 동작이 필요하면 부모에서 open/onOpenChange를 제어합니다.',
       '중첩 버튼·링크를 title 안에 넣지 않습니다. 숨겨진 본문은 포커스와 읽기 순서에서 제외됩니다.',
     ],
@@ -300,7 +336,7 @@ export const expansionPages = [
     description: '숫자·금액 입력용 키패드입니다. 금액 보조 버튼은 FormButton을 재사용합니다.',
     example: 'Keypad',
     notes: [
-      '숫자 클릭은 onKey, 지우기는 onBackspace, 금액 추가는 onAmount로 알립니다. 값 계산·자리수 제한·입력 대상은 사용하는 화면에서 정합니다.',
+      '숫자 버튼은 onKey에 문자열을 전달합니다. 00 버튼은 "00"을 한 번 전달합니다. onBackspace의 지우기와 onAmount의 금액 계산은 사용하는 화면에서 처리하세요.',
       'amountButtons=false로 금액 버튼과 영역을 함께 제거합니다. 기본 금액 버튼은 +10만·+50만·+100만·+1000만입니다.',
       '현재 구현은 퍼블리싱용 키패드이며 보안 키패드·난수 배열·암호화·주민번호 입력용 보안 기능을 제공하지 않습니다.',
     ],
@@ -330,7 +366,18 @@ export const expansionPages = [
       'label과 helperText는 독립적으로 생략하며 영역을 남기지 않습니다. label을 생략하면 aria-label 또는 aria-labelledby가 필수입니다.',
     ],
     props: [
-      prop('options', 'SelectOption[]', '필수', 'value·label·disabled'),
+      prop(
+        'options',
+        'SelectOption[]',
+        '필수',
+        '항목별로 고유한 value와 표시할 label을 지정. 빈 문자열은 초기 안내 항목에 사용',
+      ),
+      prop(
+        'placeholder',
+        'string',
+        '항목을 선택해 주세요',
+        '아직 선택한 항목이 없을 때 보이는 문구',
+      ),
       prop('variant', 'box | line', 'box', 'TextField와 같은 높이 54px의 입력 영역'),
       prop(
         'label / helperText',
@@ -348,7 +395,7 @@ export const expansionPages = [
         'status / disabled',
         'default | error | success / boolean',
         'default / false',
-        '상태·비활성',
+        'error는 오류 표시. success에 별도 성공 아이콘이나 스타일은 없음',
       ),
       prop('name / required / ref', '기본 select 속성', '생략', '폼 연동과 HTMLSelectElement ref'),
     ],

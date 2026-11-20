@@ -97,7 +97,8 @@ export default function TabsGuide({ clip = false }: { clip?: boolean }) {
               name: 'value / defaultValue',
               type: 'string',
               defaultValue: '첫 번째 사용 가능한 항목',
-              description: 'value는 페이지가 관리할 선택값, defaultValue는 처음 선택할 값',
+              description:
+                'value는 페이지가 관리할 선택값, defaultValue는 처음 선택할 값. 표시할 수 없는 값이면 첫 번째 사용 가능한 탭을 표시',
             },
             {
               name: 'onValueChange',
@@ -120,10 +121,9 @@ export default function TabsGuide({ clip = false }: { clip?: boolean }) {
           ]}
         />
         <p className={ui.muted}>
-          좌우 방향키·Home·End로 사용 가능한 탭을 선택합니다. disabled 항목은 건너뛰며, 선택 항목은
-          가로 스크롤 안에서 보이게 이동합니다. content를 전달하면 tabpanel과 연결하고, 생략하면
-          onValueChange로 외부 화면을 연결할 수 있습니다. TabClip은 Tab을 대체하는 최상위 메뉴가
-          아닙니다.
+          좌우 방향키·Home·End로 탭을 선택하면 해당 탭이 보이는 위치로 이동합니다. disabled 항목은
+          건너뜁니다. content를 전달하면 tabpanel과 연결하고, 생략하면 onValueChange로 외부 화면을
+          연결할 수 있습니다. TabClip은 Tab을 대체하는 최상위 메뉴가 아닙니다.
         </p>
         <p className={ui.muted}>
           PC 마우스로 메뉴 영역을 드래그하면 목록만 이동하며 탭 선택은 바뀌지 않습니다. 6px 이상

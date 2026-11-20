@@ -10,15 +10,8 @@ export default function BottomCTAExample() {
       />
       <BottomCTA
         layout="vertical"
-        weakVariant="tertiary"
-        primary={{
-          label: '선택한 내용으로 계속 진행하기',
-          onClick: () => setMessage('계속 진행'),
-        }}
-        secondary={{
-          label: '나중에 진행하기',
-          onClick: () => setMessage('나중에 진행'),
-        }}
+        primary={{ label: '자세히보기', onClick: () => setMessage('상세 내용 보기') }}
+        secondary={{ label: '추가하기', onClick: () => setMessage('항목 추가') }}
       />
       <p role="status">{message}</p>
     </section>

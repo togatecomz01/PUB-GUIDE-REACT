@@ -50,20 +50,6 @@
 .input::-webkit-search-cancel-button {
   display: none;
 }
-.searchIcon {
-  position: relative;
-  display: block;
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-}
-.searchIcon img {
-  position: absolute;
-  top: 3.6px;
-  left: 3.6px;
-  display: block;
-  max-width: none;
-}
 .clear,
 .searchButton {
   display: flex;

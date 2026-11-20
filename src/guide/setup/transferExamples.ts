@@ -25,8 +25,8 @@ export const allComponentsTree = `src/
 ├─ assets/
 │  ├─ icons/
 │  │  ├─ ico_*.svg             일반 66 + Header 전용 5 SVG
-│  │  ├─ selection/            체크박스·라디오·스위치 상태 SVG
-│  │  └─ fields/               입력용 기본 SVG 7개 (추가 구현에 재사용)
+│  │  ├─ selection/            체크박스·라디오·스위치·계좌형 바텀시트 상태 SVG
+│  │  └─ fields/               입력창 아이콘과 추가 구현용 SVG
 │  └─ fonts/                   Pretendard 400·500·600·700 + 라이선스
 └─ styles/
    ├─ main.scss
@@ -72,9 +72,9 @@ export const dependencyRows = [
   },
   {
     component: 'BottomSheet',
-    folders:
-      'BottomSheet/ + Button/ + Icon/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
-    extra: 'assets/icons/의 ico_*.svg. SheetOptions.image에 전달할 실제 로고는 화면 자산',
+    folders: 'BottomSheet/ + Button/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
+    extra:
+      'assets/icons/selection/의 ico_account_selected.svg·ico_account_inactive.svg. 계좌·은행 로고는 SheetOptions의 image로 전달',
   },
   {
     component: 'Tooltip',
@@ -90,13 +90,14 @@ export const dependencyRows = [
     component: 'Checkbox / Radio / Switch',
     folders: '선택할 컴포넌트 + internal/SelectionImages/ + utils/cx.ts + utils/assets.ts',
     extra:
-      'styles/mixins/_selection.scss + assets/icons/selection/ 전체. utils/assets.ts가 SVG 30개를 함께 참조합니다.',
+      'styles/mixins/_selection.scss + utils/assets.ts가 참조하는 체크박스·라디오·스위치 SVG 30개',
   },
   {
     component: 'TextField',
     folders:
       'TextField/ + internal/InputBody/ + FormButton/ + Icon/ + internal/FieldFrame/ + utils/cx.ts + hooks/useValue.ts',
-    extra: 'assets/icons/의 ico_*.svg. endAdornment에 사용하는 컴포넌트도 추가',
+    extra:
+      'assets/icons/의 ico_*.svg와 assets/icons/fields/ico_input_clear_focus.svg. endAdornment에 쓰는 컴포넌트도 함께 복사',
   },
   {
     component: 'SelectField',
@@ -107,7 +108,7 @@ export const dependencyRows = [
   {
     component: 'SearchField',
     folders: 'SearchField/ + Icon/ + internal/FieldFrame/ + utils/cx.ts + hooks/useValue.ts',
-    extra: 'assets/icons/의 ico_*.svg',
+    extra: 'assets/icons/의 ico_*.svg와 assets/icons/fields/ico_input_clear_focus.svg',
   },
   {
     component: 'Tab / TabClip / SegmentedControl',

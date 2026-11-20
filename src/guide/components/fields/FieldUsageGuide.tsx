@@ -126,9 +126,42 @@ const fieldSources = {
 };
 
 export function FieldStructureGuide({ name }: { name: keyof typeof fieldSources }) {
+  const behavior = {
+    TextField: '지우기 버튼과 성공 아이콘을 보여 주는 조건',
+    SearchField: '검색과 지우기 버튼 동작',
+    SelectField: '선택 항목을 표시하고 값 변경을 전달하는 방식',
+  }[name];
+
   return (
     <details className={ui.disclosure}>
       <summary>컴포넌트 내부 코드 읽는 순서</summary>
+      <p className={ui.muted}>
+        한 화면의 문구만 바꾸려면 그 화면에서 <code>label</code>이나 <code>helperText</code>를
+        수정하세요. 공통 입력창을 수정할 때는 VS Code에서 <kbd>Ctrl+P</kbd>를 누르고 아래 파일명을
+        검색하세요.
+      </p>
+      <ul className={ui.checkList}>
+        <li>
+          이름표와 안내문구를 배치하는 방식은 <code>FieldFrame.tsx</code>, 글자색과 간격은{' '}
+          <code>FieldFrame.module.scss</code>
+        </li>
+        {name === 'TextField' && (
+          <li>
+            이메일·전화번호처럼 입력 종류별로 값을 다루는 코드는 <code>InputBody.tsx</code>
+          </li>
+        )}
+        <li>
+          {behavior}은 <code>{name}.tsx</code>
+        </li>
+        <li>
+          입력칸 모양은 <code>{name}.module.scss</code>
+          {name === 'SelectField' && (
+            <>
+              , 선택창도 함께 쓰는 테두리와 높이는 <code>TextField.module.scss</code>
+            </>
+          )}
+        </li>
+      </ul>
       <p className={ui.muted}>
         속성·기본값 → ID와 입력값 → 표시 조건 → 동작 함수 → JSX 순서입니다. 각 입력 컴포넌트에서
         useId로 ID를 만들고, FieldFrame의 getFieldIds로 레이블·설명·오류 연결 정보를 준비합니다.

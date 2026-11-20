@@ -109,7 +109,15 @@ export function ButtonGuide() {
         sources={[{ name: 'Button.tsx', code: componentSource }]}
       />
       <details className={styles.disclosure}>
-        <summary>전체 예제 보기</summary>
+        <summary>전체 예제와 실행 방법</summary>
+        <p className={styles.muted}>
+          이 저장소에서 확인하려면 <code>src/pages/ButtonExample.tsx</code>를 만들고 아래 전체
+          코드를 붙여 넣으세요. <code>src/App.tsx</code>에{' '}
+          <code>import ButtonExample from './pages/ButtonExample.tsx';</code>를 추가하고, App의
+          반환을 잠시 <code>return &lt;ButtonExample /&gt;;</code>로 바꿉니다.{' '}
+          <code>npm run dev</code>를 실행한 뒤 터미널에 표시된 주소를 열면 버튼이 보입니다. 확인을
+          마치면 App.tsx를 원래대로 되돌리세요.
+        </p>
         <CodeBlock label="Button 전체 예제" code={fullCode} />
       </details>
       <details className={styles.disclosure}>
@@ -154,7 +162,7 @@ export function ButtonGuide() {
                     {roles.flatMap((role) =>
                       sizes.map((item) => {
                         const width =
-                          item === 'l' ? 84 : item === 'm' ? 78 : role === 'primary' ? 58 : 52;
+                          item === 'l' ? 84 : item === 'm' ? 78 : role === 'primary' ? 56 : 52;
                         return (
                           <td key={`${role}-${item}`}>
                             <Button
@@ -193,7 +201,7 @@ export function ButtonGuide() {
               name: 'size',
               type: 'l | m | s',
               defaultValue: 'l',
-              description: '높이 52 · 48 · 42px',
+              description: '높이 52 · 48 · 42px. Primary S의 기본 문구 너비는 56px',
             },
             {
               name: 'disabled',
