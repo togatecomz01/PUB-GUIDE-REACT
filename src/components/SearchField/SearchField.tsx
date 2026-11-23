@@ -32,6 +32,7 @@ export type SearchFieldProps = FieldName &
     previewState?: 'focus';
   };
 
+/* 검색어 입력창과 검색 동작 연결 */
 export default function SearchField(props: SearchFieldProps) {
   const {
     value,
@@ -55,15 +56,18 @@ export default function SearchField(props: SearchFieldProps) {
 
   const isClearVisible = Boolean(current) && !disabled && !input.readOnly;
 
+  /* X 버튼 클릭 시 입력값 비우기 */
   function clearValue() {
     update('');
     document.getElementById(ids.id)?.focus();
   }
 
+  /* 돋보기 버튼 클릭 시 현재 검색어로 검색 */
   function searchValue() {
     onSearch?.(current);
   }
 
+  /* Enter 입력 시 검색 (한글 조합 중 제외) */
   function search(event: KeyboardEvent<HTMLInputElement>) {
     onKeyDown?.(event);
     if (event.defaultPrevented || event.nativeEvent.isComposing) {

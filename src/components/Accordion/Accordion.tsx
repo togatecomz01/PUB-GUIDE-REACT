@@ -13,6 +13,7 @@ export type AccordionProps = {
   onOpenChange?: (open: boolean) => void;
   className?: string;
 };
+/* 제목을 눌러 내용을 펼치고 접는 영역 표시 */
 export default function Accordion({
   title,
   children,
@@ -26,6 +27,7 @@ export default function Accordion({
   const [local, setLocal] = useState(defaultOpen);
   const expanded = open ?? local;
   const id = useId();
+  /* 제목 버튼 클릭 시 내용 펼치기·접기 */
   function toggle() {
     if (open === undefined) setLocal(!expanded);
     onOpenChange?.(!expanded);

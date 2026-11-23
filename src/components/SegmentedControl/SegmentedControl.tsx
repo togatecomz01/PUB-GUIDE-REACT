@@ -9,6 +9,7 @@ export type SegmentedControlProps = TabProps & {
   fadeEdges?: boolean;
   showScrollButton?: boolean;
 };
+/* 탭 너비를 균등 분할하거나 문구 길이에 맞춰 표시 */
 export default function SegmentedControl({
   alignment = 'full',
   fadeEdges = true,
@@ -24,10 +25,12 @@ export default function SegmentedControl({
   const isRightFadeVisible = isFluid && fadeEdges && edges.right;
   const isScrollButtonVisible = isFluid && showScrollButton && edges.left;
 
+  /* 앞쪽 메뉴 보기 버튼 클릭 시 목록을 왼쪽으로 이동 */
   function scrollBack() {
     list.current?.scrollBy({ left: -200, behavior: 'smooth' });
   }
 
+  /* 목록 좌우에 가려진 메뉴가 있는지 확인 */
   function measure() {
     const el = list.current;
     if (!el) return;

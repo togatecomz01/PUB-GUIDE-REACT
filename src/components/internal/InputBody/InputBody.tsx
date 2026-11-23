@@ -19,8 +19,10 @@ type InputBodyProps = {
   actionLabel?: string;
   onAction?: () => void;
 };
+/* 입력값에서 숫자만 남기기 */
 const digits = (value: string) => value.replace(/\D/g, '');
 
+/* 입력 종류에 맞춰 입력칸과 보조 버튼 배치 */
 export default function InputBody({
   ids,
   kind,
@@ -56,12 +58,15 @@ export default function InputBody({
 
   if (kind === 'email') {
     const [user = '', domain = ''] = value.split('@');
+    /* 아이디와 도메인을 합쳐 이메일 값 전달 */
     function updateEmail(userPart: string, domainPart: string) {
       onValueChange(userPart || domainPart ? `${userPart}@${domainPart}` : '');
     }
+    /* 아이디 입력 변경 시 현재 도메인과 합쳐 전달 */
     function changeUser(event: ChangeEvent<HTMLInputElement>) {
       updateEmail(event.target.value, domain);
     }
+    /* 도메인 변경 시 현재 아이디와 합쳐 전달 */
     function changeDomain(event: ChangeEvent<HTMLInputElement>) {
       updateEmail(user, event.target.value);
     }
@@ -109,18 +114,22 @@ export default function InputBody({
 
   if (kind === 'rrn') {
     const [front = '', back = ''] = value.split('-');
+    /* 앞자리와 뒷자리를 합쳐 입력값 전달 */
     function updateRrn(frontPart: string, backPart: string) {
       onValueChange(frontPart || backPart ? `${frontPart}-${backPart}` : '');
     }
+    /* 앞자리 입력 시 숫자 6자리까지 반영 */
     function changeFront(event: ChangeEvent<HTMLInputElement>) {
       updateRrn(digits(event.target.value).slice(0, 6), back);
     }
+    /* 뒷자리 첫 칸 입력 처리 및 다음 칸 이동 준비 */
     function changeFirstDigit(event: ChangeEvent<HTMLInputElement>) {
       const next = digits(event.target.value).slice(0, 7);
       focusSecret.current = Boolean(next);
       const nextBack = next.length === 1 ? next + back.slice(1) : next;
       updateRrn(front, nextBack);
     }
+    /* 가려진 뒷자리 입력 시 첫 숫자를 유지하고 나머지 변경 */
     function changeSecret(event: ChangeEvent<HTMLInputElement>) {
       const nextBack = back.slice(0, 1) + digits(event.target.value).slice(0, 6);
       updateRrn(front, nextBack);
@@ -190,9 +199,11 @@ export default function InputBody({
     const prefix = savedPrefix || phonePrefixes[0] || '010';
     const prefixes = [...new Set([...phonePrefixes, prefix])];
 
+    /* 휴대폰 앞자리 선택 시 현재 뒷번호와 합쳐 전달 */
     function changePrefix(event: ChangeEvent<HTMLSelectElement>) {
       onValueChange(event.target.value + '-' + number);
     }
+    /* 휴대폰 뒷번호 입력 시 숫자 8자리까지 반영 */
     function changeNumber(event: ChangeEvent<HTMLInputElement>) {
       const nextNumber = digits(event.target.value).slice(0, 8);
       onValueChange(prefix + '-' + nextNumber);
@@ -246,6 +257,7 @@ export default function InputBody({
   }
   const placeholder = inputProps.placeholder ?? defaultPlaceholder;
 
+  /* 입력값 변경 전달 (인증번호는 숫자 6자리까지) */
   function changeValue(event: ChangeEvent<HTMLInputElement>) {
     const next = event.target.value;
     onValueChange(isCode ? digits(next).slice(0, 6) : next);

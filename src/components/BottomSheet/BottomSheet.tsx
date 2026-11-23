@@ -18,6 +18,7 @@ export type BottomSheetProps = {
   closeOnBackdrop?: boolean;
   className?: string;
 };
+/* 바텀시트의 제목·본문·버튼 영역 조합 */
 export function SheetCard({
   title,
   description,
@@ -51,6 +52,7 @@ export function SheetCard({
     </section>
   );
 }
+/* 열림 상태에 맞춰 화면 아래에 바텀시트 표시 */
 export default function BottomSheet({
   open,
   onClose,
@@ -67,11 +69,13 @@ export default function BottomSheet({
   const titleId = id + '-title';
   const descriptionId = id + '-description';
 
+  /* Esc 입력 시 바텀시트 닫기 요청 */
   function cancelSheet(event: SyntheticEvent<HTMLDialogElement>) {
     event.preventDefault();
     onClose();
   }
 
+  /* 배경 클릭 시 바텀시트 닫기 (closeOnBackdrop이 켜진 경우) */
   function clickBackdrop(event: MouseEvent<HTMLDialogElement>) {
     const isBackdrop = event.target === event.currentTarget;
     if (closeOnBackdrop && isBackdrop) {
@@ -111,6 +115,7 @@ export type SheetOption = {
 };
 export type BankColumns = 1 | 2 | 3;
 
+/* 계좌 목록 또는 은행 그리드 표시 */
 export function SheetOptions({
   items,
   value,

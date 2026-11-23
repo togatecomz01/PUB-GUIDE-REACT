@@ -12,6 +12,7 @@ export type ToastProps = {
   position?: 'fixed' | 'inline';
   className?: string;
 };
+/* 결과 문구를 표시하고 지정 시간이 지나면 닫기 요청 */
 export default function Toast({
   open,
   message,

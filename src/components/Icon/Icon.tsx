@@ -87,6 +87,7 @@ export type IconProps = {
   label?: string;
   className?: string;
 };
+/* 이름에 맞는 SVG를 지정한 크기로 표시 */
 export default function Icon({ name, size = 20, label, className }: IconProps) {
   const fileName = 'ico_' + name.replaceAll('-', '_') + '.svg';
   const source =

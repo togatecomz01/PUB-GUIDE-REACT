@@ -13,6 +13,7 @@ export type ActionButtonsProps = {
   size?: 'l' | 'm';
   className?: string;
 };
+/* 하단 주요·보조 버튼을 가로 또는 세로로 배치 */
 export default function ActionButtons({
   primary,
   secondary,
@@ -21,6 +22,7 @@ export default function ActionButtons({
   size = 'l',
   className,
 }: ActionButtonsProps) {
+  /* 주요·보조 구분에 맞는 버튼 종류 적용 */
   function render(action: Action, weak = false) {
     const { label, className: buttonClass, ...props } = action;
     return (

@@ -10,6 +10,7 @@ export type TextButtonProps = ComponentPropsWithRef<'button'> & {
   iconPosition?: 'start' | 'end';
   previewState?: 'pressed';
 };
+/* 밑줄이나 아이콘을 조합하는 텍스트 버튼 표시 */
 export default function TextButton({
   appearance = 'clear',
   tone = 'brand',

@@ -15,6 +15,7 @@ export type TabProps = {
 };
 type TabListProps = TabProps & { styles: Record<string, string>; fixedItems?: boolean };
 
+/* 탭 선택값에 맞춰 메뉴와 연결된 내용 표시 */
 export default function TabList({
   items,
   value,
@@ -33,6 +34,7 @@ export default function TabList({
   const isCurrentEnabled = items.some((item) => item.value === current && !item.disabled);
   const selected = isCurrentEnabled ? current : first;
 
+  /* 방향키·Home·End 입력 시 선택 가능한 탭으로 이동 */
   function move(event: KeyboardEvent<HTMLButtonElement>, index: number) {
     const isNavigationKey = ['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key);
     if (!isNavigationKey) return;

@@ -12,6 +12,7 @@ export type ButtonProps = Omit<ComponentPropsWithRef<'button'>, 'size'> & {
   previewState?: 'pressed';
 };
 
+/* 크기와 종류에 맞춰 기본 버튼 표시 */
 export default function Button({
   variant = 'primary',
   size = 'l',

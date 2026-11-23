@@ -10,6 +10,7 @@ export type CheckboxProps = Omit<ComponentPropsWithRef<'input'>, 'type' | 'size'
   label?: ReactNode;
 };
 
+/* 사각형·라인·박스 형태의 체크박스 표시 */
 export default function Checkbox({
   variant = 'square',
   size = 's',

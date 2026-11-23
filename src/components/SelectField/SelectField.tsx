@@ -32,6 +32,7 @@ export type SelectFieldProps = FieldName &
     defaultValue?: string;
     onValueChange?: (value: string) => void;
   };
+/* 목록에서 항목 하나를 고르는 입력창 표시 */
 export default function SelectField(props: SelectFieldProps) {
   const {
     options,

@@ -16,6 +16,7 @@ export type HeaderProps = {
   actions?: ReactNode;
   className?: string;
 };
+/* 화면 유형에 맞춰 제목·사용자명·아이콘 버튼 배치 */
 export default function Header({
   type = 'main',
   name,
@@ -32,6 +33,7 @@ export default function Header({
   const isMain = type === 'main' || type === 'main-sub';
   const isSub = type === 'sub';
   const isPopup = type === 'popup';
+  /* 아이콘에 클릭 동작 연결 (동작이 없으면 버튼 비활성화) */
   function renderAction(
     label: string,
     icon: 'header-alarm' | 'header-home' | 'header-menu' | 'header-back' | 'header-close',

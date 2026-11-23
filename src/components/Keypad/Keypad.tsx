@@ -19,6 +19,7 @@ export type KeypadProps = {
   disabled?: boolean;
   className?: string;
 };
+/* 숫자·지우기 키와 금액 버튼 표시 */
 export default function Keypad({
   onKey,
   onBackspace,

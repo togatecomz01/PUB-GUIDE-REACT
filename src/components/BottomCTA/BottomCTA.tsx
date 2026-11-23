@@ -7,6 +7,7 @@ export type BottomCTAProps = Omit<ActionButtonsProps, 'size'> & {
   position?: 'static' | 'sticky' | 'fixed';
   bottom?: number;
 };
+/* 화면 하단에 주요·보조 버튼 배치 */
 export default function BottomCTA({
   position = 'static',
   bottom = 0,

@@ -43,6 +43,7 @@ export type TextFieldProps = FieldName &
     previewState?: 'focus';
   };
 
+/* 입력 종류에 맞춰 입력칸과 보조 요소 구성 */
 export default function TextField(props: TextFieldProps) {
   const {
     endAdornment,
@@ -85,6 +86,7 @@ export default function TextField(props: TextFieldProps) {
     disabled,
   };
 
+  /* X 버튼 클릭 시 입력값 비우기 */
   function clearValue() {
     update('');
     document.getElementById(ids.id)?.focus();

@@ -20,6 +20,7 @@ type DialogActionsProps = {
   onCancel?: () => void;
 };
 
+/* 모달 종류와 배치 방향에 맞춰 확인·취소 버튼 표시 */
 export function DialogActions({
   className = '',
   kind = 'alert',
@@ -79,6 +80,7 @@ export type DialogCardProps = Omit<DialogActionsProps, 'className'> & {
   descriptionId?: string;
 };
 
+/* 모달의 제목·안내문구·버튼 영역 조합 */
 export function DialogCard({
   title,
   description,
@@ -109,17 +111,20 @@ export type ModalProps = Omit<DialogCardProps, 'titleId' | 'descriptionId' | 'on
   onClose: () => void;
 };
 
+/* 열림 상태에 맞춰 안내·확인 창 표시 */
 export default function Modal({ open, onClose, onConfirm, description, ...card }: ModalProps) {
   const modalRef = useDialog(open);
   const id = useId();
   const titleId = `${id}-title`;
   const descriptionId = `${id}-description`;
 
+  /* Esc 입력 시 모달 닫기 요청 */
   function cancelModal(event: SyntheticEvent<HTMLDialogElement>) {
     event.preventDefault();
     onClose();
   }
 
+  /* Tab 입력 시 모달 안에서 키보드 포커스 순환 */
   function keepFocusInside(event: KeyboardEvent<HTMLDialogElement>) {
     if (event.key !== 'Tab') return;
     const controls = Array.from(

@@ -12,6 +12,7 @@ export type TooltipProps = {
   onOpenChange?: (open: boolean) => void;
   className?: string;
 };
+/* 버튼으로 열고 닫는 도움말 표시 */
 export default function Tooltip({
   label,
   title,
@@ -26,12 +27,14 @@ export default function Tooltip({
   const id = useId();
   const root = useRef<HTMLDivElement>(null);
   const trigger = useRef<HTMLButtonElement>(null);
+  /* 열림 상태를 갱신하고 onOpenChange 호출 */
   function update(next: boolean) {
     if (open === undefined) setLocal(next);
     onOpenChange?.(next);
   }
   useEffect(() => {
     if (!expanded) return;
+    /* 도움말 바깥을 누르면 닫기 */
     function outside(event: PointerEvent) {
       const isOutside = event.target instanceof Node && !root.current?.contains(event.target);
       if (isOutside) {
@@ -41,14 +44,17 @@ export default function Tooltip({
     document.addEventListener('pointerdown', outside);
     return () => document.removeEventListener('pointerdown', outside);
   });
+  /* 도움말을 닫고 열었던 버튼으로 포커스 이동 */
   function close() {
     update(false);
     trigger.current?.focus();
   }
+  /* 안내 버튼 클릭 시 도움말 열기·닫기 */
   function toggle() {
     update(!expanded);
   }
 
+  /* Esc 입력 시 열린 도움말 닫기 */
   function handleKeyDown(event: KeyboardEvent<HTMLDivElement>) {
     if (event.key !== 'Escape' || !expanded) return;
     event.preventDefault();

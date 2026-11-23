@@ -9,6 +9,7 @@ export type RadioProps = Omit<ComponentPropsWithRef<'input'>, 'type' | 'size' | 
   label?: ReactNode;
 };
 
+/* 같은 그룹에서 하나만 선택하는 라디오 표시 */
 export default function Radio({ size = 's', label, className, disabled, ...input }: RadioProps) {
   return (
     <label

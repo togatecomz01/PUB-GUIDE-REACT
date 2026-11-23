@@ -9,6 +9,7 @@ export type SwitchProps = Omit<
   'type' | 'size' | 'role' | 'children'
 > & { size?: 's' | 'm'; label?: ReactNode };
 
+/* 켜짐·꺼짐을 바꾸는 스위치 표시 */
 export default function Switch({ size = 'm', label, className, disabled, ...input }: SwitchProps) {
   return (
     <label

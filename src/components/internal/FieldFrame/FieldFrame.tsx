@@ -28,6 +28,7 @@ type FieldFrameProps = FieldOptions & {
   children: ReactNode;
 };
 
+/* 안내문구를 표시할 값이 있는지 확인 */
 function isHelperVisible(helperText: ReactNode) {
   return helperText != null && helperText !== '' && helperText !== false;
 }
@@ -47,6 +48,7 @@ export function getFieldIds(id: string, options: FieldName & FieldOptions): Fiel
   };
 }
 
+/* 입력창에 레이블과 안내문구 배치 */
 export default function FieldFrame({
   id,
   label,
