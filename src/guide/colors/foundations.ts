@@ -1,9 +1,10 @@
 import primitiveSource from '../../styles/tokens/_primitives.scss?raw';
-import semanticSource from '../../styles/tokens/_semantic.scss?raw';
+import semanticSource from '../../styles/tokens/_semantic-colors.scss?raw';
 
 export type ColorToken = {
   variable: string;
   value: string;
+  color?: string;
   name: string;
   label: string;
   group: string;
@@ -11,10 +12,10 @@ export type ColorToken = {
 };
 
 function declarations(source: string) {
-  return Array.from(source.matchAll(/(--[a-z0-9-]+)\s*:\s*([^;]+);/g), ([, variable, value]) => ({
-    variable,
-    value: value.trim(),
-  }));
+  return Array.from(
+    source.matchAll(/^(\$[a-z0-9-]+)\s*:\s*([^\r\n;]+);/gm),
+    ([, variable, value]) => ({ variable, value: value.trim() }),
+  );
 }
 
 function titleCase(value: string) {
@@ -61,8 +62,9 @@ function figmaOrder(a: ColorToken, b: ColorToken) {
 }
 
 export const baseColors: ColorToken[] = declarations(primitiveSource)
+  .filter(({ value }) => value.startsWith('#') || value.startsWith('rgba('))
   .map(({ variable, value }) => {
-    const shortName = variable.slice(2);
+    const shortName = variable.slice(1);
     const group = shortName.startsWith('brand-')
       ? 'Brand'
       : shortName.startsWith('gray-')
@@ -74,7 +76,7 @@ export const baseColors: ColorToken[] = declarations(primitiveSource)
         : shortName.split('-')[1];
     const suffix =
       shortName === 'black-20' ? 'Black/20' : group === 'Other' ? titleCase(shortName) : label;
-    return { variable, value, group, label, name: `Base/${group}/${suffix}` };
+    return { variable, value, color: value, group, label, name: `Base/${group}/${suffix}` };
   })
   .sort(figmaOrder);
 
@@ -89,17 +91,18 @@ const groupNames: Record<string, string> = {
 
 export const semanticColors: ColorToken[] = declarations(semanticSource)
   .map(({ variable, value }) => {
-    const [prefix, ...parts] = variable.slice(2).split('-');
+    const [prefix, ...parts] = variable.slice(1).split('-');
     const group = groupNames[prefix];
     const label = titleCase(parts.join('-'));
-    const target = value.match(/^var\((--[a-z0-9-]+)\)$/)?.[1];
+    const base = baseByVariable.get(value.replace(/^primitives\./, ''));
     return {
       variable,
       value,
       group,
       label,
       name: `Semantic/${group}/${label}`,
-      alias: target ? baseByVariable.get(target)?.name : undefined,
+      color: base?.color,
+      alias: base?.name,
     };
   })
   .sort(figmaOrder);

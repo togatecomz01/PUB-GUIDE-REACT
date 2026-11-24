@@ -1,21 +1,34 @@
+@use '../../styles/tokens/primitives' as *;
+@use '../../styles/tokens/semantic-colors' as *;
 @use '../../styles/mixins/selection';
-@include selection.base;
+
+@include selection.base(
+  $text-color: $text-strong,
+  $disabled-color: $text-disabled,
+  $focus-color: $border-focus
+);
 
 .root {
-  font-weight: 500;
+  font-weight: $font-weight-500;
 }
-.s .visual {
-  width: 24px;
-  height: 24px;
+
+.s {
+  .visual {
+    width: 24px;
+    height: 24px;
+  }
 }
+
 .m {
-  font-size: 16px;
+  font-size: $font-size-16;
   line-height: 24px;
+
+  .visual {
+    width: 28px;
+    height: 28px;
+  }
 }
-.m .visual {
-  width: 28px;
-  height: 28px;
-}
+
 .visual {
   border-radius: 50%;
 }

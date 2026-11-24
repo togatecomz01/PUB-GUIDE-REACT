@@ -42,7 +42,9 @@ export function ButtonGuide() {
       <div className={styles.componentMeta}>
         <span className={[styles.status, styles.statusReady].join(' ')}>구현 초안</span>
         <code>Button.tsx</code>
-        <span>종류·크기·사용 가능 여부를 바꿔 보세요.</span>
+        <span>
+          종류·크기·사용 가능 여부를 바꿔 보세요. 긴 텍스트는 버튼 폭에 맞춰 말줄임됩니다.
+        </span>
       </div>
       <section className={styles.workbench} aria-label="버튼 실행 예제">
         <div className={styles.liveStage}>
@@ -160,25 +162,19 @@ export function ButtonGuide() {
                   <tr key={state}>
                     <th scope="row">{state}</th>
                     {roles.flatMap((role) =>
-                      sizes.map((item) => {
-                        const width =
-                          item === 'l' ? 84 : item === 'm' ? 78 : role === 'primary' ? 56 : 52;
-                        return (
-                          <td key={`${role}-${item}`}>
-                            <Button
-                              variant={role}
-                              size={item}
-                              disabled={state === 'Disabled'}
-                              previewState={state === 'Pressed' ? 'pressed' : undefined}
-                              className={styles.matrixButton}
-                              style={{ width }}
-                              aria-label={`${roleName(role)} ${item.toUpperCase()} ${state}`}
-                            >
-                              버튼
-                            </Button>
-                          </td>
-                        );
-                      }),
+                      sizes.map((item) => (
+                        <td key={`${role}-${item}`}>
+                          <Button
+                            variant={role}
+                            size={item}
+                            disabled={state === 'Disabled'}
+                            previewState={state === 'Pressed' ? 'pressed' : undefined}
+                            aria-label={`${roleName(role)} ${item.toUpperCase()} ${state}`}
+                          >
+                            버튼
+                          </Button>
+                        </td>
+                      )),
                     )}
                   </tr>
                 ))}
@@ -201,7 +197,7 @@ export function ButtonGuide() {
               name: 'size',
               type: 'l | m | s',
               defaultValue: 'l',
-              description: '높이 52 · 48 · 42px. Primary S의 기본 문구 너비는 56px',
+              description: '높이 52 · 48 · 42px. 너비는 문구와 좌우 여백에 맞춰 늘어납니다.',
             },
             {
               name: 'disabled',

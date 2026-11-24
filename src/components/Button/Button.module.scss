@@ -1,13 +1,19 @@
+@use '../../styles/tokens/primitives' as *;
+@use '../../styles/tokens/semantic-colors' as *;
+
+// 공통 스타일
 .button {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
+  width: auto;
   width: max-content;
+  max-width: 100%;
   padding: 0 16px;
   border: 1px solid transparent;
   font-family: 'Pretendard', sans-serif;
-  font-weight: 500;
+  font-weight: $font-weight-500;
   letter-spacing: -0.2px;
   text-align: center;
   white-space: nowrap;
@@ -15,84 +21,90 @@
   appearance: none;
 
   &:focus-visible {
-    outline: 2px solid var(--border-focus);
+    outline: 2px solid $border-focus;
     outline-offset: 3px;
   }
 
   &:disabled {
     cursor: not-allowed;
   }
+
+  .label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
 
+// 크기
 .l {
   min-width: 84px;
   height: 52px;
-  border-radius: 12px;
-  font-size: 18px;
+  border-radius: $radius-12;
+  font-size: $font-size-18;
   line-height: 28px;
 }
+
 .m {
   min-width: 78px;
   height: 48px;
-  border-radius: 12px;
-  font-size: 16px;
+  border-radius: $radius-12;
+  font-size: $font-size-16;
   line-height: 24px;
 }
+
 .s {
   min-width: 52px;
   height: 42px;
-  border-radius: 8px;
-  font-size: 14px;
+  border-radius: $radius-8;
+  font-size: $font-size-14;
   line-height: 22px;
 }
-.primary.s {
-  min-width: 56px;
-  border: 0;
-}
 
+// 종류와 상태
 .primary {
-  color: var(--text-inverse);
-  background: var(--fill-brand);
+  color: $text-inverse;
+  background: $fill-brand;
 
   &:not(:disabled):active,
   &[data-preview-state='pressed']:not(:disabled) {
-    background: var(--fill-brand-pressed);
+    background: $fill-brand-pressed;
   }
 
   &:disabled {
-    color: var(--text-disabled);
-    background: var(--bg-disabled);
+    color: $text-disabled;
+    background: $bg-disabled;
   }
 }
 
 .secondary {
-  color: var(--text-brand);
-  background: var(--fill-brand-weak);
+  color: $text-brand;
+  background: $fill-brand-weak;
 
   &:not(:disabled):active,
   &[data-preview-state='pressed']:not(:disabled) {
-    background: var(--fill-brand-weak-pressed);
+    background: $fill-brand-weak-pressed;
   }
 
   &:disabled {
-    color: var(--text-disabled);
-    background: var(--bg-surface);
-    border-color: var(--border-disabled);
+    color: $text-disabled;
+    background: $bg-surface;
+    border-color: $border-disabled;
   }
 }
 
 .tertiary {
-  color: var(--text-default);
-  background: var(--bg-surface);
-  border-color: var(--border-subtle);
+  color: $text-default;
+  background: $bg-surface;
+  border-color: $border-subtle;
 
   &:not(:disabled):active,
   &[data-preview-state='pressed']:not(:disabled) {
-    background: var(--fill-secondary);
+    background: $fill-secondary;
   }
 
   &:disabled {
-    color: var(--text-disabled);
-    border-color: var(--border-disabled);
+    color: $text-disabled;
+    border-color: $border-disabled;
   }
 }

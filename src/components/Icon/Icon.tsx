@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { cx } from '../../utils/cx.ts';
 import styles from './Icon.module.scss';
 
@@ -89,13 +88,12 @@ export type IconProps = {
 };
 /* 이름에 맞는 SVG를 지정한 크기로 표시 */
 export default function Icon({ name, size = 20, label, className }: IconProps) {
-  const fileName = 'ico_' + name.replaceAll('-', '_') + '.svg';
+  const fileName = 'ico_' + name.replace(/-/g, '_') + '.svg';
   const source =
-    sources['../../assets/icons/' + fileName]?.replaceAll('#222222', 'currentColor') ?? '';
+    sources['../../assets/icons/' + fileName]?.replace(/#222222/g, 'currentColor') ?? '';
   return (
     <span
-      className={cx(styles.icon, className)}
-      style={{ '--icon-size': size + 'px' } as CSSProperties}
+      className={cx(styles.icon, styles['size-' + size], className)}
       role={label ? 'img' : undefined}
       aria-label={label}
       aria-hidden={label ? undefined : true}

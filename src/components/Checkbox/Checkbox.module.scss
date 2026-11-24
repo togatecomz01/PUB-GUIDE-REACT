@@ -1,73 +1,104 @@
+@use '../../styles/tokens/primitives' as *;
+@use '../../styles/tokens/semantic-colors' as *;
 @use '../../styles/mixins/selection';
-@include selection.base;
 
-.s .visual {
-  width: 20px;
-  height: 20px;
+@include selection.base(
+  $text-color: $text-strong,
+  $disabled-color: $text-disabled,
+  $focus-color: $border-focus
+);
+
+.s {
+  .visual {
+    width: 20px;
+    height: 20px;
+  }
 }
+
 .m {
-  font-size: 16px;
+  font-size: $font-size-16;
   line-height: 24px;
+
+  .visual {
+    width: 24px;
+    height: 24px;
+  }
 }
-.m .visual {
-  width: 24px;
-  height: 24px;
+
+.square {
+  .visual {
+    border: 1px solid $border-strong;
+    border-radius: 4px;
+    background: $bg-surface;
+  }
+
+  .input {
+    &:checked + .visual {
+      border: 0;
+      background: $fill-brand;
+    }
+
+    &:disabled + .visual {
+      border-color: $border-disabled;
+      background: $fill-secondary;
+    }
+
+    &:checked:disabled + .visual {
+      background: $gray-200;
+    }
+  }
 }
-.square .visual {
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  background: var(--bg-surface);
-}
-.square .input:checked + .visual {
-  border: 0;
-  background: var(--fill-brand);
-}
-.square .input:disabled + .visual {
-  border-color: var(--border-disabled);
-  background: var(--fill-secondary);
-}
-.square .input:checked:disabled + .visual {
-  background: var(--gray-200);
-}
+
 .box {
   width: 160px;
   justify-content: center;
   padding: 4px 8px;
-  font-size: 14px;
+  font-size: $font-size-14;
   line-height: 22px;
   text-align: center;
-}
-.box.s {
-  height: 42px;
-}
-.box.m {
-  height: 48px;
-  padding: 12px 16px;
-}
-.box .visual {
-  position: absolute;
-  inset: 0;
-  width: auto;
-  height: auto;
-  border: 1px solid var(--border-default);
-  border-radius: 8px;
-  background: var(--bg-surface);
-}
-.box .input:checked + .visual {
-  border-color: var(--border-selected);
-}
-.box .input:checked ~ .label {
-  color: var(--text-brand);
-}
-.box .input:disabled + .visual {
-  background: var(--bg-disabled);
-}
-.box .input:checked:disabled + .visual {
-  border-color: var(--border-disabled);
-}
-.box .input:disabled:not(:checked) ~ .label {
-  color: var(--text-default);
-}
-.box .input:checked:disabled ~ .label {
-  color: var(--text-disabled);
+
+  &.s {
+    height: 42px;
+  }
+
+  &.m {
+    height: 48px;
+    padding: 12px 16px;
+  }
+
+  .visual {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    border: 1px solid $border-default;
+    border-radius: 8px;
+    background: $bg-surface;
+  }
+
+  .input {
+    &:checked + .visual {
+      border-color: $border-selected;
+    }
+
+    &:checked ~ .label {
+      color: $text-brand;
+    }
+
+    &:disabled + .visual {
+      background: $bg-disabled;
+    }
+
+    &:checked:disabled + .visual {
+      border-color: $border-disabled;
+    }
+
+    &:disabled:not(:checked) ~ .label {
+      color: $text-default;
+    }
+
+    &:checked:disabled ~ .label {
+      color: $text-disabled;
+    }
+  }
 }

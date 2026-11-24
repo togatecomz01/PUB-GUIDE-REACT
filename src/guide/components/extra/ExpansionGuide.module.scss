@@ -1,3 +1,5 @@
+@use '../../../styles/tokens/semantic-colors' as *;
+
 .preview {
   padding: 32px;
   border: 1px solid #d7e4f1;
@@ -65,7 +67,7 @@
   min-height: 110px;
   padding: 12px;
   background: white;
-  color: var(--icon-strong);
+  color: $icon-strong;
 }
 .icons code {
   color: #60758b;

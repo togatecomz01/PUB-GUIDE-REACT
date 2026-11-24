@@ -22,6 +22,8 @@ export default function Button({
   children = '버튼',
   ...props
 }: ButtonProps) {
+  const isPlainLabel = typeof children === 'string' || typeof children === 'number'; 
+
   return (
     <button
       {...props}
@@ -29,7 +31,7 @@ export default function Button({
       className={cx(styles.button, styles[variant], styles[size], className)}
       data-preview-state={previewState}
     >
-      {children}
+      {isPlainLabel ? <span className={styles.label}>{children}</span> : children}
     </button>
   );
 }

@@ -4,9 +4,8 @@ import { baseColors, semanticColors, semanticGroups } from './foundations.ts';
 import type { ColorToken } from './foundations.ts';
 import { CodeBlock, PageTitle, SourceFiles } from '../ui/GuideUi.tsx';
 
-const shortName = (token: ColorToken) => token.variable.slice(2);
-const formatValue = (value: string) =>
-  value.startsWith('#') ? value.toUpperCase() : 'rgba(0, 0, 0, 0.2)';
+const shortName = (token: ColorToken) => token.variable.slice(1);
+const formatValue = (value: string) => (value.startsWith('#') ? value.toUpperCase() : value);
 
 function TokenCopyButton({
   token,
@@ -22,9 +21,9 @@ function TokenCopyButton({
       className={styles.tokenCopy}
       type="button"
       onClick={() => void onCopy(token)}
-      aria-label={`${shortName(token)} CSS 복사`}
+      aria-label={`${shortName(token)} Sass 변수 복사`}
     >
-      <code>var({token.variable})</code>
+      <code>{token.variable}</code>
       <span>{copied === token.variable ? '복사됨' : '복사'}</span>
     </button>
   );
@@ -44,7 +43,7 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
   );
   async function copy(token: ColorToken) {
     try {
-      await navigator.clipboard.writeText(`var(${token.variable})`);
+      await navigator.clipboard.writeText(token.variable);
       setCopied(token.variable);
       setCopyError('');
     } catch {
@@ -59,7 +58,7 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
         description={
           semantic
             ? '글자·배경·테두리 등 사용하는 곳에 맞는 색상 변수를 골라 쓰세요.'
-            : '코드에 등록한 기본 색상 목록입니다. --gray-500처럼 짧은 이름을 정하고, 역할별 색상에서 이 변수를 사용합니다.'
+            : 'Sass 기본 색상 목록입니다. $gray-500처럼 짧은 이름을 정하고, 역할별 색상에서 이 변수를 사용합니다.'
         }
         node={semantic ? '38:23' : '38:22'}
       />
@@ -70,7 +69,7 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
         <p>
           {semantic
             ? '역할별 변수는 기본 색상 변수를 통해 실제 색을 가져옵니다. 현재 색이 같아도 글자·배경 등 용도가 다르면 이름을 따로 둡니다.'
-            : 'Figma 경로를 CSS 이름으로 그대로 사용하지 않습니다. color 접두사 없이 --gray-500으로 정의합니다.'}
+            : 'Figma 색상 Base/Gray/500은 Sass에서 $gray-500으로 사용합니다.'}
         </p>
       </div>
       <div className={styles.toolbar}>
@@ -126,17 +125,14 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
                       <th scope="col">미리보기</th>
                       <th scope="col">코드 이름</th>
                       <th scope="col">참조하는 기본 변수</th>
-                      <th scope="col">CSS 사용</th>
+                      <th scope="col">Sass 변수</th>
                     </tr>
                   </thead>
                   <tbody>
                     {items.map((token) => (
                       <tr key={token.variable}>
                         <td>
-                          <span
-                            className={styles.colorChip}
-                            style={{ background: `var(${token.variable})` }}
-                          />
+                          <span className={styles.colorChip} style={{ background: token.color }} />
                         </td>
                         <th scope="row">
                           <code>{shortName(token)}</code>
@@ -157,10 +153,7 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
               <ul className={styles.palette}>
                 {items.map((token) => (
                   <li key={token.variable}>
-                    <span
-                      className={styles.swatch}
-                      style={{ background: `var(${token.variable})` }}
-                    />
+                    <span className={styles.swatch} style={{ background: token.color }} />
                     <strong>
                       <code>{shortName(token)}</code>
                     </strong>
@@ -179,16 +172,12 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
         label={semantic ? '컴포넌트에서 사용하기' : '기본 변수와 역할별 변수의 연결'}
         code={
           semantic
-            ? `.message {\n  color: var(--text-default);\n  background: var(--bg-surface);\n  border: 1px solid var(--border-default);\n}`
-            : `:root {\n  --gray-500: #787878;\n  --gray-800: #383838;\n  --text-default: var(--gray-800);\n}\n\n.message {\n  color: var(--text-default);\n}`
+            ? `@use '../../styles/tokens/semantic-colors' as *;\n\n.message {\n  color: $text-default;\n  background: $bg-surface;\n  border: 1px solid $border-default;\n}`
+            : "@use './primitives';\n\n$text-default: primitives.$gray-800;"
         }
       />
       <SourceFiles
-        files={
-          semantic
-            ? ['src/styles/tokens/_semantic.scss']
-            : ['src/styles/tokens/_primitives.scss', 'src/styles/tokens/_semantic.scss']
-        }
+        files={['src/styles/tokens/_primitives.scss', 'src/styles/tokens/_semantic-colors.scss']}
       />
     </>
   );

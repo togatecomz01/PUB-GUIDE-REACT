@@ -1,37 +1,79 @@
-// TDS Color / Base · 확인일: 2026-11-04
-// 기본 색상 값입니다. 컴포넌트에서는 용도별 토큰을 우선 사용합니다.
-:root {
-  // 회색
-  --gray-25: #f9f9f9;
-  --gray-50: #e4e4e4;
-  --gray-100: #cfcfcf;
-  --gray-200: #b9b9b9;
-  --gray-300: #a4a4a4;
-  --gray-400: #8e8e8e;
-  --gray-500: #787878;
-  --gray-600: #636363;
-  --gray-700: #4d4d4d;
-  --gray-800: #383838;
-  --gray-900: #222222;
+// 기본 색상
+// 회색
+$gray-25: #f9f9f9;
+$gray-50: #e4e4e4;
+$gray-100: #cfcfcf;
+$gray-200: #b9b9b9;
+$gray-300: #a4a4a4;
+$gray-400: #8e8e8e;
+$gray-500: #787878;
+$gray-600: #636363;
+$gray-700: #4d4d4d;
+$gray-800: #383838;
+$gray-900: #222222;
 
-  // 브랜드
-  --brand-50: #e8f3ff;
-  --brand-100: #c9e2ff;
-  --brand-200: #90c2ff;
-  --brand-300: #64a8ff;
-  --brand-400: #4593fc;
-  --brand-500: #3182f6;
-  --brand-600: #2272eb;
-  --brand-700: #1b64da;
-  --brand-800: #1957c2;
-  --brand-900: #194aa6;
+// 브랜드
+$brand-50: #e8f3ff;
+$brand-100: #c9e2ff;
+$brand-200: #90c2ff;
+$brand-300: #64a8ff;
+$brand-400: #4593fc;
+$brand-500: #3182f6;
+$brand-600: #2272eb;
+$brand-700: #1b64da;
+$brand-800: #1957c2;
+$brand-900: #194aa6;
 
-  // 기본색·상태색
-  --white: #ffffff;
-  --black: #000000;
-  --black-20: rgba(0, 0, 0, 0.2);
-  --error: #f04452;
-  --success: #03b26c;
-  --warning: #ffc342;
-  --info: #3182f6;
-}
+// 기본색·상태색
+$white: #ffffff;
+$black: #000000;
+$black-20: rgba(0, 0, 0, 0.2);
+$error: #f04452;
+$success: #03b26c;
+$warning: #ffc342;
+$info: #3182f6;
+
+// 모서리 둥글기
+$radius-0: 0px;
+$radius-4: 4px;
+$radius-8: 8px;
+$radius-12: 12px;
+$radius-16: 16px;
+$radius-20: 20px;
+$radius-24: 24px;
+$radius-full: 999px;
+
+// 아이콘 크기
+$icon-16: 16px;
+$icon-20: 20px;
+$icon-24: 24px;
+$icon-32: 32px;
+
+// 글자 크기
+$font-size-root: 16px;
+$font-size-12: 0.75rem;
+$font-size-14: 0.875rem;
+$font-size-16: 1rem;
+$font-size-18: 1.125rem;
+$font-size-20: 1.25rem;
+$font-size-22: 1.375rem;
+$font-size-24: 1.5rem;
+$font-size-26: 1.625rem;
+$font-size-28: 1.75rem;
+$font-size-30: 1.875rem;
+$font-size-32: 2rem;
+$font-size-34: 2.125rem;
+$font-size-36: 2.25rem;
+$font-size-38: 2.375rem;
+$font-size-40: 2.5rem;
+$font-size-42: 2.625rem;
+$font-size-44: 2.75rem;
+$font-size-48: 3rem;
+$font-size-62: 3.875rem;
+$font-size-72: 4.5rem;
+
+// 글자 굵기
+$font-weight-400: 400;
+$font-weight-500: 500;
+$font-weight-600: 600;
+$font-weight-700: 700;

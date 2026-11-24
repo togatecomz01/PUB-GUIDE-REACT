@@ -6,7 +6,7 @@ export default function IconExample() {
         display: 'flex',
         gap: 16,
         alignItems: 'center',
-        color: 'var(--icon-brand)',
+        color: '#3182f6',
       }}
     >
       <Icon name="search" size={24} label="검색" />

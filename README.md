@@ -69,7 +69,7 @@ import './styles/main.scss';
 
 Button·FormButton·TextButton·BottomCTA·TextField·SearchField·SelectField·Checkbox·Radio·Switch·Tab·TabClip·SegmentedControl·Modal·BottomSheet·Toast·Tooltip·Badge·Icon·Header·Accordion·Keypad를 제공합니다.
 
-색상 변수 77개와 로컬 Pretendard 400·500·600·700을 사용합니다. 공통 글꼴 크기·행간·간격·치수 조합은 별도로 정의하지 않으며, 각 컴포넌트의 표현값을 사용합니다. Card List·기기 상태바·JSP·인증·서버 연동은 제공 범위에 포함하지 않습니다. 입력 검사·인증 요청·시간 계산·데이터 저장·화면 이동은 사용하는 프로젝트에서 연결합니다.
+공통 색상 토큰 77개와 로컬 Pretendard 400·500·600·700을 사용합니다. 기본 색상·모서리 둥글기·아이콘 크기·글자 크기·굵기는 `src/styles/tokens/_primitives.scss`에서 관리합니다. 용도별 색상은 `src/styles/tokens/_semantic-colors.scss`에서 기본 색상에 연결합니다. SCSS 구조 확인 범위는 Button·Icon·Checkbox·Radio입니다. 나머지 컴포넌트의 색상은 Sass 변수 적용 후 확인합니다. 기본 글자 크기는 16px을 기준으로 rem으로 관리합니다. 글자 크기·굵기 토큰은 기존 값에 맞춰 시범 적용했습니다. 행간과 간격은 각 컴포넌트에서 지정합니다. Card List·기기 상태바·JSP·인증·서버 연동은 제공 범위에 포함하지 않습니다. 입력 검사·인증 요청·시간 계산·데이터 저장·화면 이동은 사용하는 프로젝트에서 연결합니다.
 
 ## 문서의 역할
 

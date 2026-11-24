@@ -136,11 +136,17 @@ export default function TransferGuide() {
           <summary>공통 스타일·폰트의 정확한 파일 목록</summary>
           <CodeBlock label="공통 파일 목록" language="TEXT" code={foundationFiles.join('\n')} />
           <p className={ui.muted}>
-            폰트 라이선스도 함께 복사합니다. 컴포넌트의 module.scss는 TSX가 이미 연결합니다.
+            Button·Icon·Checkbox·Radio 기준으로 공통 스타일을 확인합니다. 나머지 컴포넌트의 색상은
+            Sass 변수 적용 후 확인합니다. 폰트 라이선스도 함께 복사합니다.
           </p>
         </details>
         <details className={ui.disclosure}>
           <summary>필요한 컴포넌트만 가져올 때</summary>
+          <p className={ui.muted}>
+            기본 색상, 크기, 글자 굵기는 <code>styles/tokens/_primitives.scss</code>에 있습니다.
+            Button·Checkbox·Radio를 가져오면 <code>styles/tokens/_semantic-colors.scss</code>도 함께
+            복사합니다. 다른 컴포넌트가 내부에서 사용하는 경우에도 같은 파일이 필요합니다.
+          </p>
           <div className={ui.tableWrap}>
             <table className={ui.table}>
               <caption className={ui.sr}>컴포넌트별 함께 가져올 파일</caption>
@@ -166,7 +172,8 @@ export default function TransferGuide() {
         <details className={ui.disclosure}>
           <summary>기존 main.scss가 있다면</summary>
           <p className={ui.muted}>
-            기존 파일을 유지하고 별도 공통 스타일 파일로 연결합니다. 중복 초기화는 합칩니다.
+            기존 파일을 유지하고 별도 공통 스타일 파일로 연결합니다. 중복 초기화는 합칩니다. 글자
+            크기 rem 토큰은 html의 16px을 기준으로 계산합니다.
           </p>
           <CodeBlock label="styles/pub-guide.scss" language="SCSS" code={existingStyleEntry} />
           <CodeBlock label="main.tsx에서 한 번 연결" code={existingEntryImports} />

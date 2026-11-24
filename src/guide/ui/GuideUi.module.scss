@@ -657,7 +657,6 @@
 .buttonMatrix {
   width: 100%;
   min-width: 880px;
-  table-layout: fixed;
   border-collapse: collapse;
   text-align: center;
   background: #fff;
@@ -683,9 +682,6 @@
 .buttonMatrix td {
   height: 96px;
   border-top: 1px solid #edf0f5;
-}
-.buttonMatrix .matrixButton {
-  min-width: 0;
 }
 .props {
   min-width: 800px;

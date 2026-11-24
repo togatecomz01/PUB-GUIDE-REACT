@@ -1,0 +1,61 @@
+@use './primitives';
+
+// 용도별 색상
+// 배경
+$bg-page: primitives.$gray-25;
+$bg-surface: primitives.$white;
+$bg-subtle: primitives.$gray-50;
+$bg-disabled: primitives.$gray-50;
+$bg-inverse: primitives.$gray-900;
+
+// 글자
+$text-strong: primitives.$gray-900;
+$text-default: primitives.$gray-800;
+$text-secondary: primitives.$gray-600;
+$text-placeholder: primitives.$gray-500;
+$text-disabled: primitives.$gray-400;
+$text-inverse: primitives.$white;
+$text-brand: primitives.$brand-600;
+$text-error: primitives.$error;
+$text-success: primitives.$success;
+$text-warning: primitives.$warning;
+$text-info: primitives.$info;
+
+// 아이콘
+$icon-strong: primitives.$gray-900;
+$icon-default: primitives.$gray-800;
+$icon-secondary: primitives.$gray-600;
+$icon-disabled: primitives.$gray-400;
+$icon-inverse: primitives.$white;
+$icon-brand: primitives.$brand-500;
+$icon-error: primitives.$error;
+$icon-success: primitives.$success;
+$icon-warning: primitives.$warning;
+$icon-info: primitives.$info;
+
+// 채움
+$fill-brand: primitives.$brand-500;
+$fill-brand-hover: primitives.$brand-600;
+$fill-brand-pressed: primitives.$brand-700;
+$fill-secondary: primitives.$gray-25;
+$fill-secondary-hover: primitives.$gray-50;
+$fill-disabled: primitives.$gray-100;
+$fill-overlay: primitives.$black-20;
+$fill-error: primitives.$error;
+$fill-success: primitives.$success;
+$fill-warning: primitives.$warning;
+$fill-info: primitives.$info;
+$fill-brand-weak: primitives.$brand-50;
+$fill-brand-weak-pressed: primitives.$brand-100;
+$fill-neutral: primitives.$gray-700;
+$fill-neutral-pressed: primitives.$gray-800;
+
+// 테두리
+$border-subtle: primitives.$gray-50;
+$border-default: primitives.$gray-100;
+$border-strong: primitives.$gray-300;
+$border-disabled: primitives.$gray-50;
+$border-focus: primitives.$brand-500;
+$border-selected: primitives.$brand-500;
+$border-error: primitives.$error;
+$border-brand-pressed: primitives.$brand-700;

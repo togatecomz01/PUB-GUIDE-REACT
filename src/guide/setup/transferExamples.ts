@@ -4,7 +4,7 @@ export const foundationFiles = [
   'src/styles/_component-fonts.scss',
   'src/styles/mixins/_selection.scss',
   'src/styles/tokens/_primitives.scss',
-  'src/styles/tokens/_semantic.scss',
+  'src/styles/tokens/_semantic-colors.scss',
   'src/assets/fonts/Pretendard-Regular.woff',
   'src/assets/fonts/Pretendard-Medium.woff',
   'src/assets/fonts/Pretendard-SemiBold.woff',
@@ -35,11 +35,9 @@ export const allComponentsTree = `src/
    ├─ mixins/
    │  └─ _selection.scss      체크박스·라디오·스위치 공통 스타일
    └─ tokens/
-      ├─ _primitives.scss
-      └─ _semantic.scss`;
+      ├─ _primitives.scss      기본 색상·치수·글자
+      └─ _semantic-colors.scss 용도별 색상`;
 export const existingStyleEntry = `// 기존 main.scss가 있으면 styles/pub-guide.scss로 추가합니다.
-@use './tokens/primitives';
-@use './tokens/semantic';
 @use './base';
 @use './component-fonts';`;
 export const existingEntryImports = `// src/main.tsx에 한 번 추가합니다.

@@ -1,5 +1,11 @@
+@use '../tokens/primitives' as *;
+
 /* 공통 치수 토큰이 아닌, 체크박스·라디오·스위치(checked, disabled)의 공통 동작·접근성 스타일입니다. */
-@mixin base {
+@mixin base(
+  $text-color: var(--text-strong),
+  $disabled-color: var(--text-disabled),
+  $focus-color: var(--border-focus)
+) {
   .root {
     position: relative;
     display: inline-flex;
@@ -8,14 +14,14 @@
     vertical-align: middle;
     cursor: pointer;
     font-family: 'Pretendard', sans-serif;
-    font-size: 14px;
+    font-size: $font-size-14;
     line-height: 22px;
     letter-spacing: -0.2px;
-    color: var(--text-strong);
+    color: $text-color;
   }
   .root[data-disabled] {
     cursor: not-allowed;
-    color: var(--text-disabled);
+    color: $disabled-color;
   }
   .input {
     position: absolute;
@@ -46,7 +52,7 @@
     display: block;
   }
   .input:focus-visible + .visual {
-    outline: 2px solid var(--border-focus);
+    outline: 2px solid $focus-color;
     outline-offset: 3px;
   }
   .label {

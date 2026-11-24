@@ -1,17 +1,38 @@
+@use '../../styles/tokens/primitives' as *;
+
 .icon {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: var(--icon-size);
-  height: var(--icon-size);
   color: inherit;
   vertical-align: middle;
   line-height: 0;
   pointer-events: none;
-}
-.icon svg {
-  display: block;
-  width: 100%;
-  height: 100%;
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &.size-16 {
+    width: $icon-16;
+    height: $icon-16;
+  }
+
+  &.size-20 {
+    width: $icon-20;
+    height: $icon-20;
+  }
+
+  &.size-24 {
+    width: $icon-24;
+    height: $icon-24;
+  }
+
+  &.size-32 {
+    width: $icon-32;
+    height: $icon-32;
+  }
 }
