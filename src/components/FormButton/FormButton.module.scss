@@ -1,3 +1,6 @@
+@use '../../styles/tokens/primitives' as *;
+@use '../../styles/tokens/semantic-colors' as *;
+
 .button {
   display: inline-flex;
   flex: 0 0 auto;
@@ -5,28 +8,29 @@
   justify-content: center;
   height: 36px;
   padding: 0 12px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 8px;
-  background: var(--bg-surface);
-  color: var(--text-strong);
+  border: 1px solid $border-subtle;
+  border-radius: $radius-8;
+  background: $bg-surface;
+  color: $text-strong;
   font:
-    400 14px/22px 'Pretendard',
+    $font-weight-400 #{$font-size-14}/ 22px 'Pretendard',
     sans-serif;
   letter-spacing: -0.2px;
   white-space: nowrap;
   cursor: pointer;
 
-  &:is(:active, [data-preview-state='pressed']):not(:disabled) {
-    border-color: var(--icon-brand);
-    color: var(--text-brand);
+  &:not(:disabled):active,
+  &[data-preview-state='pressed']:not(:disabled) {
+    border-color: $icon-brand;
+    color: $text-brand;
   }
   &:disabled {
-    border-color: var(--bg-surface);
-    color: var(--text-disabled);
+    border-color: $bg-surface;
+    color: $text-disabled;
     cursor: default;
   }
   &:focus-visible {
-    outline: 2px solid var(--border-focus);
+    outline: 2px solid $border-focus;
     outline-offset: 2px;
   }
 }
