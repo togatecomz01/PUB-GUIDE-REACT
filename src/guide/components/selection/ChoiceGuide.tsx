@@ -224,7 +224,7 @@ export default function ChoiceGuide({ kind }: { kind: ChoiceKind }) {
             `src/components/${definition.name}/${definition.name}.tsx`,
             `src/components/${definition.name}/${definition.name}.module.scss`,
             'src/components/internal/SelectionImages/',
-            'src/styles/mixins/_selection.scss',
+            'src/assets/styles/mixins/_selection.scss',
             'src/utils/assets.ts',
             'src/utils/cx.ts',
           ]}

@@ -27,8 +27,8 @@ export default function TransferGuide() {
             fonts/, 공통 styles 파일을 가져옵니다.
           </li>
           <li>
-            <strong>스타일 연결:</strong> main.tsx에서 <code>import './styles/main.scss';</code>를
-            한 번 불러옵니다.
+            <strong>스타일 연결:</strong> main.tsx에서{' '}
+            <code>import './assets/styles/main.scss';</code>를 한 번 불러옵니다.
           </li>
           <li>
             <strong>새 화면 작성:</strong> 필요한 컴포넌트를 놓고 입력값·클릭 동작을 연결합니다.
@@ -47,9 +47,9 @@ export default function TransferGuide() {
           components/의 Button·TextField 등은 페이지에서 직접 사용합니다. components/internal/은 이
           UI들이 내부에서 쓰는 보조 부품이며 페이지에서는 직접 가져오지 않습니다. 전체 복사할 때는
           internal/도 포함합니다. hooks/는 React에서 값·동작을 함께 쓰는 함수, utils/는 일반 함수와
-          이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은 styles/mixins/_selection.scss에
-          있습니다. 이 세 컴포넌트는 utils/assets.ts의 이미지 목록을 불러옵니다. 파일명은 ico_
-          접두사와 소문자·밑줄로 통일합니다.
+          이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은
+          assets/styles/mixins/_selection.scss에 있습니다. 이 세 컴포넌트는 utils/assets.ts의 이미지
+          목록을 불러옵니다. 파일명은 ico_ 접두사와 소문자·밑줄로 통일합니다.
           <a href="#icon"> 아이콘 역할·추가 방법 →</a>
         </p>
         <details className={ui.disclosure}>
@@ -143,10 +143,10 @@ export default function TransferGuide() {
         <details className={ui.disclosure}>
           <summary>필요한 컴포넌트만 가져올 때</summary>
           <p className={ui.muted}>
-            기본 색상, 크기, 글자 굵기는 <code>styles/tokens/_primitives.scss</code>에 있습니다.
-            Button·FormButton·Checkbox·Radio를 가져오면{' '}
-            <code>styles/tokens/_semantic-colors.scss</code>도 함께 복사합니다. 다른 컴포넌트가
-            내부에서 사용하는 경우에도 같은 파일이 필요합니다.
+            기본 색상, 크기, 글자 굵기는 <code>assets/styles/tokens/_primitives.scss</code>에
+            있습니다. Button·FormButton·Checkbox·Radio를 가져오면{' '}
+            <code>assets/styles/tokens/_semantic-colors.scss</code>도 함께 복사합니다. 다른
+            컴포넌트가 내부에서 사용하는 경우에도 같은 파일이 필요합니다.
           </p>
           <div className={ui.tableWrap}>
             <table className={ui.table}>
@@ -176,7 +176,11 @@ export default function TransferGuide() {
             기존 파일을 유지하고 별도 공통 스타일 파일로 연결합니다. 중복 초기화는 합칩니다. 글자
             크기 rem 토큰은 html의 16px을 기준으로 계산합니다.
           </p>
-          <CodeBlock label="styles/pub-guide.scss" language="SCSS" code={existingStyleEntry} />
+          <CodeBlock
+            label="assets/styles/pub-guide.scss"
+            language="SCSS"
+            code={existingStyleEntry}
+          />
           <CodeBlock label="main.tsx에서 한 번 연결" code={existingEntryImports} />
         </details>
         <details className={ui.disclosure}>

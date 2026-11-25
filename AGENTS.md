@@ -13,7 +13,7 @@
 - `src/components/internal/`: ActionButtons·FieldFrame·InputBody·SelectionImages·TabList 등 UI 내부 보조 부품. 페이지와 실행 예제에서는 공개 컴포넌트를 사용합니다.
 - `src/hooks/`: React에서 값·동작을 공유하는 공통 훅. 화면 전용 훅은 해당 화면 옆에 둡니다.
 - `src/utils/`: 일반 함수 `cx.ts`와 공통 이미지 목록 `assets.ts`. 컴포넌트 전용 타입은 사용처 옆에 둡니다.
-- `src/styles/`: 색상 변수·기본 초기화·폰트 로드. 체크박스·라디오·스위치 공통 스타일은 `mixins/_selection.scss`에 두고 각 `module.scss`에서 포함합니다.
+- `src/assets/styles/`: 색상 변수·기본 초기화·폰트 로드. 체크박스·라디오·스위치 공통 스타일은 `mixins/_selection.scss`에 두고 각 `module.scss`에서 포함합니다.
 - `src/pages/`: 실제 프로젝트 화면. `src/guide/`의 목록·사용 설명·실행 예제·문서 UI와 구분합니다.
 
 ## 코드와 스타일
@@ -23,7 +23,7 @@
 - 전역 SCSS는 색상 변수·초기화·프로젝트 폰트에 사용합니다. 컴포넌트·레이아웃·페이지 스타일은 CSS Modules로 연결합니다.
 - 다른 컴포넌트의 빌드된 클래스명을 직접 선택하거나 `:global`로 우회하지 않습니다. 화면에서 필요한 외부 배치는 공개 `className`으로 전달합니다. 기존에 공유하는 스타일은 연결된 사용처와 함께 확인합니다.
 - 색상 변수는 기본값(`--gray-25`, `--brand-500`, `--white`)과 용도별 값(`--text-default`, `--bg-page` 등)의 역할을 유지합니다. `color` 접두사는 추가하지 않습니다. 색상 외 공통 글꼴·행간·간격·치수 변수를 임의로 추가하거나 컴포넌트의 개별 값을 공통 규칙으로 확대하지 않습니다.
-- 제품 UI와 가이드 본문은 로컬 Pretendard 400·500·600·700을 사용합니다. 코드 표시의 고정폭 글꼴은 유지합니다. 폰트는 `src/styles/_component-fonts.scss`에서 로드하며 원본 파일과 라이선스를 함께 보존합니다.
+- 제품 UI와 가이드 본문은 로컬 Pretendard 400·500·600·700을 사용합니다. 코드 표시의 고정폭 글꼴은 유지합니다. 폰트는 `src/assets/styles/_component-fonts.scss`에서 로드하며 원본 파일과 라이선스를 함께 보존합니다.
 
 ## 입력과 공통 동작
 

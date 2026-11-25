@@ -1,5 +1,5 @@
-import primitiveSource from '../../styles/tokens/_primitives.scss?raw';
-import semanticSource from '../../styles/tokens/_semantic-colors.scss?raw';
+import primitiveSource from '../../assets/styles/tokens/_primitives.scss?raw';
+import semanticSource from '../../assets/styles/tokens/_semantic-colors.scss?raw';
 
 export type ColorToken = {
   variable: string;

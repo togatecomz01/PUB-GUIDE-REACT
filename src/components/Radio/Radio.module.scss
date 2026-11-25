@@ -1,6 +1,6 @@
-@use '../../styles/tokens/primitives' as *;
-@use '../../styles/tokens/semantic-colors' as *;
-@use '../../styles/mixins/selection';
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+@use '../../assets/styles/mixins/selection';
 
 @include selection.base(
   $text-color: $text-strong,

@@ -1,10 +1,10 @@
 export const foundationFiles = [
-  'src/styles/main.scss',
-  'src/styles/_base.scss',
-  'src/styles/_component-fonts.scss',
-  'src/styles/mixins/_selection.scss',
-  'src/styles/tokens/_primitives.scss',
-  'src/styles/tokens/_semantic-colors.scss',
+  'src/assets/styles/main.scss',
+  'src/assets/styles/_base.scss',
+  'src/assets/styles/_component-fonts.scss',
+  'src/assets/styles/mixins/_selection.scss',
+  'src/assets/styles/tokens/_primitives.scss',
+  'src/assets/styles/tokens/_semantic-colors.scss',
   'src/assets/fonts/Pretendard-Regular.woff',
   'src/assets/fonts/Pretendard-Medium.woff',
   'src/assets/fonts/Pretendard-SemiBold.woff',
@@ -22,26 +22,26 @@ export const allComponentsTree = `src/
 │     └─ TabList/             탭 선택·키보드 이동
 ├─ hooks/                      값 관리·다이얼로그·가로 드래그
 ├─ utils/                      cx.ts·assets.ts (일반 함수·공통 이미지 목록)
-├─ assets/
-│  ├─ icons/
-│  │  ├─ ico_*.svg             일반 66 + Header 전용 5 SVG
-│  │  ├─ selection/            체크박스·라디오·스위치·계좌형 바텀시트 상태 SVG
-│  │  └─ fields/               입력창 아이콘과 추가 구현용 SVG
-│  └─ fonts/                   Pretendard 400·500·600·700 + 라이선스
-└─ styles/
-   ├─ main.scss
-   ├─ _base.scss
-   ├─ _component-fonts.scss
-   ├─ mixins/
-   │  └─ _selection.scss      체크박스·라디오·스위치 공통 스타일
-   └─ tokens/
-      ├─ _primitives.scss      기본 색상·치수·글자
-      └─ _semantic-colors.scss 용도별 색상`;
-export const existingStyleEntry = `// 기존 main.scss가 있으면 styles/pub-guide.scss로 추가합니다.
+└─ assets/
+   ├─ icons/
+   │  ├─ ico_*.svg             일반 66 + Header 전용 5 SVG
+   │  ├─ selection/            체크박스·라디오·스위치·계좌형 바텀시트 상태 SVG
+   │  └─ fields/               입력창 아이콘과 추가 구현용 SVG
+   ├─ fonts/                   Pretendard 400·500·600·700 + 라이선스
+   └─ styles/                  공통 SCSS
+      ├─ main.scss
+      ├─ _base.scss
+      ├─ _component-fonts.scss
+      ├─ mixins/
+      │  └─ _selection.scss   체크박스·라디오·스위치 공통 스타일
+      └─ tokens/
+         ├─ _primitives.scss      기본 색상·치수·글자
+         └─ _semantic-colors.scss 용도별 색상`;
+export const existingStyleEntry = `// 기존 main.scss가 있으면 assets/styles/pub-guide.scss로 추가합니다.
 @use './base';
 @use './component-fonts';`;
 export const existingEntryImports = `// src/main.tsx에 한 번 추가합니다.
-import './styles/pub-guide.scss';`;
+import './assets/styles/pub-guide.scss';`;
 export const dependencyRows = [
   {
     component: 'Button / Badge / FormButton',
@@ -88,7 +88,7 @@ export const dependencyRows = [
     component: 'Checkbox / Radio / Switch',
     folders: '선택할 컴포넌트 + internal/SelectionImages/ + utils/cx.ts + utils/assets.ts',
     extra:
-      'styles/mixins/_selection.scss + utils/assets.ts가 참조하는 체크박스·라디오·스위치 SVG 30개',
+      'assets/styles/mixins/_selection.scss + utils/assets.ts가 참조하는 체크박스·라디오·스위치 SVG 30개',
   },
   {
     component: 'TextField',

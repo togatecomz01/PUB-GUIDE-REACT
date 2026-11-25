@@ -172,12 +172,15 @@ export default function ColorGuide({ semantic = false }: { semantic?: boolean })
         label={semantic ? '컴포넌트에서 사용하기' : '기본 변수와 역할별 변수의 연결'}
         code={
           semantic
-            ? `@use '../../styles/tokens/semantic-colors' as *;\n\n.message {\n  color: $text-default;\n  background: $bg-surface;\n  border: 1px solid $border-default;\n}`
+            ? `@use '../../assets/styles/tokens/semantic-colors' as *;\n\n.message {\n  color: $text-default;\n  background: $bg-surface;\n  border: 1px solid $border-default;\n}`
             : "@use './primitives';\n\n$text-default: primitives.$gray-800;"
         }
       />
       <SourceFiles
-        files={['src/styles/tokens/_primitives.scss', 'src/styles/tokens/_semantic-colors.scss']}
+        files={[
+          'src/assets/styles/tokens/_primitives.scss',
+          'src/assets/styles/tokens/_semantic-colors.scss',
+        ]}
       />
     </>
   );

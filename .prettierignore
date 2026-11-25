@@ -1,8 +1,7 @@
 node_modules/
 dist/
 package-lock.json
-src/assets/
-# 등록한 토큰·초기화·미사용 시작 화면 스타일은 보존합니다.
-src/styles/tokens/
-src/styles/_base.scss
-src/styles/_starter.scss
+src/assets/fonts/
+src/assets/icons/
+src/assets/styles/tokens/
+src/assets/styles/_base.scss
