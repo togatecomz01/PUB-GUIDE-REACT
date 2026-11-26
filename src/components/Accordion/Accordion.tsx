@@ -5,6 +5,7 @@ import { cx } from '../../utils/cx.ts';
 import styles from './Accordion.module.scss';
 export type AccordionProps = {
   title: string;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   children: ReactNode;
   variant?: 'full' | 'box';
   icon?: boolean;
@@ -16,6 +17,7 @@ export type AccordionProps = {
 /* 제목을 눌러 내용을 펼치고 접는 영역 표시 */
 export default function Accordion({
   title,
+  headingLevel = 2,
   children,
   variant = 'full',
   icon = true,
@@ -27,14 +29,15 @@ export default function Accordion({
   const [local, setLocal] = useState(defaultOpen);
   const expanded = open ?? local;
   const id = useId();
+  const Heading = `h${headingLevel}` as const;
   /* 제목 버튼 클릭 시 내용 펼치기·접기 */
   function toggle() {
     if (open === undefined) setLocal(!expanded);
     onOpenChange?.(!expanded);
   }
   return (
-    <section className={cx(styles.root, styles[variant], className)}>
-      <h2 className={styles.heading}>
+    <div className={cx(styles.root, styles[variant], className)}>
+      <Heading className={styles.heading}>
         <button type="button" aria-expanded={expanded} aria-controls={id} onClick={toggle}>
           <span className={styles.title}>
             {variant === 'full' && icon && <Icon name="alert_circle" />}
@@ -42,10 +45,10 @@ export default function Accordion({
           </span>
           <Icon name={expanded ? 'chevron_up' : 'chevron_down'} size={24} />
         </button>
-      </h2>
+      </Heading>
       <div id={id} hidden={!expanded} className={styles.body}>
         {children}
       </div>
-    </section>
+    </div>
   );
 }

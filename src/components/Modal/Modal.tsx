@@ -67,9 +67,9 @@ export function DialogActions({
   }
 
   return (
-    <footer className={cx(styles.actions, styles[kind], isVertical && styles.vertical, className)}>
+    <div className={cx(styles.actions, styles[kind], isVertical && styles.vertical, className)}>
       {buttons}
-    </footer>
+    </div>
   );
 }
 
@@ -90,8 +90,8 @@ export function DialogCard({
   ...actions
 }: DialogCardProps) {
   return (
-    <section className={cx(styles.card, kind === 'confirm' && styles.confirmCard)}>
-      <header className={styles.text}>
+    <div className={cx(styles.card, kind === 'confirm' && styles.confirmCard)}>
+      <div className={styles.text}>
         <h3 className={styles.title} id={titleId}>
           {title}
         </h3>
@@ -100,9 +100,9 @@ export function DialogCard({
             {description}
           </p>
         )}
-      </header>
+      </div>
       <DialogActions {...actions} kind={kind} />
-    </section>
+    </div>
   );
 }
 

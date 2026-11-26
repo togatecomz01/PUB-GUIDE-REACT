@@ -121,6 +121,7 @@ export const expansionPages = [
         '필수 / 생략',
         '1개 또는 2개의 실제 버튼',
       ),
+      prop('as', 'div | footer', 'div', '실제로 푸터 역할을 맡길 때 footer를 선택하세요.'),
       prop('weakVariant', 'secondary | tertiary', 'secondary', '보조 버튼 표현'),
       prop('layout', 'horizontal | vertical', 'horizontal', '문구가 긴 경우만 세로 사용'),
       prop(
@@ -146,6 +147,12 @@ export const expansionPages = [
     ],
     props: [
       prop('open / onClose', 'boolean / () => void', '필수', '열림 상태는 부모에서 관리'),
+      prop(
+        'headingLevel',
+        '1 | 2 | 3 | 4 | 5 | 6',
+        '2',
+        '시트 제목의 단계입니다. 예제의 계좌 선택은 h3를 사용합니다.',
+      ),
       prop(
         'title / description / children',
         'string / ReactNode / ReactNode',
@@ -316,6 +323,12 @@ export const expansionPages = [
     ],
     props: [
       prop('title / children', 'string / ReactNode', '필수', '항목 제목 / 상세 내용'),
+      prop(
+        'headingLevel',
+        '1 | 2 | 3 | 4 | 5 | 6',
+        '2',
+        '페이지 제목 구조에 맞는 단계입니다. 상위 제목이 h2라면 3을 사용합니다.',
+      ),
       prop(
         'variant / icon',
         'full | box / boolean',

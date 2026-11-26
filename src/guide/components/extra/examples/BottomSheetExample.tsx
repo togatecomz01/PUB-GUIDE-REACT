@@ -91,6 +91,7 @@ export default function BottomSheetExample() {
         open={sheet !== null}
         onClose={closeSheet}
         title={isBank ? bankGroups[0].title : '타이틀 내용'}
+        headingLevel={sheet === 'account' ? 3 : undefined}
         description={showDescription ? '보조 설명을 작성해주세요.' : undefined}
         actions={actions}
         closeOnBackdrop={isBank}

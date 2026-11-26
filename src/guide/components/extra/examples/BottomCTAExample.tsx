@@ -9,6 +9,7 @@ export default function BottomCTAExample() {
         secondary={{ label: '이전', onClick: () => setMessage('이전 단계') }}
       />
       <BottomCTA
+        as="footer"
         layout="vertical"
         primary={{ label: '자세히보기', onClick: () => setMessage('상세 내용 보기') }}
         secondary={{ label: '추가하기', onClick: () => setMessage('항목 추가') }}

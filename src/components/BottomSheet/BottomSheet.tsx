@@ -9,6 +9,7 @@ export type BottomSheetProps = {
   open: boolean;
   onClose: () => void;
   title: string;
+  headingLevel?: 1 | 2 | 3 | 4 | 5 | 6;
   description?: ReactNode;
   children?: ReactNode;
   actions?: ActionButtonsProps;
@@ -19,6 +20,7 @@ export type BottomSheetProps = {
 /* 바텀시트의 제목·본문·버튼 영역 조합 */
 export function SheetCard({
   title,
+  headingLevel = 2,
   description,
   children,
   actions,
@@ -27,6 +29,7 @@ export function SheetCard({
   descriptionId,
 }: {
   title: string;
+  headingLevel?: BottomSheetProps['headingLevel'];
   description?: ReactNode;
   children?: ReactNode;
   actions?: ActionButtonsProps;
@@ -34,12 +37,14 @@ export function SheetCard({
   titleId?: string;
   descriptionId?: string;
 }) {
+  const Heading = `h${headingLevel}` as const;
+
   return (
-    <section className={cx(styles.card, className)}>
+    <div className={cx(styles.card, className)}>
       <span className={styles.handle} aria-hidden="true" />
-      <h2 id={titleId} className={styles.title}>
+      <Heading id={titleId} className={styles.title}>
         {title}
-      </h2>
+      </Heading>
       {description != null && (
         <p id={descriptionId} className={styles.description}>
           {description}
@@ -47,7 +52,7 @@ export function SheetCard({
       )}
       {children != null && <div className={styles.body}>{children}</div>}
       {actions && <ActionButtons {...actions} className={styles.actions} />}
-    </section>
+    </div>
   );
 }
 /* 열림 상태에 맞춰 화면 아래에 바텀시트 표시 */
@@ -55,6 +60,7 @@ export default function BottomSheet({
   open,
   onClose,
   title,
+  headingLevel,
   description,
   children,
   actions,
@@ -93,6 +99,7 @@ export default function BottomSheet({
     >
       <SheetCard
         title={title}
+        headingLevel={headingLevel}
         description={description}
         titleId={titleId}
         descriptionId={descriptionId}
