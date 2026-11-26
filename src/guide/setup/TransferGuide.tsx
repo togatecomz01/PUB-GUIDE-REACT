@@ -136,7 +136,7 @@ export default function TransferGuide() {
           <summary>공통 스타일·폰트의 정확한 파일 목록</summary>
           <CodeBlock label="공통 파일 목록" language="TEXT" code={foundationFiles.join('\n')} />
           <p className={ui.muted}>
-            Button·FormButton·Icon·Checkbox·Radio 기준으로 공통 스타일을 확인합니다. 나머지
+            Button·FormButton·Icon·Checkbox·Radio·Switch 기준으로 공통 스타일을 확인합니다. 나머지
             컴포넌트의 색상은 Sass 변수 적용 후 확인합니다. 폰트 라이선스도 함께 복사합니다.
           </p>
         </details>
@@ -144,7 +144,7 @@ export default function TransferGuide() {
           <summary>필요한 컴포넌트만 가져올 때</summary>
           <p className={ui.muted}>
             기본 색상, 크기, 글자 굵기는 <code>assets/styles/tokens/_primitives.scss</code>에
-            있습니다. Button·FormButton·Checkbox·Radio를 가져오면{' '}
+            있습니다. Button·FormButton·Checkbox·Radio·Switch를 가져오면{' '}
             <code>assets/styles/tokens/_semantic-colors.scss</code>도 함께 복사합니다. 다른
             컴포넌트가 내부에서 사용하는 경우에도 같은 파일이 필요합니다.
           </p>

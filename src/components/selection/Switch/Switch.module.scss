@@ -1,14 +1,27 @@
+@use '../../../assets/styles/tokens/primitives' as *;
+@use '../../../assets/styles/tokens/semantic-colors' as *;
 @use '../../../assets/styles/mixins/selection';
-@include selection.base;
 
-.s .visual {
-  width: 42px;
-  height: 28px;
+@include selection.base(
+  $text-color: $text-strong,
+  $disabled-color: $text-disabled,
+  $focus-color: $border-focus
+);
+
+.s {
+  .visual {
+    width: 42px;
+    height: 28px;
+  }
 }
-.m .visual {
-  width: 52px;
-  height: 30px;
+
+.m {
+  .visual {
+    width: 52px;
+    height: 30px;
+  }
 }
+
 .visual {
-  border-radius: 999px;
+  border-radius: $radius-full;
 }
