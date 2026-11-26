@@ -11,12 +11,17 @@ export default function Badge({
   tone = 'brand',
   size = 'l',
   className,
+  children,
   ...props
 }: BadgeProps) {
+  const isPlainLabel = typeof children === 'string' || typeof children === 'number';
+
   return (
     <span
       {...props}
       className={cx(styles.badge, styles[variant], styles[tone], styles[size], className)}
-    />
+    >
+      {isPlainLabel ? <span className={styles.label}>{children}</span> : children}
+    </span>
   );
 }

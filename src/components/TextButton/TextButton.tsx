@@ -41,7 +41,7 @@ export default function TextButton({
       )}
     >
       {iconPosition === 'start' && graphic}
-      <span>{children}</span>
+      <span className={styles.label}>{children}</span>
       {iconPosition === 'end' && graphic}
     </button>
   );

@@ -1,67 +1,99 @@
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
 .badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  box-sizing: border-box;
+  width: auto;
   width: max-content;
+  min-width: 0;
+  max-width: 100%;
   padding: 0 8px;
-  border-radius: 999px;
+  overflow: hidden;
+  border-radius: $radius-full;
   white-space: nowrap;
   font-family: 'Pretendard', sans-serif;
-  font-weight: 400;
+  font-weight: $font-weight-400;
   letter-spacing: -0.2px;
+
+  .label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
+
 .l {
   height: 24px;
-  font-size: 14px;
+  font-size: $font-size-14;
   line-height: 20px;
 }
+
 .s {
   height: 20px;
   font-size: 10px;
   line-height: 14px;
 }
-.brand {
-  --badge-fill: var(--fill-brand);
-  --badge-ink: var(--text-brand);
-  --badge-border: var(--border-selected);
-}
-.error {
-  --badge-fill: var(--fill-error);
-  --badge-ink: var(--text-error);
-  --badge-border: var(--border-error);
-}
-.success {
-  --badge-fill: var(--fill-success);
-  --badge-ink: var(--text-success);
-  --badge-border: var(--text-success);
-}
-.warning {
-  --badge-fill: var(--fill-warning);
-  --badge-ink: var(--text-secondary);
-  --badge-border: var(--text-warning);
-}
-.gray {
-  --badge-fill: var(--fill-secondary);
-  --badge-ink: var(--text-secondary);
-  --badge-border: var(--border-default);
-}
-.brand-weak {
-  --badge-fill: var(--fill-brand-weak);
-}
+
 .line {
-  border: 1px solid var(--badge-border);
-  background: var(--bg-surface);
-  color: var(--badge-ink);
+  border: 1px solid;
+  background: $bg-surface;
+
+  &.brand {
+    border-color: $border-selected;
+    color: $text-brand;
+  }
+
+  &.error {
+    border-color: $border-error;
+    color: $text-error;
+  }
+
+  &.success {
+    border-color: $text-success;
+    color: $text-success;
+  }
+
+  &.warning {
+    border-color: $text-warning;
+    color: $text-secondary;
+  }
+
+  &.gray {
+    border-color: $border-default;
+    color: $text-secondary;
+  }
 }
+
 .fill {
-  background: var(--badge-fill);
-  color: var(--text-inverse);
-}
-.fill.warning,
-.fill.gray {
-  color: var(--text-default);
-}
-.fill.brand-weak {
-  color: var(--text-brand);
+  color: $text-inverse;
+
+  &.brand {
+    background: $fill-brand;
+  }
+
+  &.error {
+    background: $fill-error;
+  }
+
+  &.success {
+    background: $fill-success;
+  }
+
+  &.warning {
+    background: $fill-warning;
+    color: $text-default;
+  }
+
+  &.gray {
+    background: $fill-secondary;
+    color: $text-default;
+  }
+
+  &.brand-weak {
+    background: $fill-brand-weak;
+    color: $text-brand;
+  }
 }

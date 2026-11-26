@@ -35,6 +35,7 @@ export const expansionPages = [
     notes: [
       'Brand · Error · Success · Warning · Gray를 의미에 맞게 사용합니다. Brand Weak는 Fill에서만 사용합니다.',
       'Badge는 상태 표시입니다. 클릭 동작이나 버튼 역할을 자동으로 추가하지 않습니다.',
+      '부모 너비가 부족하면 긴 텍스트를 한 줄에서 말줄임합니다.',
     ],
     props: [
       prop('variant', 'line | fill', 'line', '테두리 / 채움'),
@@ -87,6 +88,7 @@ export const expansionPages = [
       'Arrow는 기본 오른쪽 화살표를 포함합니다. Clear·Underline에서도 icon을 전달하면 조합할 수 있습니다.',
       '이 컴포넌트는 동작용 button입니다. URL 이동은 실제 a 링크를 사용하세요.',
       'Pressed 배경은 버튼 주변으로 2px·4px 확장됩니다. 디자인처럼 주변 여유를 확보합니다.',
+      '부모 너비가 부족하면 라벨만 말줄임하고 기본 아이콘은 크기를 유지합니다.',
     ],
     props: [
       prop('appearance', 'arrow | clear | underline', 'clear', '표현 방식'),
