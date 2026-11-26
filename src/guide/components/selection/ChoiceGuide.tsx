@@ -221,8 +221,8 @@ export default function ChoiceGuide({ kind }: { kind: ChoiceKind }) {
         </p>
         <SourceFiles
           files={[
-            `src/components/${definition.name}/${definition.name}.tsx`,
-            `src/components/${definition.name}/${definition.name}.module.scss`,
+            `src/components/selection/${definition.name}/${definition.name}.tsx`,
+            `src/components/selection/${definition.name}/${definition.name}.module.scss`,
             'src/components/selection/SelectionImages/',
             'src/assets/styles/mixins/_selection.scss',
             'src/utils/assets.ts',

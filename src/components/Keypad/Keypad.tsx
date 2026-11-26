@@ -1,4 +1,4 @@
-import FormButton from '../FormButton/FormButton.tsx';
+import FormButton from '../buttons/FormButton/FormButton.tsx';
 import Icon from '../Icon/Icon.tsx';
 import { cx } from '../../utils/cx.ts';
 import styles from './Keypad.module.scss';

@@ -34,6 +34,7 @@ npm run dev
 ```text
 src/
 ├─ components/          페이지에서 사용하는 UI 22종
+│  ├─ buttons/          Button·TextButton·FormButton
 │  ├─ fields/           입력창과 공통 레이블·안내문구
 │  ├─ selection/        체크박스·라디오·스위치와 상태별 이미지
 │  ├─ tabs/             탭 UI와 공통 TabList
@@ -67,9 +68,10 @@ src/
 import './assets/styles/main.scss';
 ```
 
-src/pages/ 바로 아래 화면 파일에서 입력창과 탭을 가져오는 예입니다.
+src/pages/ 바로 아래 화면 파일에서 버튼·입력창·탭을 가져오는 예입니다.
 
 ```tsx
+import Button from '../components/buttons/Button/Button.tsx';
 import TextField from '../components/fields/TextField/TextField.tsx';
 import Tab from '../components/tabs/Tab/Tab.tsx';
 ```

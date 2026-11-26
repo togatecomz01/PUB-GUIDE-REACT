@@ -1,5 +1,5 @@
 import type { ChangeEvent } from 'react';
-import FormButton from '../../../FormButton/FormButton.tsx';
+import FormButton from '../../../buttons/FormButton/FormButton.tsx';
 import EmailInput from './EmailInput.tsx';
 import RrnInput from './RrnInput.tsx';
 import PhoneInput from './PhoneInput.tsx';

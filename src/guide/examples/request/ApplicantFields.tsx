@@ -1,5 +1,5 @@
 import TextField from '../../../components/fields/TextField/TextField.tsx';
-import FormButton from '../../../components/FormButton/FormButton.tsx';
+import FormButton from '../../../components/buttons/FormButton/FormButton.tsx';
 import type { ChangeField, RequestValues } from './types.ts';
 
 type ApplicantFieldsProps = {

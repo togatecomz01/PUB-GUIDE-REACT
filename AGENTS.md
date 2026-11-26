@@ -10,6 +10,7 @@
 ## 폴더 역할
 
 - `src/components/`: 페이지에서 직접 사용하는 UI. TSX와 해당 컴포넌트의 `module.scss`를 함께 둡니다.
+- Button·TextButton·FormButton은 `components/buttons/`에 둡니다. 최상위 클래스는 `.button`·`.text-button`·`.form-button`을 사용합니다.
 - 입력창은 `components/fields/`, 체크박스·라디오·스위치는 `components/selection/`, 탭은 `components/tabs/`에 둡니다. 여러 컴포넌트가 함께 쓰는 보조 부품은 같은 그룹에 둡니다.
 - InputBody는 TextField 폴더 안에, SheetOptions는 BottomSheet 폴더 안에 둡니다. `components/internal/`에는 BottomCTA·BottomSheet가 공유하는 ActionButtons를 둡니다. 페이지와 실행 예제에서는 공개 컴포넌트를 사용합니다.
 - `src/hooks/`: React에서 값·동작을 공유하는 공통 훅. 화면 전용 훅은 해당 화면 옆에 둡니다.

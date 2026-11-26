@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import TextField from '../../../../components/fields/TextField/TextField.tsx';
-import FormButton from '../../../../components/FormButton/FormButton.tsx';
+import FormButton from '../../../../components/buttons/FormButton/FormButton.tsx';
 
 export default function FormButtonExample() {
   const [message, setMessage] = useState('');

@@ -1,9 +1,9 @@
 import { cx } from '../../utils/cx.ts';
 import { useId } from 'react';
 import { useDialog } from '../../hooks/useDialog.ts';
-import TextButton from '../TextButton/TextButton.tsx';
+import TextButton from '../buttons/TextButton/TextButton.tsx';
 import type { KeyboardEvent, ReactNode, SyntheticEvent } from 'react';
-import Button from '../Button/Button.tsx';
+import Button from '../buttons/Button/Button.tsx';
 import styles from './Modal.module.scss';
 
 export type DialogKind = 'alert' | 'confirm';

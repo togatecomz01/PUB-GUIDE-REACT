@@ -1,9 +1,9 @@
-import componentSource from '../../../components/Button/Button.tsx?raw';
+import componentSource from '../../../components/buttons/Button/Button.tsx?raw';
 import styles from '../../ui/GuideUi.module.scss';
 import preview from '../PreviewStates.module.scss';
 import { useState } from 'react';
-import Button from '../../../components/Button/Button.tsx';
-import type { ButtonSize, ButtonVariant } from '../../../components/Button/Button.tsx';
+import Button from '../../../components/buttons/Button/Button.tsx';
+import type { ButtonSize, ButtonVariant } from '../../../components/buttons/Button/Button.tsx';
 import {
   CodeReadingGuide,
   CodeBlock,
@@ -237,8 +237,8 @@ export function ButtonGuide() {
         </div>
         <SourceFiles
           files={[
-            'src/components/Button/Button.tsx',
-            'src/components/Button/Button.module.scss',
+            'src/components/buttons/Button/Button.tsx',
+            'src/components/buttons/Button/Button.module.scss',
             'src/utils/cx.ts',
           ]}
         />

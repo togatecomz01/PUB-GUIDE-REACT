@@ -1,4 +1,4 @@
-import { cx } from '../../utils/cx.ts';
+import { cx } from '../../../utils/cx.ts';
 import type { ComponentPropsWithRef } from 'react';
 import styles from './Button.module.scss';
 

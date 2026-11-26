@@ -42,7 +42,7 @@ export default function ExamplePage() {
   const setter = kind === 'checkbox' ? 'setAgreed' : 'setNotifications';
   const label = kind === 'checkbox' ? '이용약관 동의' : '알림 사용';
   return `import { useState } from 'react';
-import ${name} from '../components/${name}/${name}.tsx';
+import ${name} from '../components/selection/${name}/${name}.tsx';
 
 export default function ExamplePage() {
   const [${state}, ${setter}] = useState(false);

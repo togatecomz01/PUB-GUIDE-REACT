@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Button from '../../components/Button/Button.tsx';
-import FormButton from '../../components/FormButton/FormButton.tsx';
-import TextButton from '../../components/TextButton/TextButton.tsx';
+import Button from '../../components/buttons/Button/Button.tsx';
+import FormButton from '../../components/buttons/FormButton/FormButton.tsx';
+import TextButton from '../../components/buttons/TextButton/TextButton.tsx';
 import Badge from '../../components/Badge/Badge.tsx';
 import Checkbox from '../../components/selection/Checkbox/Checkbox.tsx';
 import Radio from '../../components/selection/Radio/Radio.tsx';

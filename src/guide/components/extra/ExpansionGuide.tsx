@@ -4,7 +4,7 @@ import SegmentedControlSource from '../../../components/tabs/SegmentedControl/Se
 import BottomSheetSource from '../../../components/BottomSheet/BottomSheet.tsx?raw';
 import SheetOptionsSource from '../../../components/BottomSheet/SheetOptions/SheetOptions.tsx?raw';
 import HeaderSource from '../../../components/Header/Header.tsx?raw';
-import TextButtonSource from '../../../components/TextButton/TextButton.tsx?raw';
+import TextButtonSource from '../../../components/buttons/TextButton/TextButton.tsx?raw';
 import { FieldStructureGuide } from '../fields/FieldUsageGuide.tsx';
 import { figmaLink } from '../../colors/foundations.ts';
 import bankLogo from '../../assets/bank-example.png';
@@ -12,8 +12,8 @@ import { Fragment, useState } from 'react';
 import type { ComponentType } from 'react';
 import Icon, { iconNames } from '../../../components/Icon/Icon.tsx';
 import Badge from '../../../components/Badge/Badge.tsx';
-import TextButton from '../../../components/TextButton/TextButton.tsx';
-import FormButton from '../../../components/FormButton/FormButton.tsx';
+import TextButton from '../../../components/buttons/TextButton/TextButton.tsx';
+import FormButton from '../../../components/buttons/FormButton/FormButton.tsx';
 import Header from '../../../components/Header/Header.tsx';
 import { SheetCard, SheetOptions } from '../../../components/BottomSheet/BottomSheet.tsx';
 import Toast from '../../../components/Toast/Toast.tsx';
@@ -39,6 +39,12 @@ const examples = import.meta.glob<ComponentType | undefined>('./examples/*Exampl
   import: 'default',
   eager: true,
 });
+const componentGroups: Partial<Record<ExpansionId, string>> = {
+  formbutton: 'buttons/',
+  textbutton: 'buttons/',
+  selectfield: 'fields/',
+  segmented: 'tabs/',
+};
 const readingGuides: Partial<Record<ExpansionId, { name: string; code: string; note: string }>> = {
   textbutton: {
     name: 'TextButton.tsx',
@@ -412,9 +418,7 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
       </p>
       <SourceFiles
         files={[
-          id === 'segmented'
-            ? 'src/components/tabs/SegmentedControl/'
-            : 'src/components/' + page.title + '/',
+          'src/components/' + (componentGroups[id] ?? '') + page.title + '/',
           ...(Example || code !== undefined
             ? ['src/guide/components/extra/examples/' + fileName]
             : []),

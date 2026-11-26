@@ -436,8 +436,8 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
         </p>
         <SourceFiles
           files={[
-            `src/components/${name}/${name}.tsx`,
-            `src/components/${name}/${name}.module.scss`,
+            `src/components/fields/${name}/${name}.tsx`,
+            `src/components/fields/${name}/${name}.module.scss`,
             'src/components/fields/FieldFrame/FieldFrame.tsx',
           ]}
         />

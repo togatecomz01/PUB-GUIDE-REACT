@@ -13,6 +13,7 @@ export const foundationFiles = [
 ];
 export const allComponentsTree = `src/
 ├─ components/
+│  ├─ buttons/                 Button·TextButton·FormButton
 │  ├─ fields/
 │  │  ├─ TextField/InputBody/  입력 유형별 내용
 │  │  ├─ SearchField/·SelectField/
@@ -24,7 +25,7 @@ export const allComponentsTree = `src/
 │  │  ├─ Tab/·TabClip/·SegmentedControl/
 │  │  └─ TabList/             탭 선택·키보드 이동
 │  ├─ BottomSheet/SheetOptions/ 은행·계좌 선택 목록
-│  ├─ Button/·BottomCTA/·…
+│  ├─ BottomCTA/·Badge/·…
 │  └─ internal/ActionButtons/  BottomCTA·BottomSheet 공통 버튼 배치
 ├─ hooks/                      값 관리·다이얼로그·가로 드래그
 ├─ utils/                      cx.ts·assets.ts (일반 함수·공통 이미지 목록)
@@ -50,8 +51,13 @@ export const existingEntryImports = `// src/main.tsx에 한 번 추가합니다.
 import './assets/styles/pub-guide.scss';`;
 export const dependencyRows = [
   {
-    component: 'Button / Badge / FormButton',
-    folders: '사용할 컴포넌트 폴더 + utils/cx.ts',
+    component: 'Button / FormButton',
+    folders: 'buttons/에서 사용할 컴포넌트 폴더 + utils/cx.ts',
+    extra: '공통 SCSS·로컬 Pretendard',
+  },
+  {
+    component: 'Badge',
+    folders: 'Badge/ + utils/cx.ts',
     extra: '공통 SCSS·로컬 Pretendard',
   },
   {
@@ -60,23 +66,30 @@ export const dependencyRows = [
     extra: 'assets/icons/의 ico_*.svg. SVG raw import 및 import.meta.glob 지원 필요',
   },
   {
-    component: 'TextButton / Toast / Header / Accordion',
+    component: 'TextButton',
+    folders: 'buttons/TextButton/ + Icon/ + utils/cx.ts',
+    extra: 'assets/icons/의 ico_*.svg',
+  },
+  {
+    component: 'Toast / Header / Accordion',
     folders: '사용할 컴포넌트 폴더 + Icon/ + utils/cx.ts',
     extra: 'assets/icons/의 ico_*.svg',
   },
   {
     component: 'Modal',
-    folders: 'Modal/ + Button/ + TextButton/ + Icon/ + utils/cx.ts + hooks/useDialog.ts',
+    folders:
+      'Modal/ + buttons/Button/ + buttons/TextButton/ + Icon/ + utils/cx.ts + hooks/useDialog.ts',
     extra: 'assets/icons/의 ico_*.svg',
   },
   {
     component: 'BottomCTA',
-    folders: 'BottomCTA/ + Button/ + internal/ActionButtons/ + utils/cx.ts',
+    folders: 'BottomCTA/ + buttons/Button/ + internal/ActionButtons/ + utils/cx.ts',
     extra: '공통 SCSS·로컬 Pretendard',
   },
   {
     component: 'BottomSheet',
-    folders: 'BottomSheet/ + Button/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
+    folders:
+      'BottomSheet/ + buttons/Button/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
     extra:
       'BottomSheet/SheetOptions/의 TSX·SCSS와 선택 체크 SVG 2개를 포함. 계좌·은행 로고는 image로 전달',
   },
@@ -87,7 +100,7 @@ export const dependencyRows = [
   },
   {
     component: 'Keypad',
-    folders: 'Keypad/ + FormButton/ + Icon/ + utils/cx.ts',
+    folders: 'Keypad/ + buttons/FormButton/ + Icon/ + utils/cx.ts',
     extra: 'assets/icons/의 ico_*.svg',
   },
   {
@@ -100,7 +113,7 @@ export const dependencyRows = [
   {
     component: 'TextField',
     folders:
-      'fields/TextField/ 전체(InputBody/ 포함) + fields/FieldFrame/ + FormButton/ + Icon/ + utils/cx.ts + hooks/useValue.ts',
+      'fields/TextField/ 전체(InputBody/ 포함) + fields/FieldFrame/ + buttons/FormButton/ + Icon/ + utils/cx.ts + hooks/useValue.ts',
     extra:
       'assets/icons/의 ico_*.svg와 assets/icons/fields/ico_input_clear_focus.svg. endAdornment에 쓰는 컴포넌트도 함께 복사',
   },
@@ -130,7 +143,7 @@ export const commonCodeRows = [
     when: '여러 클래스나 조건부 클래스를 합칠 때. 페이지에서도 직접 사용할 수 있습니다.',
     usedBy: 'FormButton·Checkbox 등 여러 컴포넌트',
     note: '기본 클래스와 페이지에서 전달한 className을 합칩니다. false·undefined는 제외합니다. 클래스 하나면 cx 없이 작성해도 됩니다.',
-    code: "import { cx } from '../../utils/cx.ts';\n\n// FormButton.tsx 내부: styles는 SCSS Modules, className은 전달받은 속성입니다.\n<button className={cx(styles.button, className)}>확인</button>\n\n// cx('button', undefined) → 'button'\n// cx('button', 'wide') → 'button wide'",
+    code: "import { cx } from '../../../utils/cx.ts';\n\n// buttons/FormButton/FormButton.tsx 내부: styles는 SCSS Modules, className은 전달받은 속성입니다.\n<button className={cx(styles['form-button'], className)}>확인</button>\n\n// cx('button', undefined) → 'button'\n// cx('button', 'wide') → 'button wide'",
   },
   {
     file: 'utils/assets.ts',

@@ -137,8 +137,8 @@ export default function TabsGuide({ clip = false }: { clip?: boolean }) {
         </p>
         <SourceFiles
           files={[
-            `src/components/${name}/${name}.tsx`,
-            `src/components/${name}/${name}.module.scss`,
+            `src/components/tabs/${name}/${name}.tsx`,
+            `src/components/tabs/${name}/${name}.module.scss`,
             'src/components/tabs/TabList/TabList.tsx',
             'src/hooks/useHorizontalDrag.ts',
           ]}

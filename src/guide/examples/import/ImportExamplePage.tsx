@@ -1,5 +1,5 @@
 import TextField from '../../../components/fields/TextField/TextField.tsx';
-import Button from '../../../components/Button/Button.tsx';
+import Button from '../../../components/buttons/Button/Button.tsx';
 import Modal from '../../../components/Modal/Modal.tsx';
 import useImportExample from './useImportExample.ts';
 import styles from './ImportExamplePage.module.scss';

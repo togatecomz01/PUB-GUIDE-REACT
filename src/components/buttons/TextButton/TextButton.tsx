@@ -1,6 +1,6 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react';
-import Icon from '../Icon/Icon.tsx';
-import { cx } from '../../utils/cx.ts';
+import Icon from '../../Icon/Icon.tsx';
+import { cx } from '../../../utils/cx.ts';
 import styles from './TextButton.module.scss';
 export type TextButtonProps = ComponentPropsWithRef<'button'> & {
   appearance?: 'arrow' | 'clear' | 'underline';
@@ -33,7 +33,7 @@ export default function TextButton({
       {...props}
       type={type}
       className={cx(
-        styles.button,
+        styles['text-button'],
         styles[tone],
         styles[size],
         isUnderlined && styles.underline,

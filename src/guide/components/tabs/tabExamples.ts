@@ -11,7 +11,7 @@ export function tabPage(clip: boolean) {
   },`,
   ).join('\n');
   return `import { useState } from 'react';
-import ${name} from '../components/${name}/${name}.tsx';
+import ${name} from '../components/tabs/${name}/${name}.tsx';
 import styles from './ExamplePage.module.scss';
 
 const items = [

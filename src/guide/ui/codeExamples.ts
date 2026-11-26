@@ -1,4 +1,4 @@
-import type { ButtonSize, ButtonVariant } from '../../components/Button/Button.tsx';
+import type { ButtonSize, ButtonVariant } from '../../components/buttons/Button/Button.tsx';
 import type { DialogActionLayout, DialogKind } from '../../components/Modal/Modal.tsx';
 
 type ButtonExampleOptions = {
@@ -43,7 +43,7 @@ export function createButtonExample({ variant, size, label, disabled }: ButtonEx
   ].join('\n');
 
   const fullCode = [
-    "import Button from '../components/Button/Button.tsx';",
+    "import Button from '../components/buttons/Button/Button.tsx';",
     '',
     'export default function Example() {',
     '  return (',

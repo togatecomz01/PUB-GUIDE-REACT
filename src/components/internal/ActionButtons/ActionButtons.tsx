@@ -1,5 +1,5 @@
-import Button from '../../Button/Button.tsx';
-import type { ButtonProps } from '../../Button/Button.tsx';
+import Button from '../../buttons/Button/Button.tsx';
+import type { ButtonProps } from '../../buttons/Button/Button.tsx';
 import { cx } from '../../../utils/cx.ts';
 import styles from './ActionButtons.module.scss';
 export type Action = Omit<ButtonProps, 'variant' | 'size' | 'children'> & {

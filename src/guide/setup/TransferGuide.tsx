@@ -44,10 +44,10 @@ export default function TransferGuide() {
           작성·수정합니다. 가이드 화면 자체는 복사하지 않습니다.
         </p>
         <p className={ui.muted}>
-          입력창은 components/fields/, 체크박스·라디오·스위치는 components/selection/, 탭은
-          components/tabs/에서 찾아 가져옵니다. 전체를 복사할 때는 각 폴더의 보조 부품과
-          internal/ActionButtons/도 포함합니다. hooks/는 React에서 값·동작을 함께 쓰는 함수,
-          utils/는 일반 함수와 이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은
+          버튼은 components/buttons/, 입력창은 components/fields/, 체크박스·라디오·스위치는
+          components/selection/, 탭은 components/tabs/에서 찾아 가져옵니다. 전체를 복사할 때는 각
+          폴더의 보조 부품과 internal/ActionButtons/도 포함합니다. hooks/는 React에서 값·동작을 함께
+          쓰는 함수, utils/는 일반 함수와 이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은
           assets/styles/mixins/_selection.scss에 있습니다. 이 세 컴포넌트는 utils/assets.ts의 이미지
           목록을 불러옵니다. 파일명은 ico_ 접두사와 소문자·밑줄로 통일합니다.
           <a href="#icon"> 아이콘 역할·추가 방법 →</a>

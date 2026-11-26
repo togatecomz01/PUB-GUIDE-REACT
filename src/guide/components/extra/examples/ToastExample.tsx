@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Button from '../../../../components/Button/Button.tsx';
+import Button from '../../../../components/buttons/Button/Button.tsx';
 import Toast from '../../../../components/Toast/Toast.tsx';
 export default function ToastExample() {
   const [open, setOpen] = useState(false);

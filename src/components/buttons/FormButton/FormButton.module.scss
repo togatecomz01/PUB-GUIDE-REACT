@@ -1,7 +1,7 @@
-@use '../../assets/styles/tokens/primitives' as *;
-@use '../../assets/styles/tokens/semantic-colors' as *;
+@use '../../../assets/styles/tokens/primitives' as *;
+@use '../../../assets/styles/tokens/semantic-colors' as *;
 
-.button {
+.form-button {
   display: inline-flex;
   flex: 0 0 auto;
   align-items: center;

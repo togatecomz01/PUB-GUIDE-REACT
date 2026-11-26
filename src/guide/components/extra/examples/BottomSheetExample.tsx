@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import Button from '../../../../components/Button/Button.tsx';
+import Button from '../../../../components/buttons/Button/Button.tsx';
 import BottomSheet, { SheetOptions } from '../../../../components/BottomSheet/BottomSheet.tsx';
 import type {
   BankColumns,

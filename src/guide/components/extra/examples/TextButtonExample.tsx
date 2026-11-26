@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TextButton from '../../../../components/TextButton/TextButton.tsx';
+import TextButton from '../../../../components/buttons/TextButton/TextButton.tsx';
 import Icon from '../../../../components/Icon/Icon.tsx';
 
 export default function TextButtonExample() {
