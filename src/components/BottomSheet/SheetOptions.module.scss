@@ -1,0 +1,116 @@
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
+.options {
+  display: flex;
+  flex-direction: column;
+  margin: 4px -24px 0;
+
+  .option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+    padding: 16px 24px;
+    border: 0;
+    background: $bg-surface;
+    color: $text-strong;
+    text-align: left;
+    font:
+      $font-weight-500 #{$font-size-16}/ 24px 'Pretendard',
+      sans-serif;
+    cursor: pointer;
+
+    > * + * {
+      margin-left: 12px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $border-focus;
+      outline-offset: -2px;
+    }
+
+    &:disabled {
+      cursor: default;
+    }
+
+    .check {
+      flex-shrink: 0;
+      width: $icon-24;
+      height: $icon-24;
+    }
+
+    .option-text {
+      display: flex;
+      flex: 1 1 0px;
+      flex-direction: column;
+      min-width: 0;
+      color: $text-strong;
+
+      small {
+        color: $text-secondary;
+        font:
+          $font-weight-400 #{$font-size-12}/ 18px 'Pretendard',
+          sans-serif;
+      }
+    }
+
+    .logo {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: $radius-full;
+    }
+  }
+
+  &.bank-grid {
+    flex-flow: row wrap;
+    margin: 4px -4px 0;
+
+    &:empty {
+      margin-bottom: 8px;
+    }
+
+    .option {
+      flex: 0 0 auto;
+      flex-direction: column;
+      // 항목마다 좌우 4px을 두어 열 사이 간격을 8px로 유지합니다.
+      width: calc(100% / 3 - 8px);
+      margin: 0 4px 8px;
+      padding: 12px 8px;
+      border-radius: $radius-8;
+      background: $fill-secondary;
+      text-align: center;
+      font-size: $font-size-14;
+      line-height: 20px;
+
+      > * + * {
+        margin: 4px 0 0;
+      }
+
+      &[aria-pressed='true'] {
+        outline: 1px solid $border-selected;
+      }
+
+      .logo {
+        width: $icon-24;
+        height: $icon-24;
+        border-radius: $radius-8;
+      }
+
+      .option-text {
+        flex: 1 1 auto;
+        color: $text-default;
+      }
+    }
+
+    &[data-columns='1'] .option {
+      width: calc(100% - 8px);
+    }
+
+    &[data-columns='2'] .option {
+      width: calc(50% - 8px);
+    }
+  }
+}

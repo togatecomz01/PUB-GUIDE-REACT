@@ -72,7 +72,7 @@ export const dependencyRows = [
     component: 'BottomSheet',
     folders: 'BottomSheet/ + Button/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
     extra:
-      'assets/icons/selection/의 ico_account_selected.svg·ico_account_inactive.svg. 계좌·은행 로고는 SheetOptions의 image로 전달',
+      'BottomSheet/ 폴더 안의 SheetOptions.tsx·SheetOptions.module.scss와 선택 체크 SVG 2개를 포함. 계좌·은행 로고는 image로 전달',
   },
   {
     component: 'Tooltip',

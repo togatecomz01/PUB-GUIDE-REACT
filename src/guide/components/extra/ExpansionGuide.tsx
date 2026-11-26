@@ -2,6 +2,7 @@ import KeypadSource from '../../../components/Keypad/Keypad.tsx?raw';
 import TooltipSource from '../../../components/Tooltip/Tooltip.tsx?raw';
 import SegmentedControlSource from '../../../components/SegmentedControl/SegmentedControl.tsx?raw';
 import BottomSheetSource from '../../../components/BottomSheet/BottomSheet.tsx?raw';
+import SheetOptionsSource from '../../../components/BottomSheet/SheetOptions.tsx?raw';
 import HeaderSource from '../../../components/Header/Header.tsx?raw';
 import TextButtonSource from '../../../components/TextButton/TextButton.tsx?raw';
 import { FieldStructureGuide } from '../fields/FieldUsageGuide.tsx';
@@ -52,7 +53,7 @@ const readingGuides: Partial<Record<ExpansionId, { name: string; code: string; n
   bottomsheet: {
     name: 'BottomSheet.tsx',
     code: BottomSheetSource,
-    note: 'cancelSheet는 Esc, clickBackdrop은 배경 클릭을 처리합니다. SheetOptions는 선택·체크 표시 조건을 따로 계산합니다.',
+    note: 'BottomSheet.tsx는 시트 열기·닫기와 본문 배치를 맡습니다. SheetOptions.tsx는 은행·계좌 목록을 그리고 선택한 값을 화면에 전달합니다. 기존 경로와 목록 파일에서 모두 가져올 수 있습니다.',
   },
   segmented: {
     name: 'SegmentedControl.tsx',
@@ -290,7 +291,16 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
         </p>
       )}
       {id === 'selectfield' && <FieldStructureGuide name="SelectField" />}
-      {reading && <CodeReadingGuide note={reading.note} sources={[reading]} />}
+      {reading && (
+        <CodeReadingGuide
+          note={reading.note}
+          sources={
+            id === 'bottomsheet'
+              ? [reading, { name: 'SheetOptions.tsx', code: SheetOptionsSource }]
+              : [reading]
+          }
+        />
+      )}
       {id === 'icon' && (
         <details className={ui.disclosure}>
           <summary>assets.ts와 Icon 역할 · 새 아이콘 추가하기</summary>
@@ -408,6 +418,8 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
             : []),
           ...(id === 'bottomsheet'
             ? [
+                'src/components/BottomSheet/SheetOptions.tsx',
+                'src/components/BottomSheet/SheetOptions.module.scss',
                 'src/guide/components/extra/examples/BottomSheetExample.module.scss',
                 'src/guide/assets/bank-example.png',
               ]
