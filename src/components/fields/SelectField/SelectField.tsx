@@ -1,10 +1,10 @@
 import { useId } from 'react';
 import type { ComponentPropsWithRef } from 'react';
-import FieldFrame, { getFieldIds } from '../internal/FieldFrame/FieldFrame.tsx';
-import type { FieldName, FieldOptions } from '../internal/FieldFrame/FieldFrame.tsx';
-import { useValue } from '../../hooks/useValue.ts';
-import { cx } from '../../utils/cx.ts';
-import Icon from '../Icon/Icon.tsx';
+import FieldFrame, { getFieldIds } from '../FieldFrame/FieldFrame.tsx';
+import type { FieldName, FieldOptions } from '../FieldFrame/FieldFrame.tsx';
+import { useValue } from '../../../hooks/useValue.ts';
+import { cx } from '../../../utils/cx.ts';
+import Icon from '../../Icon/Icon.tsx';
 import field from '../TextField/TextField.module.scss';
 import styles from './SelectField.module.scss';
 export type SelectOption = { value: string; label: string; disabled?: boolean };

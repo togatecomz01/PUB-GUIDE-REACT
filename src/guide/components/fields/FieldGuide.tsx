@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import TextField from '../../../components/TextField/TextField.tsx';
-import type { InputKind } from '../../../components/TextField/TextField.tsx';
-import SearchField from '../../../components/SearchField/SearchField.tsx';
-import type { FieldState } from '../../../components/internal/FieldFrame/FieldFrame.tsx';
+import TextField from '../../../components/fields/TextField/TextField.tsx';
+import type { InputKind } from '../../../components/fields/TextField/TextField.tsx';
+import SearchField from '../../../components/fields/SearchField/SearchField.tsx';
+import type { FieldState } from '../../../components/fields/FieldFrame/FieldFrame.tsx';
 import { CodeBlock, PageTitle, PreviewStage, PropTable, SourceFiles } from '../../ui/GuideUi.tsx';
 import FieldUsageGuide from './FieldUsageGuide.tsx';
 import ui from '../../ui/GuideUi.module.scss';
@@ -438,7 +438,7 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
           files={[
             `src/components/${name}/${name}.tsx`,
             `src/components/${name}/${name}.module.scss`,
-            'src/components/internal/FieldFrame/FieldFrame.tsx',
+            'src/components/fields/FieldFrame/FieldFrame.tsx',
           ]}
         />
       </details>

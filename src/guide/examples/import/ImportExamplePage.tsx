@@ -1,4 +1,4 @@
-import TextField from '../../../components/TextField/TextField.tsx';
+import TextField from '../../../components/fields/TextField/TextField.tsx';
 import Button from '../../../components/Button/Button.tsx';
 import Modal from '../../../components/Modal/Modal.tsx';
 import useImportExample from './useImportExample.ts';

@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import type { ChangeEvent } from 'react';
 import { digits } from './inputParts.ts';
 import type { InputPartProps } from './inputParts.ts';
-import styles from '../../TextField/TextField.module.scss';
+import styles from '../TextField.module.scss';
 
 /* 주민번호 입력을 나누고 뒷자리 마스킹·포커스 이동 처리 */
 export default function RrnInput({ ids, inputProps, value, onValueChange }: InputPartProps) {

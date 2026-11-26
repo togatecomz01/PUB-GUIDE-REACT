@@ -1,4 +1,4 @@
-@use '../../assets/styles/mixins/selection';
+@use '../../../assets/styles/mixins/selection';
 @include selection.base;
 
 .s .visual {

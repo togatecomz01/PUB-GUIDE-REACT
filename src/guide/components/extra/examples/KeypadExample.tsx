@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TextField from '../../../../components/TextField/TextField.tsx';
+import TextField from '../../../../components/fields/TextField/TextField.tsx';
 import Keypad from '../../../../components/Keypad/Keypad.tsx';
 export default function KeypadExample() {
   const [amount, setAmount] = useState('');

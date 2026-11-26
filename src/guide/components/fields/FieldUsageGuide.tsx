@@ -1,7 +1,7 @@
-import inputBodySource from '../../../components/internal/InputBody/InputBody.tsx?raw';
-import textFieldSource from '../../../components/TextField/TextField.tsx?raw';
-import searchFieldSource from '../../../components/SearchField/SearchField.tsx?raw';
-import selectFieldSource from '../../../components/SelectField/SelectField.tsx?raw';
+import inputBodySource from '../../../components/fields/TextField/InputBody/InputBody.tsx?raw';
+import textFieldSource from '../../../components/fields/TextField/TextField.tsx?raw';
+import searchFieldSource from '../../../components/fields/SearchField/SearchField.tsx?raw';
+import selectFieldSource from '../../../components/fields/SelectField/SelectField.tsx?raw';
 import { CodeBlock } from '../../ui/GuideUi.tsx';
 import {
   fieldSnippet,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SegmentedControl from '../../../../components/SegmentedControl/SegmentedControl.tsx';
+import SegmentedControl from '../../../../components/tabs/SegmentedControl/SegmentedControl.tsx';
 const items = [
   { value: 'all', label: '전체', content: '전체 내용' },
   { value: 'recent', label: '최근', content: '최근 내용' },

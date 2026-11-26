@@ -9,8 +9,9 @@
 
 ## 폴더 역할
 
-- `src/components/컴포넌트명/`: 페이지에서 직접 사용하는 UI. TSX와 해당 컴포넌트의 `module.scss`를 함께 둡니다.
-- `src/components/internal/`: ActionButtons·FieldFrame·InputBody·SelectionImages·TabList 등 UI 내부 보조 부품. 페이지와 실행 예제에서는 공개 컴포넌트를 사용합니다.
+- `src/components/`: 페이지에서 직접 사용하는 UI. TSX와 해당 컴포넌트의 `module.scss`를 함께 둡니다.
+- 입력창은 `components/fields/`, 체크박스·라디오·스위치는 `components/selection/`, 탭은 `components/tabs/`에 둡니다. 여러 컴포넌트가 함께 쓰는 보조 부품은 같은 그룹에 둡니다.
+- InputBody는 TextField 폴더 안에, SheetOptions는 BottomSheet 폴더 안에 둡니다. `components/internal/`에는 BottomCTA·BottomSheet가 공유하는 ActionButtons를 둡니다. 페이지와 실행 예제에서는 공개 컴포넌트를 사용합니다.
 - `src/hooks/`: React에서 값·동작을 공유하는 공통 훅. 화면 전용 훅은 해당 화면 옆에 둡니다.
 - `src/utils/`: 일반 함수 `cx.ts`와 공통 이미지 목록 `assets.ts`. 컴포넌트 전용 타입은 사용처 옆에 둡니다.
 - `src/assets/styles/`: 색상 변수·기본 초기화·폰트 로드. 체크박스·라디오·스위치 공통 스타일은 `mixins/_selection.scss`에 두고 각 `module.scss`에서 포함합니다.

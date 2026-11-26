@@ -13,13 +13,19 @@ export const foundationFiles = [
 ];
 export const allComponentsTree = `src/
 ├─ components/
-│  ├─ Button/·TextField/·Tab/…  페이지에서 쓰는 UI 22종
-│  └─ internal/                UI 내부의 보조 부품 5개
-│     ├─ ActionButtons/       하단 버튼 묶음
-│     ├─ FieldFrame/          레이블·안내문구 틀
-│     ├─ InputBody/           입력 종류별 내용
-│     ├─ SelectionImages/     선택 상태 SVG 출력
-│     └─ TabList/             탭 선택·키보드 이동
+│  ├─ fields/
+│  │  ├─ TextField/InputBody/  입력 유형별 내용
+│  │  ├─ SearchField/·SelectField/
+│  │  └─ FieldFrame/          레이블·안내문구 공통
+│  ├─ selection/
+│  │  ├─ Checkbox/·Radio/·Switch/
+│  │  └─ SelectionImages/     상태별 SVG 출력
+│  ├─ tabs/
+│  │  ├─ Tab/·TabClip/·SegmentedControl/
+│  │  └─ TabList/             탭 선택·키보드 이동
+│  ├─ BottomSheet/SheetOptions/ 은행·계좌 선택 목록
+│  ├─ Button/·BottomCTA/·…
+│  └─ internal/ActionButtons/  BottomCTA·BottomSheet 공통 버튼 배치
 ├─ hooks/                      값 관리·다이얼로그·가로 드래그
 ├─ utils/                      cx.ts·assets.ts (일반 함수·공통 이미지 목록)
 └─ assets/
@@ -72,7 +78,7 @@ export const dependencyRows = [
     component: 'BottomSheet',
     folders: 'BottomSheet/ + Button/ + internal/ActionButtons/ + hooks/useDialog.ts + utils/cx.ts',
     extra:
-      'BottomSheet/ 폴더 안의 SheetOptions.tsx·SheetOptions.module.scss와 선택 체크 SVG 2개를 포함. 계좌·은행 로고는 image로 전달',
+      'BottomSheet/SheetOptions/의 TSX·SCSS와 선택 체크 SVG 2개를 포함. 계좌·은행 로고는 image로 전달',
   },
   {
     component: 'Tooltip',
@@ -86,32 +92,33 @@ export const dependencyRows = [
   },
   {
     component: 'Checkbox / Radio / Switch',
-    folders: '선택할 컴포넌트 + internal/SelectionImages/ + utils/cx.ts + utils/assets.ts',
+    folders:
+      'selection/에서 사용할 컴포넌트 폴더 + selection/SelectionImages/ + utils/cx.ts + utils/assets.ts',
     extra:
       'assets/styles/mixins/_selection.scss + utils/assets.ts가 참조하는 체크박스·라디오·스위치 SVG 30개',
   },
   {
     component: 'TextField',
     folders:
-      'TextField/ + internal/InputBody/ + FormButton/ + Icon/ + internal/FieldFrame/ + utils/cx.ts + hooks/useValue.ts',
+      'fields/TextField/ 전체(InputBody/ 포함) + fields/FieldFrame/ + FormButton/ + Icon/ + utils/cx.ts + hooks/useValue.ts',
     extra:
       'assets/icons/의 ico_*.svg와 assets/icons/fields/ico_input_clear_focus.svg. endAdornment에 쓰는 컴포넌트도 함께 복사',
   },
   {
     component: 'SelectField',
     folders:
-      'SelectField/ + TextField/TextField.module.scss + Icon/ + internal/FieldFrame/ + utils/cx.ts + hooks/useValue.ts',
+      'fields/SelectField/ + fields/TextField/TextField.module.scss + fields/FieldFrame/ + Icon/ + utils/cx.ts + hooks/useValue.ts',
     extra: 'assets/icons/의 ico_*.svg. TextField.tsx·InputBody·FormButton은 불필요',
   },
   {
     component: 'SearchField',
-    folders: 'SearchField/ + Icon/ + internal/FieldFrame/ + utils/cx.ts + hooks/useValue.ts',
+    folders: 'fields/SearchField/ + fields/FieldFrame/ + Icon/ + utils/cx.ts + hooks/useValue.ts',
     extra: 'assets/icons/의 ico_*.svg와 assets/icons/fields/ico_input_clear_focus.svg',
   },
   {
     component: 'Tab / TabClip / SegmentedControl',
     folders:
-      '사용할 Tab/·TabClip/·SegmentedControl/ + internal/TabList/ + utils/cx.ts + hooks/useValue.ts + hooks/useHorizontalDrag.ts',
+      'tabs/에서 사용할 컴포넌트 폴더 + tabs/TabList/ + utils/cx.ts + hooks/useValue.ts + hooks/useHorizontalDrag.ts',
     extra:
       'SegmentedControl에만 Icon/ + assets/icons/의 ico_*.svg 추가. Tab·TabClip은 SVG 파일이 필요하지 않음',
   },
@@ -130,14 +137,14 @@ export const commonCodeRows = [
     when: '체크박스·라디오·스위치의 크기·상태별 SVG 연결을 확인하거나 수정할 때.',
     usedBy: 'Checkbox·Radio·Switch 내부',
     note: '페이지에서는 Checkbox·Radio·Switch를 사용합니다. 일반 아이콘 추가 방법은 아이콘 안내를 참고하세요.',
-    code: "import { checkboxImages } from '../../utils/assets.ts';\n\n// Checkbox.tsx에서 사용하는 작은 사각형 체크박스의 이미지 목록\nconst images = checkboxImages.square.s;\n// images.off / images.on / images.offDisabled / images.onDisabled",
+    code: "import { checkboxImages } from '../../../utils/assets.ts';\n\n// Checkbox.tsx에서 사용하는 작은 사각형 체크박스의 이미지 목록\nconst images = checkboxImages.square.s;\n// images.off / images.on / images.offDisabled / images.onDisabled",
   },
   {
     file: 'hooks/useValue.ts',
     when: '새 입력·선택 컴포넌트가 문자열 값을 내부에서 관리하거나 외부 value·실행할 함수로 받게 할 때.',
     usedBy: 'TextField·SearchField·SelectField·TabList 내부',
     note: 'value를 전달하면 페이지가 관리하는 값을 보여 줍니다. 생략하면 컴포넌트 안에서 defaultValue부터 값을 관리합니다. ID와 레이블 연결은 useId·getFieldIds가 준비합니다. 간단한 페이지의 값은 useState로 관리하면 됩니다.',
-    code: 'import { useValue } from \'../../hooks/useValue.ts\';\n\n// 새 입력 컴포넌트 함수 내부. 아래 세 인자는 해당 컴포넌트의 props입니다.\nconst [current, update] = useValue(value, defaultValue, onValueChange);\n\n<input\n  aria-label="이름"\n  value={current}\n  onChange={(event) => update(event.target.value)}\n/>',
+    code: 'import { useValue } from \'../../../hooks/useValue.ts\';\n\n// fields/TextField/TextField.tsx 함수 내부. 아래 세 인자는 컴포넌트의 props입니다.\nconst [current, update] = useValue(value, defaultValue, onValueChange);\n\n<input\n  aria-label="이름"\n  value={current}\n  onChange={(event) => update(event.target.value)}\n/>',
   },
   {
     file: 'hooks/useDialog.ts',

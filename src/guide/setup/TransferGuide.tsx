@@ -44,10 +44,10 @@ export default function TransferGuide() {
           작성·수정합니다. 가이드 화면 자체는 복사하지 않습니다.
         </p>
         <p className={ui.muted}>
-          components/의 Button·TextField 등은 페이지에서 직접 사용합니다. components/internal/은 이
-          UI들이 내부에서 쓰는 보조 부품이며 페이지에서는 직접 가져오지 않습니다. 전체 복사할 때는
-          internal/도 포함합니다. hooks/는 React에서 값·동작을 함께 쓰는 함수, utils/는 일반 함수와
-          이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은
+          입력창은 components/fields/, 체크박스·라디오·스위치는 components/selection/, 탭은
+          components/tabs/에서 찾아 가져옵니다. 전체를 복사할 때는 각 폴더의 보조 부품과
+          internal/ActionButtons/도 포함합니다. hooks/는 React에서 값·동작을 함께 쓰는 함수,
+          utils/는 일반 함수와 이미지 목록입니다. 체크박스·라디오·스위치 공통 스타일은
           assets/styles/mixins/_selection.scss에 있습니다. 이 세 컴포넌트는 utils/assets.ts의 이미지
           목록을 불러옵니다. 파일명은 ico_ 접두사와 소문자·밑줄로 통일합니다.
           <a href="#icon"> 아이콘 역할·추가 방법 →</a>
@@ -87,9 +87,9 @@ export default function TransferGuide() {
           <p className={ui.muted}>
             아래 코드는 이 파일들을 사용하는 컴포넌트(TSX) 내부의 핵심 부분입니다. import는 파일
             상단에, 훅 호출은 컴포넌트 함수의 최상단에 둡니다. 조건문·반복문·클릭 함수 안에서 훅을
-            호출하지 않습니다. 예시 경로는 src/components/컴포넌트명/ 기준이며 pages/ 바로
-            아래에서는 ../hooks/·../utils/를 사용합니다. internal/ 안의 보조 부품은 폴더가 한 단계
-            더 깊어 ../../../hooks/·../../../utils/를 사용합니다.
+            호출하지 않습니다. 각 예시는 주석에 적힌 컴포넌트 파일 기준입니다. 예를 들어
+            fields/TextField/에서는 ../../../hooks/를, pages/ 바로 아래에서는 ../hooks/를
+            사용합니다.
           </p>
           {commonCodeRows.map((row) => (
             <div key={row.file}>

@@ -1,9 +1,9 @@
 import type { ChangeEvent } from 'react';
-import FormButton from '../../FormButton/FormButton.tsx';
-import Icon from '../../Icon/Icon.tsx';
+import FormButton from '../../../FormButton/FormButton.tsx';
+import Icon from '../../../Icon/Icon.tsx';
 import { digits } from './inputParts.ts';
 import type { InputPartProps } from './inputParts.ts';
-import styles from '../../TextField/TextField.module.scss';
+import styles from '../TextField.module.scss';
 
 type PhoneInputProps = InputPartProps & {
   phonePrefixes: string[];

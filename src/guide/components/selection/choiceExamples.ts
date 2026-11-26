@@ -9,7 +9,7 @@ export const choiceNames = {
 export function choicePage(kind: ChoiceKind) {
   if (kind === 'radio') {
     return `import { useId, useState } from 'react';
-import Radio from '../components/Radio/Radio.tsx';
+import Radio from '../components/selection/Radio/Radio.tsx';
 
 export default function ExamplePage() {
   const groupName = useId();
@@ -96,7 +96,7 @@ export function choiceOptions(kind: ChoiceKind) {
 }
 
 export const checkboxGroupPage = `import { useId, useState } from 'react';
-import Checkbox from '../components/Checkbox/Checkbox.tsx';
+import Checkbox from '../components/selection/Checkbox/Checkbox.tsx';
 
 const options = [
   { value: 'email', label: '이메일' },

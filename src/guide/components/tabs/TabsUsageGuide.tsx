@@ -1,4 +1,4 @@
-import tabListSource from '../../../components/internal/TabList/TabList.tsx?raw';
+import tabListSource from '../../../components/tabs/TabList/TabList.tsx?raw';
 import { CodeReadingGuide, CodeBlock } from '../../ui/GuideUi.tsx';
 import { nestedTabs, tabOptions, tabPage, tabPageStyles } from './tabExamples.ts';
 import ui from '../../ui/GuideUi.module.scss';

@@ -1,4 +1,4 @@
-import type { InputKind } from '../../../components/TextField/TextField.tsx';
+import type { InputKind } from '../../../components/fields/TextField/TextField.tsx';
 
 export const inputKinds: { kind: InputKind; label: string }[] = [
   { kind: 'basic', label: '이름' },
@@ -43,7 +43,7 @@ export function fieldSnippet({
 
 // src/pages/ExamplePage.tsx 위치를 기준으로 바로 사용할 수 있는 전체 파일입니다.
 export const textFieldPage = `import { useState } from 'react';
-import TextField from '../components/TextField/TextField.tsx';
+import TextField from '../components/fields/TextField/TextField.tsx';
 
 export default function ExamplePage() {
   const [email, setEmail] = useState('');
@@ -61,7 +61,7 @@ export default function ExamplePage() {
 }`;
 
 export const searchFieldPage = `import { useState } from 'react';
-import SearchField from '../components/SearchField/SearchField.tsx';
+import SearchField from '../components/fields/SearchField/SearchField.tsx';
 
 export default function ExamplePage() {
   const [query, setQuery] = useState('');

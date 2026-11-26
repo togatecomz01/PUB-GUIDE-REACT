@@ -1,7 +1,7 @@
 import { useId, useState } from 'react';
-import Checkbox from '../../../components/Checkbox/Checkbox.tsx';
-import Radio from '../../../components/Radio/Radio.tsx';
-import Switch from '../../../components/Switch/Switch.tsx';
+import Checkbox from '../../../components/selection/Checkbox/Checkbox.tsx';
+import Radio from '../../../components/selection/Radio/Radio.tsx';
+import Switch from '../../../components/selection/Switch/Switch.tsx';
 import { CodeBlock, PageTitle, PreviewStage, PropTable, SourceFiles } from '../../ui/GuideUi.tsx';
 import ChoiceUsageGuide from './ChoiceUsageGuide.tsx';
 import ui from '../../ui/GuideUi.module.scss';
@@ -223,7 +223,7 @@ export default function ChoiceGuide({ kind }: { kind: ChoiceKind }) {
           files={[
             `src/components/${definition.name}/${definition.name}.tsx`,
             `src/components/${definition.name}/${definition.name}.module.scss`,
-            'src/components/internal/SelectionImages/',
+            'src/components/selection/SelectionImages/',
             'src/assets/styles/mixins/_selection.scss',
             'src/utils/assets.ts',
             'src/utils/cx.ts',

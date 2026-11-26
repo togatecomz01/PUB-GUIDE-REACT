@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react';
-import SelectionImages from '../internal/SelectionImages/SelectionImages.tsx';
-import { checkboxImages } from '../../utils/assets.ts';
-import { cx } from '../../utils/cx.ts';
+import SelectionImages from '../SelectionImages/SelectionImages.tsx';
+import { checkboxImages } from '../../../utils/assets.ts';
+import { cx } from '../../../utils/cx.ts';
 import styles from './Checkbox.module.scss';
 
 export type CheckboxProps = Omit<ComponentPropsWithRef<'input'>, 'type' | 'size' | 'children'> & {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import Tab from '../../../components/Tab/Tab.tsx';
-import TabClip from '../../../components/TabClip/TabClip.tsx';
+import Tab from '../../../components/tabs/Tab/Tab.tsx';
+import TabClip from '../../../components/tabs/TabClip/TabClip.tsx';
 import { CodeBlock, PageTitle, PropTable, SourceFiles } from '../../ui/GuideUi.tsx';
 import TabsUsageGuide from './TabsUsageGuide.tsx';
 import ui from '../../ui/GuideUi.module.scss';
@@ -139,7 +139,7 @@ export default function TabsGuide({ clip = false }: { clip?: boolean }) {
           files={[
             `src/components/${name}/${name}.tsx`,
             `src/components/${name}/${name}.module.scss`,
-            'src/components/internal/TabList/TabList.tsx',
+            'src/components/tabs/TabList/TabList.tsx',
             'src/hooks/useHorizontalDrag.ts',
           ]}
         />

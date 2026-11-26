@@ -1,4 +1,4 @@
-import checkboxSource from '../../../components/Checkbox/Checkbox.tsx?raw';
+import checkboxSource from '../../../components/selection/Checkbox/Checkbox.tsx?raw';
 import { CodeReadingGuide, CodeBlock } from '../../ui/GuideUi.tsx';
 import {
   checkboxGroupPage,

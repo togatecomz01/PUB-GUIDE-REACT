@@ -1,8 +1,8 @@
 import KeypadSource from '../../../components/Keypad/Keypad.tsx?raw';
 import TooltipSource from '../../../components/Tooltip/Tooltip.tsx?raw';
-import SegmentedControlSource from '../../../components/SegmentedControl/SegmentedControl.tsx?raw';
+import SegmentedControlSource from '../../../components/tabs/SegmentedControl/SegmentedControl.tsx?raw';
 import BottomSheetSource from '../../../components/BottomSheet/BottomSheet.tsx?raw';
-import SheetOptionsSource from '../../../components/BottomSheet/SheetOptions.tsx?raw';
+import SheetOptionsSource from '../../../components/BottomSheet/SheetOptions/SheetOptions.tsx?raw';
 import HeaderSource from '../../../components/Header/Header.tsx?raw';
 import TextButtonSource from '../../../components/TextButton/TextButton.tsx?raw';
 import { FieldStructureGuide } from '../fields/FieldUsageGuide.tsx';
@@ -412,14 +412,16 @@ export default function ExpansionGuide({ id }: { id: ExpansionId }) {
       </p>
       <SourceFiles
         files={[
-          'src/components/' + page.title + '/',
+          id === 'segmented'
+            ? 'src/components/tabs/SegmentedControl/'
+            : 'src/components/' + page.title + '/',
           ...(Example || code !== undefined
             ? ['src/guide/components/extra/examples/' + fileName]
             : []),
           ...(id === 'bottomsheet'
             ? [
-                'src/components/BottomSheet/SheetOptions.tsx',
-                'src/components/BottomSheet/SheetOptions.module.scss',
+                'src/components/BottomSheet/SheetOptions/SheetOptions.tsx',
+                'src/components/BottomSheet/SheetOptions/SheetOptions.module.scss',
                 'src/guide/components/extra/examples/BottomSheetExample.module.scss',
                 'src/guide/assets/bank-example.png',
               ]

@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef, ReactNode } from 'react';
-import SelectionImages from '../internal/SelectionImages/SelectionImages.tsx';
-import { radioImages } from '../../utils/assets.ts';
-import { cx } from '../../utils/cx.ts';
+import SelectionImages from '../SelectionImages/SelectionImages.tsx';
+import { radioImages } from '../../../utils/assets.ts';
+import { cx } from '../../../utils/cx.ts';
 import styles from './Radio.module.scss';
 
 export type RadioProps = Omit<ComponentPropsWithRef<'input'>, 'type' | 'size' | 'children'> & {

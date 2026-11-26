@@ -1,5 +1,5 @@
-import SelectField from '../../../components/SelectField/SelectField.tsx';
-import TextField from '../../../components/TextField/TextField.tsx';
+import SelectField from '../../../components/fields/SelectField/SelectField.tsx';
+import TextField from '../../../components/fields/TextField/TextField.tsx';
 import { serviceOptions } from './types.ts';
 import type { ChangeField, RequestValues } from './types.ts';
 

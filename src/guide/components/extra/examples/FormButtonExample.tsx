@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import TextField from '../../../../components/TextField/TextField.tsx';
+import TextField from '../../../../components/fields/TextField/TextField.tsx';
 import FormButton from '../../../../components/FormButton/FormButton.tsx';
 
 export default function FormButtonExample() {

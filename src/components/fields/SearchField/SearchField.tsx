@@ -1,10 +1,10 @@
 import { useId } from 'react';
 import type { ComponentPropsWithRef, KeyboardEvent } from 'react';
-import FieldFrame, { getFieldIds } from '../internal/FieldFrame/FieldFrame.tsx';
-import type { FieldName, FieldOptions } from '../internal/FieldFrame/FieldFrame.tsx';
-import Icon from '../Icon/Icon.tsx';
-import clearIcon from '../../assets/icons/fields/ico_input_clear_focus.svg';
-import { useValue } from '../../hooks/useValue.ts';
+import FieldFrame, { getFieldIds } from '../FieldFrame/FieldFrame.tsx';
+import type { FieldName, FieldOptions } from '../FieldFrame/FieldFrame.tsx';
+import Icon from '../../Icon/Icon.tsx';
+import clearIcon from '../../../assets/icons/fields/ico_input_clear_focus.svg';
+import { useValue } from '../../../hooks/useValue.ts';
 import styles from './SearchField.module.scss';
 
 export type SearchFieldProps = FieldName &

@@ -1,8 +1,8 @@
 import { useId } from 'react';
 import type { ChangeEvent } from 'react';
-import Icon from '../../Icon/Icon.tsx';
+import Icon from '../../../Icon/Icon.tsx';
 import type { InputPartProps } from './inputParts.ts';
-import styles from '../../TextField/TextField.module.scss';
+import styles from '../TextField.module.scss';
 
 type EmailInputProps = InputPartProps & { emailDomains: string[] };
 

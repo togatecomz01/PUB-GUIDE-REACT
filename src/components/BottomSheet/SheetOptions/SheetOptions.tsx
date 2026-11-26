@@ -1,6 +1,6 @@
-import selectedCheck from '../../assets/icons/selection/ico_account_selected.svg';
-import inactiveCheck from '../../assets/icons/selection/ico_account_inactive.svg';
-import { cx } from '../../utils/cx.ts';
+import selectedCheck from '../../../assets/icons/selection/ico_account_selected.svg';
+import inactiveCheck from '../../../assets/icons/selection/ico_account_inactive.svg';
+import { cx } from '../../../utils/cx.ts';
 import styles from './SheetOptions.module.scss';
 
 export type SheetOption = {

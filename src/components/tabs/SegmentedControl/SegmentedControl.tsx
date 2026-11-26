@@ -1,8 +1,8 @@
 import { useLayoutEffect, useRef, useState } from 'react';
-import TabList from '../internal/TabList/TabList.tsx';
-import type { TabProps } from '../internal/TabList/TabList.tsx';
-import Icon from '../Icon/Icon.tsx';
-import { cx } from '../../utils/cx.ts';
+import TabList from '../TabList/TabList.tsx';
+import type { TabProps } from '../TabList/TabList.tsx';
+import Icon from '../../Icon/Icon.tsx';
+import { cx } from '../../../utils/cx.ts';
 import styles from './SegmentedControl.module.scss';
 export type SegmentedControlProps = TabProps & {
   alignment?: 'full' | 'fluid';

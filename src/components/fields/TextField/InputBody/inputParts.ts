@@ -1,5 +1,5 @@
 import type { ComponentPropsWithRef } from 'react';
-import type { FieldIds } from '../FieldFrame/FieldFrame.tsx';
+import type { FieldIds } from '../../FieldFrame/FieldFrame.tsx';
 
 export type InputPartProps = {
   ids: FieldIds;

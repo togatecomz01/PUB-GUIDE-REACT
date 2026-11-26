@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import SelectField from '../../../../components/SelectField/SelectField.tsx';
+import SelectField from '../../../../components/fields/SelectField/SelectField.tsx';
 const options = [
   { value: 'personal', label: '개인' },
   { value: 'business', label: '사업자' },

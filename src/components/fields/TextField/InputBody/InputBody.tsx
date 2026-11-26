@@ -1,12 +1,12 @@
 import type { ChangeEvent } from 'react';
-import FormButton from '../../FormButton/FormButton.tsx';
+import FormButton from '../../../FormButton/FormButton.tsx';
 import EmailInput from './EmailInput.tsx';
 import RrnInput from './RrnInput.tsx';
 import PhoneInput from './PhoneInput.tsx';
 import { digits } from './inputParts.ts';
 import type { InputPartProps } from './inputParts.ts';
-import type { InputKind } from '../../TextField/TextField.tsx';
-import styles from '../../TextField/TextField.module.scss';
+import type { InputKind } from '../TextField.tsx';
+import styles from '../TextField.module.scss';
 
 type InputBodyProps = InputPartProps & {
   kind: InputKind;

@@ -34,7 +34,11 @@ npm run dev
 ```text
 src/
 ├─ components/          페이지에서 사용하는 UI 22종
-│  └─ internal/         UI 내부의 보조 부품 5개
+│  ├─ fields/           입력창과 공통 레이블·안내문구
+│  ├─ selection/        체크박스·라디오·스위치와 상태별 이미지
+│  ├─ tabs/             탭 UI와 공통 TabList
+│  ├─ BottomSheet/      바텀시트와 은행·계좌 선택 목록
+│  └─ internal/         BottomCTA·BottomSheet 공통 버튼 배치
 ├─ hooks/               React에서 값·동작을 함께 쓰는 공통 함수
 ├─ utils/               클래스 조합 함수·공통 이미지 목록
 ├─ assets/
@@ -48,7 +52,7 @@ src/
 
 화면과 컴포넌트는 `.tsx`, 일반 함수·데이터·타입은 `.ts`, 컴포넌트별 스타일은 `.module.scss`로 구분합니다.
 
-`components/internal/`에는 ActionButtons·FieldFrame·InputBody·SelectionImages·TabList가 있습니다. 페이지에서는 Button·TextField·Tab 등 공개 컴포넌트를 사용하고, 내부 부품은 해당 컴포넌트에서 불러옵니다.
+`components/internal/`에서 ActionButtons를 공유합니다. InputBody는 fields/TextField/ 안에 두고, FieldFrame·SelectionImages·TabList는 각각 사용하는 컴포넌트와 같은 그룹에 둡니다. 페이지에서는 Button·TextField·Tab 등 공개 컴포넌트를 사용합니다.
 
 체크박스·라디오·스위치 공통 스타일은 `src/assets/styles/mixins/_selection.scss`에 있습니다. 각 컴포넌트의 `module.scss`에서 포함하므로 페이지에서 따로 로드하지 않습니다.
 
@@ -61,6 +65,13 @@ src/
 ```tsx
 // 프로젝트 진입 파일에서 한 번 로드
 import './assets/styles/main.scss';
+```
+
+src/pages/ 바로 아래 화면 파일에서 입력창과 탭을 가져오는 예입니다.
+
+```tsx
+import TextField from '../components/fields/TextField/TextField.tsx';
+import Tab from '../components/tabs/Tab/Tab.tsx';
 ```
 
 기존 공통 스타일이 있는 프로젝트는 초기화·폰트 로드가 중복되지 않게 합칩니다. 필요한 컴포넌트만 복사할 경우 가이드의 **가져다 쓰기** 표에서 함께 필요한 파일을 확인합니다. Vite의 SVG 문자열 읽기(`?raw`)와 파일 목록 불러오기(`import.meta.glob`), SCSS Modules를 처리할 수 있는 환경이 필요합니다.
