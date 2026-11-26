@@ -29,7 +29,6 @@ export type SearchFieldProps = FieldName &
     onValueChange?: (value: string) => void;
     onSearch?: (value: string) => void;
     searchButton?: boolean;
-    previewState?: 'focus';
   };
 
 /* 검색어 입력창과 검색 동작 연결 */
@@ -46,7 +45,6 @@ export default function SearchField(props: SearchFieldProps) {
     disabled,
     className,
     id,
-    previewState,
     onKeyDown,
     ...input
   } = props;
@@ -91,9 +89,9 @@ export default function SearchField(props: SearchFieldProps) {
     >
       <div
         className={styles.control}
+        data-part="field-control"
         data-status={status}
         data-disabled={disabled || undefined}
-        data-preview-state={previewState}
       >
         {!searchButton && icon}
         <input
@@ -114,6 +112,7 @@ export default function SearchField(props: SearchFieldProps) {
         {isClearVisible && (
           <button
             className={styles.clear}
+            data-part="clear-button"
             type="button"
             aria-label={`${ids.accessibleName} 지우기`}
             onMouseDown={(event) => event.preventDefault()}

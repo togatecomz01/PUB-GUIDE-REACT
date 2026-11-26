@@ -11,8 +11,7 @@
   background: var(--bg-surface);
   color: var(--text-strong);
 }
-.control:focus-within,
-.control[data-preview-state='focus'] {
+.control:focus-within {
   border-color: var(--border-focus);
 }
 .control[data-status='error'] {
@@ -70,8 +69,7 @@
   display: block;
   max-width: none;
 }
-.control:focus-within .clear,
-.control[data-preview-state='focus'] .clear {
+.control:focus-within .clear {
   display: flex;
 }
 .clear:focus-visible,

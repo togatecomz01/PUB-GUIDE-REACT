@@ -1,5 +1,6 @@
 import componentSource from '../../../components/Button/Button.tsx?raw';
 import styles from '../../ui/GuideUi.module.scss';
+import preview from '../PreviewStates.module.scss';
 import { useState } from 'react';
 import Button from '../../../components/Button/Button.tsx';
 import type { ButtonSize, ButtonVariant } from '../../../components/Button/Button.tsx';
@@ -168,7 +169,7 @@ export function ButtonGuide() {
                             variant={role}
                             size={item}
                             disabled={state === 'Disabled'}
-                            previewState={state === 'Pressed' ? 'pressed' : undefined}
+                            className={state === 'Pressed' ? preview[role] : undefined}
                             aria-label={`${roleName(role)} ${item.toUpperCase()} ${state}`}
                           >
                             버튼

@@ -39,8 +39,6 @@ export type TextFieldProps = FieldName &
     remainingTime?: string;
     actionLabel?: string;
     onAction?: () => void;
-    /* 가이드에서 포커스 모양을 비교할 때만 사용합니다. */
-    previewState?: 'focus';
   };
 
 /* 입력 종류에 맞춰 입력칸과 보조 요소 구성 */
@@ -64,7 +62,6 @@ export default function TextField(props: TextFieldProps) {
     remainingTime,
     actionLabel,
     onAction,
-    previewState,
     ...input
   } = props;
   const generatedId = useId();
@@ -103,11 +100,11 @@ export default function TextField(props: TextFieldProps) {
     >
       <div
         className={cx(styles.control, styles[variant])}
+        data-part="field-control"
         data-status={status}
         data-disabled={disabled || undefined}
         data-readonly={input.readOnly || undefined}
         data-filled={isFilled || undefined}
-        data-preview-state={previewState}
       >
         {isComposite && input.name && (
           <input type="hidden" name={input.name} value={current} disabled={disabled} />
@@ -129,6 +126,7 @@ export default function TextField(props: TextFieldProps) {
           <button
             type="button"
             className={styles.clear}
+            data-part="clear-button"
             aria-label={`${ids.accessibleName} 지우기`}
             onMouseDown={(event) => event.preventDefault()}
             onClick={clearValue}

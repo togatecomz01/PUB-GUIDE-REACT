@@ -27,6 +27,7 @@ import { expansionPages } from './expansionData.ts';
 import type { ExpansionId } from './expansionData.ts';
 import ui from '../../ui/GuideUi.module.scss';
 import styles from './ExpansionGuide.module.scss';
+import preview from '../PreviewStates.module.scss';
 import sheetExample from './examples/BottomSheetExample.module.scss';
 const exampleCode = import.meta.glob<string | undefined>('./examples/*Example.tsx', {
   query: '?raw',
@@ -118,7 +119,7 @@ function Gallery({ id }: { id: ExpansionId }) {
         </div>
         <div>
           <small>Pressed</small>
-          <FormButton previewState="pressed">버튼명</FormButton>
+          <FormButton className={preview.formButton}>버튼명</FormButton>
         </div>
         <div>
           <small>Disabled</small>
@@ -139,7 +140,12 @@ function Gallery({ id }: { id: ExpansionId }) {
                 <TextButton size={size} appearance={appearance} tone={tone}>
                   버튼레이블
                 </TextButton>
-                <TextButton size={size} appearance={appearance} tone={tone} previewState="pressed">
+                <TextButton
+                  size={size}
+                  appearance={appearance}
+                  tone={tone}
+                  className={tone === 'brand' ? preview.textBrand : preview.textNeutral}
+                >
                   버튼레이블
                 </TextButton>
                 <TextButton size={size} appearance={appearance} tone={tone} disabled>

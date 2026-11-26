@@ -21,8 +21,7 @@
   padding: 0;
   border-bottom: 1px solid var(--border-subtle);
 }
-.control:focus-within,
-.control[data-preview-state='focus'] {
+.control:focus-within {
   border-color: var(--border-focus);
 }
 .control[data-status='error'] {
@@ -172,8 +171,7 @@
   flex-shrink: 0;
   max-width: none;
 }
-.control:focus-within .clear,
-.control[data-preview-state='focus'] .clear {
+.control:focus-within .clear {
   display: inline-flex;
 }
 .clear:focus-visible {

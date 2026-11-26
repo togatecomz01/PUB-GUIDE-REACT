@@ -7,6 +7,7 @@ import { CodeBlock, PageTitle, PreviewStage, PropTable, SourceFiles } from '../.
 import FieldUsageGuide from './FieldUsageGuide.tsx';
 import ui from '../../ui/GuideUi.module.scss';
 import styles from '../../ui/ControlGuide.module.scss';
+import preview from '../PreviewStates.module.scss';
 
 const kinds: InputKind[] = ['basic', 'price', 'email', 'rrn', 'phone', 'code'];
 const exampleValues: Record<InputKind, string> = {
@@ -302,7 +303,12 @@ export default function FieldGuide({ search = false }: { search?: boolean }) {
                     ? state
                     : 'default') as FieldState,
                   disabled: state === 'disabled',
-                  previewState: state === 'focus' ? ('focus' as const) : undefined,
+                  className:
+                    state === 'focus'
+                      ? shape === 'line'
+                        ? preview.fieldLine
+                        : preview.fieldBox
+                      : undefined,
                   defaultValue:
                     state === 'inactive'
                       ? ''

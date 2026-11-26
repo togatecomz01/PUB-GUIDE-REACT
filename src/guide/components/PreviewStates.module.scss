@@ -1,0 +1,41 @@
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
+.primary:not(:disabled) {
+  background: $fill-brand-pressed;
+}
+
+.secondary:not(:disabled) {
+  background: $fill-brand-weak-pressed;
+}
+
+.tertiary:not(:disabled) {
+  background: $fill-secondary;
+}
+
+.formButton:not(:disabled) {
+  border-color: $icon-brand;
+  color: $text-brand;
+}
+
+.textBrand:not(:disabled)::before {
+  background: $fill-brand-weak;
+}
+
+.textNeutral:not(:disabled)::before {
+  background: $fill-secondary;
+}
+
+.fieldBox,
+.fieldLine {
+  > [data-part='field-control'] {
+    border: 1px solid $border-focus;
+
+    > [data-part='clear-button'] {
+      display: flex;
+    }
+  }
+}
+
+.fieldLine > [data-part='field-control'] {
+  border-width: 0 0 1px;
+}

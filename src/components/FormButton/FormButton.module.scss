@@ -19,8 +19,7 @@
   white-space: nowrap;
   cursor: pointer;
 
-  &:not(:disabled):active,
-  &[data-preview-state='pressed']:not(:disabled) {
+  &:not(:disabled):active {
     border-color: $icon-brand;
     color: $text-brand;
   }

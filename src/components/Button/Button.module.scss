@@ -66,8 +66,7 @@
   color: $text-inverse;
   background: $fill-brand;
 
-  &:not(:disabled):active,
-  &[data-preview-state='pressed']:not(:disabled) {
+  &:not(:disabled):active {
     background: $fill-brand-pressed;
   }
 
@@ -81,8 +80,7 @@
   color: $text-brand;
   background: $fill-brand-weak;
 
-  &:not(:disabled):active,
-  &[data-preview-state='pressed']:not(:disabled) {
+  &:not(:disabled):active {
     background: $fill-brand-weak-pressed;
   }
 
@@ -98,8 +96,7 @@
   background: $bg-surface;
   border-color: $border-subtle;
 
-  &:not(:disabled):active,
-  &[data-preview-state='pressed']:not(:disabled) {
+  &:not(:disabled):active {
     background: $fill-secondary;
   }
 

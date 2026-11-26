@@ -8,7 +8,6 @@ export type TextButtonProps = ComponentPropsWithRef<'button'> & {
   size?: 'l' | 'm' | 's';
   icon?: ReactNode;
   iconPosition?: 'start' | 'end';
-  previewState?: 'pressed';
 };
 /* 밑줄이나 아이콘을 조합하는 텍스트 버튼 표시 */
 export default function TextButton({
@@ -17,7 +16,6 @@ export default function TextButton({
   size = 'm',
   icon,
   iconPosition = 'end',
-  previewState,
   type = 'button',
   className,
   children,
@@ -33,7 +31,6 @@ export default function TextButton({
   return (
     <button
       {...props}
-      data-preview-state={previewState}
       type={type}
       className={cx(
         styles.button,

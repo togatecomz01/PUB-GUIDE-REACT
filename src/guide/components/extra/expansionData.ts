@@ -73,7 +73,6 @@ export const expansionPages = [
         'false / button / 생략',
         '실제 button 사용. 폼 전송은 type="submit"일 때만',
       ),
-      prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
     ],
   },
   {
@@ -100,7 +99,6 @@ export const expansionPages = [
         'false / 생략',
         '비활성화 / 클릭할 때 실행할 함수',
       ),
-      prop('previewState', 'pressed', '생략', '가이드 상태 비교 전용'),
     ],
   },
   {

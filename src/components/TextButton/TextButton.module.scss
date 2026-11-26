@@ -23,13 +23,13 @@
   inset: -2px -4px;
   border-radius: 4px;
 }
-.button:is(:active, [data-preview-state='pressed']):not(:disabled)::before {
+.button:not(:disabled):active::before {
   background: var(--fill-brand-weak);
 }
 .neutral {
   color: var(--text-secondary);
 }
-.neutral:is(:active, [data-preview-state='pressed']):not(:disabled)::before {
+.neutral:not(:disabled):active::before {
   background: var(--fill-secondary);
 }
 .l {
