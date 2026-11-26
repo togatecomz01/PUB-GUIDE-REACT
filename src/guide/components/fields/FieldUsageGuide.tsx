@@ -147,7 +147,9 @@ export function FieldStructureGuide({ name }: { name: keyof typeof fieldSources 
         </li>
         {name === 'TextField' && (
           <li>
-            이메일·전화번호처럼 입력 종류별로 값을 다루는 코드는 <code>InputBody.tsx</code>
+            입력 유형을 고르는 코드는 <code>InputBody.tsx</code>, 이메일·주민번호·휴대폰의 입력
+            동작은 같은 폴더의 <code>EmailInput.tsx</code>·<code>RrnInput.tsx</code>·
+            <code>PhoneInput.tsx</code>
           </li>
         )}
         <li>
@@ -175,10 +177,13 @@ export function FieldStructureGuide({ name }: { name: keyof typeof fieldSources 
       {name === 'TextField' && (
         <>
           <p className={ui.muted}>
-            InputBody는 kind별 입력 부분입니다. changeUser·changeNumber처럼 동작에 이름을 붙였고,
-            기본 입력의 모양·입력 방식은 JSX 앞에서 준비합니다.
+            기본·금액·인증번호는 입력칸 하나를 공유합니다. 이메일은 입력 길이가 바뀌어도 아이디
+            영역의 비율이 유지되어 @와 도메인 위치가 움직이지 않습니다.
           </p>
-          <CodeBlock label="InputBody.tsx · 현재 입력 종류별 구현" code={inputBodySource} />
+          <CodeBlock
+            label="InputBody.tsx · 입력 유형 선택과 기본 입력 구현"
+            code={inputBodySource}
+          />
         </>
       )}
     </details>
