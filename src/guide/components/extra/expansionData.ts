@@ -331,7 +331,7 @@ export const expansionPages = [
         'headingLevel',
         '1 | 2 | 3 | 4 | 5 | 6',
         '2',
-        '페이지 제목 구조에 맞는 단계입니다. 상위 제목이 h2라면 3을 사용합니다.',
+        '제목 태그를 정합니다. 이 예제는 상위 제목 h2 아래에 있어 3을 전달합니다.',
       ),
       prop(
         'variant / icon',

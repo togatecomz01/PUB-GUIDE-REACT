@@ -36,7 +36,7 @@ export default function Accordion({
     onOpenChange?.(!expanded);
   }
   return (
-    <div className={cx(styles.root, styles[variant], className)}>
+    <div className={cx(styles.accordion, styles[variant], className)}>
       <Heading className={styles.heading}>
         <button type="button" aria-expanded={expanded} aria-controls={id} onClick={toggle}>
           <span className={styles.title}>

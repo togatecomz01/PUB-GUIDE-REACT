@@ -1,75 +1,92 @@
-.root {
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
+.accordion {
   width: 100%;
   min-width: 0;
-  background: var(--bg-surface);
-  color: var(--text-strong);
+  background: $bg-surface;
+  color: $text-strong;
   font:
-    400 14px/22px 'Pretendard',
+    $font-weight-400 #{$font-size-14}/ 22px 'Pretendard',
     sans-serif;
   letter-spacing: -0.2px;
 }
+
 .heading {
   margin: 0;
   font:
-    600 16px/24px 'Pretendard',
+    $font-weight-600 #{$font-size-16}/ 24px 'Pretendard',
     sans-serif;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+
+    &:focus-visible {
+      outline: 2px solid $border-focus;
+      outline-offset: 3px;
+    }
+  }
 }
-.heading button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  width: 100%;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-.heading button:focus-visible {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 3px;
-}
+
 .title {
   display: flex;
   align-items: center;
   gap: 4px;
   min-width: 0;
 }
+
 .full {
-  border-top: 8px solid var(--bg-page);
+  border-top: 8px solid $bg-page;
+
+  .heading {
+    padding: 16px 24px 20px;
+  }
+
+  .body {
+    padding: 8px 24px;
+  }
 }
-.full .heading {
-  padding: 16px 24px 20px;
-}
-.full .body {
-  padding: 8px 24px;
-}
+
 .box {
   padding: 20px;
-  border: 1px solid var(--border-subtle);
-  border-radius: 12px;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-12;
+
+  .body {
+    padding-top: 24px;
+  }
 }
-.box .body {
-  padding-top: 24px;
-}
+
 .body {
-  color: var(--text-secondary);
-}
-.body[hidden] {
-  display: none;
-}
-.body p {
-  margin: 0;
-}
-.body p + p {
-  margin-top: 12px;
-}
-.body ul {
-  display: grid;
-  gap: 8px;
-  margin: 0;
-  padding-left: 8px;
+  color: $text-secondary;
+
+  &[hidden] {
+    display: none;
+  }
+
+  p {
+    margin: 0;
+
+    & + p {
+      margin-top: 12px;
+    }
+  }
+
+  ul {
+    display: grid;
+    gap: 8px;
+    margin: 0;
+    padding-left: 8px;
+  }
 }
