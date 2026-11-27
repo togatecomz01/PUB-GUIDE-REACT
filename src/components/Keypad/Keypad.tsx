@@ -32,7 +32,7 @@ export default function Keypad({
   const isAmountVisible = amounts.length > 0;
 
   return (
-    <div className={cx(styles.root, className)}>
+    <div className={cx(styles.keypad, className)}>
       {isAmountVisible && (
         <div className={styles.amounts} role="group" aria-label="금액 추가">
           {amounts.map((item) => (

@@ -63,7 +63,7 @@ export default function Tooltip({
   }
 
   return (
-    <div ref={root} className={cx(styles.root, className)} onKeyDown={handleKeyDown}>
+    <div ref={root} className={cx(styles.tooltip, className)} onKeyDown={handleKeyDown}>
       <button
         ref={trigger}
         type="button"

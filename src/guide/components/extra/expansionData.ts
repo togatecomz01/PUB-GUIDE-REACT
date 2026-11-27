@@ -193,6 +193,7 @@ export const expansionPages = [
     notes: [
       '기본 3000ms(3초) 뒤에 onClose를 호출합니다. 화면에서 open을 false로 바꿔 메시지를 닫으세요. duration이 0 이하이면 시간이 지나도 onClose를 호출하지 않습니다.',
       '업무 처리 성공 여부는 화면에서 결정합니다. role=status로 메시지를 읽고, 화면 포커스를 이동하거나 인증·저장을 수행하지 않습니다.',
+      'fixed는 화면 하단에서 기본 24px 떨어져 표시합니다. viewport-fit=cover를 사용하고 기기에 하단 안전 영역이 있으면 그만큼 위로 띄웁니다. inline은 넣은 자리에 표시합니다.',
       'Modal에서 확인한 결과는 창을 닫은 뒤 페이지에 Toast를 띄우세요. BottomSheet가 열린 상태에서 본문에 메시지를 보여주려면 BottomSheet 태그 사이에 position="inline"인 Toast를 넣으세요.',
     ],
     props: [

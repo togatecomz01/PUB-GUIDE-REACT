@@ -1,46 +1,56 @@
-.root {
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
+.keypad {
   width: 100%;
   min-width: 0;
   padding: 12px 24px 20px;
-  background: var(--bg-surface);
+  background: $bg-surface;
 }
+
 .amounts {
   display: flex;
   gap: 4px;
   margin-bottom: 12px;
+
+  .amount {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 8px;
+  }
 }
-.amounts .amount {
-  flex: 1 1 0;
-  min-width: 0;
-  padding: 0 8px;
-}
+
 .keys {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   column-gap: 4px;
-}
-.keys button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 54px;
-  padding: 0;
-  border: 0;
-  background: var(--bg-surface);
-  color: var(--text-strong);
-  font:
-    700 24px/32px 'Pretendard',
-    sans-serif;
-  cursor: pointer;
-}
-.keys button:active:not(:disabled) {
-  background: var(--fill-secondary);
-}
-.keys button:disabled {
-  color: var(--text-disabled);
-  cursor: default;
-}
-.keys button:focus-visible {
-  outline: 2px solid var(--border-focus);
-  outline-offset: -2px;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 54px;
+    padding: 0;
+    border: 0;
+    background: $bg-surface;
+    color: $text-strong;
+    font:
+      $font-weight-700 #{$font-size-24}/ 32px 'Pretendard',
+      sans-serif;
+    cursor: pointer;
+
+    &:active:not(:disabled) {
+      background: $fill-secondary;
+    }
+
+    &:disabled {
+      color: $text-disabled;
+      cursor: default;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $border-focus;
+      outline-offset: -2px;
+    }
+  }
 }

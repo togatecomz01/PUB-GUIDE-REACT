@@ -1,37 +1,47 @@
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
 .live {
   width: min(100%, 327px);
 }
+
 .fixed {
   position: fixed;
   z-index: 50;
   left: 50%;
-  bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  bottom: 24px;
   transform: translateX(-50%);
   width: min(calc(100% - 48px), 327px);
   pointer-events: none;
+
+  @supports (bottom: env(safe-area-inset-bottom, 0px)) {
+    bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  }
 }
+
 .toast {
   display: flex;
   align-items: center;
   gap: 8px;
   min-height: 48px;
   padding: 12px 16px;
-  border-radius: 12px;
-  background: var(--bg-inverse);
-  color: var(--text-inverse);
+  border-radius: $radius-12;
+  background: $bg-inverse;
+  color: $text-inverse;
   font:
-    400 14px/22px 'Pretendard',
+    $font-weight-400 #{$font-size-14}/ 22px 'Pretendard',
     sans-serif;
   letter-spacing: -0.2px;
-}
-.icon {
-  display: inline-flex;
-  flex: 0 0 24px;
-  width: 24px;
-  height: 24px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 999px;
-  background: var(--bg-surface);
-  color: var(--text-strong);
+
+  .icon {
+    display: inline-flex;
+    flex: 0 0 $icon-24;
+    width: $icon-24;
+    height: $icon-24;
+    align-items: center;
+    justify-content: center;
+    border-radius: $radius-full;
+    background: $bg-surface;
+    color: $text-strong;
+  }
 }
