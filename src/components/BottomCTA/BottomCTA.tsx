@@ -18,7 +18,7 @@ export default function BottomCTA({
 }: BottomCTAProps) {
   return (
     <Container
-      className={cx(styles.root, styles[position], className)}
+      className={cx(styles['bottom-cta'], styles[position], className)}
       style={{ bottom } as CSSProperties}
     >
       <ActionButtons {...actions} className={styles.actions} />

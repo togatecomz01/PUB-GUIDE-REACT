@@ -80,7 +80,7 @@ export default function Header({
   }
 
   return (
-    <header className={cx(styles.root, gradient && styles.gradient, className)}>
+    <header className={cx(styles.header, gradient && styles.gradient, className)}>
       <div className={cx(styles.bar, styles[type])}>{content}</div>
     </header>
   );

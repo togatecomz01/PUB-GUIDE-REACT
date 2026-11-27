@@ -115,6 +115,7 @@ export const expansionPages = [
       '2개일 때 보조 버튼은 secondary 또는 tertiary만 선택합니다. 같은 스타일의 두 버튼을 만들지 않습니다.',
       '두 버튼의 문구가 길면 layout을 vertical로 지정합니다. 가로는 보조 → 주요, 세로는 주요 → 보조 순서입니다. 두 배치 모두 버튼 높이는 각각 52px입니다.',
       'static은 본문 순서대로 배치하고, sticky는 스크롤 영역 안에서 가장자리에 붙으며, fixed는 브라우저 표시 영역에 고정합니다. fixed를 쓰면 본문이 버튼에 가려지지 않게 하단에 버튼 영역 높이만큼 공간을 두세요.',
+      '하단 여백은 기본 20px입니다. 홈 인디케이터 영역까지 배경을 채우려면 프로젝트의 viewport 메타 태그에 viewport-fit=cover를 추가하세요. 기기의 하단 안전 영역만큼 버튼 아래 여백이 더해집니다.',
     ],
     props: [
       prop(
@@ -251,6 +252,7 @@ export const expansionPages = [
       'main은 사용자명·알림·홈·메뉴, main-sub는 홈 생략, sub는 뒤로·닫기, sub-page는 중앙 제목, popup은 왼쪽 제목·닫기입니다. 사용자명은 굵고 진하게, ‘님’은 기본 글자색으로 표시합니다.',
       '서비스에 따라 onBack·onClose·onHome·onMenu·onAlarm을 전달합니다. 연결하지 않은 아이콘 버튼은 disabled이며 임의 이동을 하지 않습니다.',
       '상단 고정·페이지 폭은 포함하지 않습니다. 실제 화면 레이아웃에서 지정하고, 시스템 상태바는 구현 대상에서 제외합니다.',
+      '좁은 화면에서 긴 사용자명과 제목은 한 줄로 말줄임하고 전체 텍스트는 그대로 읽을 수 있습니다.',
     ],
     props: [
       prop('type', 'main | main-sub | sub | sub-page | popup', 'main', '헤더 구성'),

@@ -1,8 +1,12 @@
-.root {
+@use '../../assets/styles/tokens/primitives' as *;
+@use '../../assets/styles/tokens/semantic-colors' as *;
+
+.header {
   width: 100%;
   font-family: 'Pretendard', sans-serif;
   letter-spacing: -0.2px;
 }
+
 .bar {
   display: flex;
   align-items: center;
@@ -10,58 +14,80 @@
   gap: 8px;
   height: 50px;
   padding: 0 20px;
-  background: var(--bg-surface);
-  color: var(--text-strong);
+  background: $bg-surface;
+  color: $text-strong;
+
+  button {
+    display: inline-flex;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: $icon-strong;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $border-focus;
+      outline-offset: 3px;
+    }
+  }
 }
+
 .profile {
+  min-width: 0;
   margin: 0;
-  color: var(--text-default);
-  font-size: 18px;
-  font-weight: 500;
+  overflow: hidden;
+  color: $text-default;
+  font-size: $font-size-18;
+  font-weight: $font-weight-500;
   line-height: 26px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  strong {
+    color: $text-strong;
+    font-weight: $font-weight-700;
+    line-height: 28px;
+  }
 }
-.profile strong {
-  color: var(--text-strong);
-  font-weight: 700;
-  line-height: 28px;
-}
+
 .actions {
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.bar button {
-  display: inline-flex;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--icon-strong);
-  cursor: pointer;
-}
-.bar button:disabled {
-  cursor: default;
-}
-.bar button:focus-visible {
-  outline: 2px solid var(--border-focus);
-  outline-offset: 3px;
-}
+
 .title {
-  flex: 1;
+  flex: 1 1 0px;
+  min-width: 0;
   margin: 0;
-  font-size: 16px;
-  font-weight: 600;
+  overflow: hidden;
+  font-size: $font-size-16;
+  font-weight: $font-weight-600;
   line-height: 24px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
+
 .sub-page,
 .popup {
   padding: 0 24px;
 }
-.sub-page .title {
-  text-align: center;
+
+.sub-page {
+  .title {
+    text-align: center;
+  }
 }
-.gradient::after {
-  content: '';
-  display: block;
-  height: 28px;
-  background: linear-gradient(var(--bg-surface), transparent);
+
+.gradient {
+  &::after {
+    content: '';
+    display: block;
+    height: 28px;
+    background: linear-gradient($bg-surface, transparent);
+  }
 }
